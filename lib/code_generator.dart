@@ -52,13 +52,14 @@ class CodeGenerator implements ProtobufContainer {
 
 class GenerationOptions {
   final Map<String, String> fieldNameOptions;
-
-  GenerationOptions._(this.fieldNameOptions);
+  final String partOfLibrary;
+  GenerationOptions._(this.fieldNameOptions, this.partOfLibrary);
 
   // Parse the options in the request. If there was an error in the
   // options null is returned and the error is set on the response.
   factory GenerationOptions(request, response) {
     var fieldNameOptions = <String, String>{};
+    var partOfLibrary = "";
     var parameter = request.parameter != null ? request.parameter : '';
     List<String> options = parameter.trim().split(',');
     List<String> errors = [];
@@ -90,6 +91,13 @@ class GenerationOptions {
           continue;
         }
         fieldNameOptions['.$fromName'] = toName;
+      } 
+      else if(name == 'part_of'){
+        if (value == null || value == "") {
+          errors.add('Illegal option: $option');
+          continue;
+        }
+        partOfLibrary = value;
       } else {
         errors.add('Illegal option: $option');
       }
@@ -98,7 +106,7 @@ class GenerationOptions {
       response.error = errors.join('\n');
       return null;
     } else {
-      return new GenerationOptions._(fieldNameOptions);
+      return new GenerationOptions._(fieldNameOptions, partOfLibrary);
     }
   }
 

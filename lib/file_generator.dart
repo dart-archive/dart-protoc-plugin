@@ -104,20 +104,28 @@ class FileGenerator implements ProtobufContainer {
         throw("FAILURE: File with an absolute path is not supported");
     }
 
-    String className = _generateClassName(filePath);
-
-    String libraryName = className + '.pb';
-
     out.println(
       '///\n'
       '//  Generated code. Do not modify.\n'
-      '///\n'
-      'library $libraryName;\n'
-      '\n'
-      "import 'dart:typed_data';\n\n"
-      "import 'package:protobuf/protobuf.dart';"
+      '///'
     );
-
+    
+    String className = _generateClassName(filePath);
+    
+    if (_context.options.partOfLibrary == "") {
+      String libraryName = className + '.pb';
+      out.println(      
+        'library $libraryName;\n\n'
+        "import 'dart:typed_data';\n\n"
+        "import 'package:protobuf/protobuf.dart';"
+      );
+    } else {
+      //when the user specifies a "part of" library, they will be
+      //responsible for adding the necessary imports to the file
+      //containing the library declaration
+      out.println('part of ${_context.options.partOfLibrary};');
+    }
+    
     for (String import in _fileDescriptor.dependency) {
       Uri importPath = new Uri.file(import);
       if (importPath.isAbsolute) {
