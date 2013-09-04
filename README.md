@@ -64,6 +64,12 @@ Will generate the following message field accessors:
     bool hasHasFld() => hasField(1);
     void clearHasFld() => clearField(1);
 
+#### Option for specifying a "part of" library
+
+By default, each generated file declares its own library.  If you would prefer to have the generated files be part of an existing library, set the `part_of` option to the name of the library that it will be a part of.
+
+It is important to note that when using this option, necessary imports will be omitted from the generated code.  These imports must be added to the file in which the library is declared.
+
 Hacking
 -------
 
