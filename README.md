@@ -13,7 +13,7 @@ How to build and use
 *Note:* currently the workflow is POSIX-oriented.
 
 To build standalone `protoc` plugin:
-- run `pub install` to install all dependecies
+- run `pub get` to install all dependecies
 - run `make build-plugin`. That will create a file `out/protoc-gen-dart` which
   is a plugin
 - Now you can use it either by adding into `PATH` or passing directly with

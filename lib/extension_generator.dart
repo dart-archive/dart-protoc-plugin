@@ -69,7 +69,7 @@ class ExtensionGenerator implements ProtobufContainer {
       }
     }
 
-    if (field.enum) {
+    if (field.enumT) {
       if (initializer.isEmpty) {
         initializer = ',${SP}null';
       }
