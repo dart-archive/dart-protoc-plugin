@@ -34,7 +34,7 @@ class ProtobufField {
 
   bool get group => type == FieldDescriptorProto_Type.TYPE_GROUP;
   bool get message => type == FieldDescriptorProto_Type.TYPE_MESSAGE;
-  bool get enum => type == FieldDescriptorProto_Type.TYPE_ENUM;
+  bool get enumT => type == FieldDescriptorProto_Type.TYPE_ENUM;
   bool get primitive => !group && !message;
 
   bool get hasInitialization => initialization != null;
