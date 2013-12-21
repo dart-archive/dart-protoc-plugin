@@ -1,8 +1,8 @@
 #!/usr/bin/env dart
 import 'dart:io';
 
-main(List<String> arguments) {
-  final fileName = arguments.first;
+main() {
+  final fileName = new Options().arguments.first;
   final file = new File(fileName);
   final content = file.readAsStringSync();
   file.writeAsStringSync('#!/usr/bin/env dart\n$content');
