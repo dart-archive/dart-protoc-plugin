@@ -1,20 +1,20 @@
 PLUGIN_SRC = \
 						 prepend.dart \
 						 bin/protoc_plugin.dart \
-						 lib/code_generator.dart \
-						 lib/enum_generator.dart \
-						 lib/exceptions.dart \
-						 lib/extension_generator.dart \
-						 lib/file_generator.dart \
-						 lib/indenting_writer.dart \
-						 lib/message_generator.dart \
-						 lib/options.dart \
-						 lib/output_config.dart \
-						 lib/protobuf_field.dart \
 						 lib/protoc.dart \
-						 lib/src/descriptor.pb.dart \
+						 lib/src/protoc/code_generator.dart \
+						 lib/src/protoc/enum_generator.dart \
+						 lib/src/protoc/exceptions.dart \
+						 lib/src/protoc/extension_generator.dart \
+						 lib/src/protoc/file_generator.dart \
+						 lib/src/protoc/indenting_writer.dart \
+						 lib/src/protoc/message_generator.dart \
+						 lib/src/protoc/options.dart \
+						 lib/src/protoc/output_config.dart \
+						 lib/src/protoc/protobuf_field.dart \
+						 lib//src/descriptor.pb.dart \
 						 lib/src/plugin.pb.dart \
-						 lib/writer.dart
+						 lib/src/protoc/writer.dart
 
 OUTPUT_DIR=out
 PLUGIN_NAME=protoc-gen-dart
