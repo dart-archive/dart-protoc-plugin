@@ -1,0 +1,7 @@
+language: dart
+sudo: false
+dart:
+  - dev
+  - stable
+before_install: ./tool/protobuf_install.sh
+script: ./tool/travis.sh
