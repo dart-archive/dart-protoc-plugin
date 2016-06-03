@@ -9,10 +9,9 @@ import 'package:protoc_plugin/src/plugin.pb.dart';
 import 'package:protoc_plugin/protoc.dart';
 import 'package:test/test.dart';
 
-
 void main() {
   test('testValidGeneratorOptions', () {
-      checkValid(String parameter, Map expected) {
+    checkValid(String parameter, Map expected) {
       var request = new CodeGeneratorRequest();
       if (parameter != null) request.parameter = parameter;
       var response = new CodeGeneratorResponse();
@@ -28,15 +27,15 @@ void main() {
     checkValid(',,,', {});
     checkValid('  , , ,', {});
 
-    checkValid('field_name=a|b', {'.a' : 'b'});
-    checkValid('field_name = a | b,,,', {'.a' : 'b'});
-    checkValid('field_name=a|b,field_name=p.C|d', {'.a' : 'b', '.p.C' : 'd'});
+    checkValid('field_name=a|b', {'.a': 'b'});
+    checkValid('field_name = a | b,,,', {'.a': 'b'});
+    checkValid('field_name=a|b,field_name=p.C|d', {'.a': 'b', '.p.C': 'd'});
     checkValid(' field_name = a | b,  , field_name = p.C | d ',
-               {'.a' : 'b', '.p.C' : 'd'});
+        {'.a': 'b', '.p.C': 'd'});
   });
 
   test('testInvalidGeneratorOptions', () {
-      checkInvalid(String parameter) {
+    checkInvalid(String parameter) {
       var request = new CodeGeneratorRequest();
       if (parameter != null) request.parameter = parameter;
       var response = new CodeGeneratorResponse();

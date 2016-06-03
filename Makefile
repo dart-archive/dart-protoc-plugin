@@ -3,7 +3,8 @@ PLUGIN_SRC = \
 	bin/protoc_plugin.dart \
 	lib/*.dart \
 	lib/src/descriptor.pb.dart \
-	lib/src/plugin.pb.dart
+	lib/src/plugin.pb.dart \
+	lib/src/protoc/*.dart
 
 OUTPUT_DIR=out
 PLUGIN_NAME=protoc-gen-dart
