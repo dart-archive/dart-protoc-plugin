@@ -46,7 +46,7 @@ TEST_PROTO_SRC_DIR=test/protos
 TEST_PROTO_SRCS=$(foreach proto, $(TEST_PROTO_LIST), \
   $(TEST_PROTO_SRC_DIR)/$(proto).proto)
 
-PREGENERATED_SRCS=lib/descriptor.proto lib/plugin.proto
+PREGENERATED_SRCS=protos/descriptor.proto protos/plugin.proto protos/dart_options.proto
 
 $(TEST_PROTO_LIBS): $(PLUGIN_PATH) $(TEST_PROTO_SRCS)
 	[ -d $(TEST_PROTO_DIR) ] || mkdir -p $(TEST_PROTO_DIR)
@@ -62,7 +62,7 @@ $(TEST_PROTO_LIBS): $(PLUGIN_PATH) $(TEST_PROTO_SRCS)
 build-plugin: $(PLUGIN_PATH)
 
 update-pregenerated: $(PLUGIN_PATH) $(PREGENERATED_SRCS)
-	protoc --dart_out=lib/src -Ilib --plugin=protoc-gen-dart=$(realpath $(PLUGIN_PATH)) $(PREGENERATED_SRCS)
+	protoc --dart_out=lib/src -Iprotos --plugin=protoc-gen-dart=$(realpath $(PLUGIN_PATH)) $(PREGENERATED_SRCS)
 
 protos: $(PLUGIN_PATH) $(TEST_PROTO_LIBS)
 	mkdir -p benchmark/lib/generated

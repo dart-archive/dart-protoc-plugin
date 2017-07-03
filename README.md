@@ -111,5 +111,4 @@ Useful references
 * [Main Dart site](https://www.dartlang.org/)
 * [Main protobuf site](https://github.com/google/protobuf)
 * [Protobuf runtime support project](https://github.com/dart-lang/dart-protobuf)
-* [DartEditor download](http://www.dartlang.org)
 * [Pub documentation](https://www.dartlang.org/tools/pub/get-started.html)
