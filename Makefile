@@ -16,8 +16,6 @@ TEST_PROTO_LIST = \
 	google/protobuf/unittest_optimize_for \
 	google/protobuf/unittest \
 	dart_name \
-	dart_options \
-	descriptor_2_5_opensource \
 	enum_extension \
 	ExtensionNameConflict \
 	map_api \
@@ -52,6 +50,7 @@ $(TEST_PROTO_LIBS): $(PLUGIN_PATH) $(TEST_PROTO_SRCS)
 	[ -d $(TEST_PROTO_DIR) ] || mkdir -p $(TEST_PROTO_DIR)
 	protoc\
 		--dart_out=$(TEST_PROTO_DIR)\
+		-Iprotos\
 		-I$(TEST_PROTO_SRC_DIR)\
 		--plugin=protoc-gen-dart=$(realpath $(PLUGIN_PATH))\
 		$(TEST_PROTO_SRCS)

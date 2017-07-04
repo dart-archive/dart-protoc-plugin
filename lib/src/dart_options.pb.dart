@@ -1,8 +1,8 @@
 ///
 //  Generated code. Do not modify.
 ///
-// @ignoreProblemForFile non_constant_identifier_names
-// @ignoreProblemForFile library_prefixes
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: library_prefixes
 library dart_options_dart_options;
 
 // ignore: UNUSED_SHOWN_NAME
