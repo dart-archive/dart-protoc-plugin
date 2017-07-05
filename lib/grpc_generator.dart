@@ -57,7 +57,7 @@ class GrpcServiceGenerator {
   /// Precondition: messages have been registered and resolved.
   void resolve(GenerationContext ctx) {
     for (var method in _descriptor.method) {
-      _methods.add(new _GrpcMethod(this, method)..resolve(ctx));
+      _methods.add(new _GrpcMethod(this, ctx, method));
     }
   }
 
@@ -93,6 +93,7 @@ class GrpcServiceGenerator {
     var mg = _deps[fqname];
     if (mg == null) {
       var location = _undefinedDeps[fqname];
+      // TODO(jakobr): Throw more actionable error.
       throw 'FAILURE: Unknown type reference (${fqname}) for ${location}';
     }
     if (fileGen.package == mg.fileGen.package || mg.fileGen.package == "") {
@@ -146,57 +147,73 @@ class GrpcServiceGenerator {
 }
 
 class _GrpcMethod {
-  final MethodDescriptorProto _method;
+  final String _grpcName;
+  final String _dartName;
+  final String _serviceName;
 
-  final GrpcServiceGenerator _service;
+  final bool _clientStreaming;
+  final bool _serverStreaming;
 
-  String _grpcName;
-  String _dartName;
-  String _serviceName;
+  final String _requestType;
+  final String _responseType;
 
-  bool _clientStreaming;
-  bool _serverStreaming;
+  final String _argumentType;
+  final String _clientReturnType;
+  final String _serverReturnType;
 
-  String _requestType;
-  String _responseType;
+  _GrpcMethod._(
+      this._grpcName,
+      this._dartName,
+      this._serviceName,
+      this._clientStreaming,
+      this._serverStreaming,
+      this._requestType,
+      this._responseType,
+      this._argumentType,
+      this._clientReturnType,
+      this._serverReturnType);
 
-  String _argumentType;
-  String _clientReturnType;
-  String _serverReturnType;
+  factory _GrpcMethod(GrpcServiceGenerator service, GenerationContext ctx,
+      MethodDescriptorProto method) {
+    final grpcName = method.name;
+    final dartName =
+        grpcName.substring(0, 1).toLowerCase() + grpcName.substring(1);
 
-  _GrpcMethod(this._service, this._method) {
-    _grpcName = _method.name;
-    _dartName =
-        _grpcName.substring(0, 1).toLowerCase() + _grpcName.substring(1);
-    _serviceName = _service._fullServiceName;
+    final clientStreaming = method.clientStreaming;
+    final serverStreaming = method.serverStreaming;
 
-    _clientStreaming = _method.clientStreaming;
-    _serverStreaming = _method.serverStreaming;
-  }
+    service._addDependency(ctx, method.inputType, "input type of $grpcName");
+    service._addDependency(ctx, method.outputType, "output type of $grpcName");
 
-  void resolve(GenerationContext ctx) {
-    _service._addDependency(ctx, _method.inputType, "input type of $_grpcName");
-    _service._addDependency(
-        ctx, _method.outputType, "output type of $_grpcName");
+    final requestType = service._getDartClassName(method.inputType);
+    final responseType = service._getDartClassName(method.outputType);
 
-    _requestType = _service._getDartClassName(_method.inputType);
-    _responseType = _service._getDartClassName(_method.outputType);
+    final argumentType = clientStreaming ? 'Stream<$requestType>' : requestType;
+    final clientReturnType = serverStreaming
+        ? 'ResponseStream<$responseType>'
+        : 'ResponseFuture<$responseType>';
+    final serverReturnType =
+        serverStreaming ? 'Stream<$responseType>' : 'Future<$responseType>';
 
-    _argumentType = _clientStreaming ? 'Stream<$_requestType>' : _requestType;
-    _clientReturnType = _serverStreaming
-        ? 'ResponseStream<$_responseType>'
-        : 'ResponseFuture<$_responseType>';
-    _serverReturnType =
-        _serverStreaming ? 'Stream<$_responseType>' : 'Future<$_responseType>';
+    return new _GrpcMethod._(
+        grpcName,
+        dartName,
+        service._fullServiceName,
+        clientStreaming,
+        serverStreaming,
+        requestType,
+        responseType,
+        argumentType,
+        clientReturnType,
+        serverReturnType);
   }
 
   void generateClientMethodDescriptor(IndentingWriter out) {
     out.println(
         'static final _\$$_dartName = new ClientMethod<$_requestType, $_responseType>(');
-    out.println('    \'/$_serviceName/$_grpcName\',');
-    out.println('    ($_requestType value) => value.writeToBuffer(),');
-    out.println(
-        '    (List<int> value) => new $_responseType.fromBuffer(value));');
+    out.println('\'/$_serviceName/$_grpcName\',');
+    out.println('($_requestType value) => value.writeToBuffer(),');
+    out.println('(List<int> value) => new $_responseType.fromBuffer(value));');
   }
 
   void generateClientStub(IndentingWriter out) {
@@ -207,9 +224,7 @@ class _GrpcMethod {
       if (_clientStreaming) {
         out.println('request.pipe(call.request);');
       } else {
-        out.println('call.request');
-        out.println('  ..add(request)');
-        out.println('  ..close();');
+        out.println('call.request..add(request)..close();');
       }
       if (_serverStreaming) {
         out.println('return new ResponseStream(call);');
@@ -221,13 +236,12 @@ class _GrpcMethod {
 
   void generateServiceMethodRegistration(IndentingWriter out) {
     out.println('\$addMethod(new ServiceMethod(');
-    out.println('    \'$_grpcName\',');
-    out.println('    $_dartName${_clientStreaming ? '' : '_Pre'},');
-    out.println('    $_clientStreaming,');
-    out.println('    $_serverStreaming,');
-    out.println(
-        '    (List<int> value) => new $_requestType.fromBuffer(value),');
-    out.println('    ($_responseType value) => value.writeToBuffer()));');
+    out.println('\'$_grpcName\',');
+    out.println('$_dartName${_clientStreaming ? '' : '_Pre'},');
+    out.println('$_clientStreaming,');
+    out.println('$_serverStreaming,');
+    out.println('(List<int> value) => new $_requestType.fromBuffer(value),');
+    out.println('($_responseType value) => value.writeToBuffer()));');
   }
 
   void generateServiceMethodPreamble(IndentingWriter out) {

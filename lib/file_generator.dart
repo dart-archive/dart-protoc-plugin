@@ -103,7 +103,6 @@ class FileGenerator extends ProtobufContainer {
   final serviceGenerators = <ServiceGenerator>[];
   final grpcGenerators = <GrpcServiceGenerator>[];
 
-
   /// True if cross-references have been resolved.
   bool _linked = false;
 
@@ -191,7 +190,7 @@ class FileGenerator extends ProtobufContainer {
       makeFile(".pbjson.dart", generateJsonFile(config)),
     ];
     if (options.useGrpc) {
-      if (grpcGenerators.isNotEmpty){
+      if (grpcGenerators.isNotEmpty) {
         files.add(makeFile(".pbgrpc.dart", generateGrpcFile(config)));
       }
     } else {
@@ -438,7 +437,7 @@ import 'package:protobuf/protobuf.dart';
     var out = new IndentingWriter();
     _writeLibraryHeading(out, "pbgrpc");
 
-      out.println('''
+    out.println('''
 import 'dart:async';
 
 import 'package:grpc/grpc.dart';
@@ -446,19 +445,20 @@ import 'package:grpc/grpc.dart';
 
     // Import .pb.dart files needed for requests and responses.
     var imports = new Set<FileGenerator>();
-    for (var x in grpcGenerators) {
-      x.addImportsTo(imports);
+    for (var generator in grpcGenerators) {
+      generator.addImportsTo(imports);
     }
     for (var target in imports) {
       _writeImport(out, config, target, ".pb.dart");
     }
 
-    Uri resolvedImport = config.resolveImport(protoFileUri, protoFileUri, ".pb.dart");
+    var resolvedImport =
+        config.resolveImport(protoFileUri, protoFileUri, ".pb.dart");
     out.println("export '$resolvedImport';");
     out.println();
 
-    for (GrpcServiceGenerator g in grpcGenerators) {
-      g.generate(out);
+    for (var generator in grpcGenerators) {
+      generator.generate(out);
     }
 
     return _formatter.format(out.toString());
