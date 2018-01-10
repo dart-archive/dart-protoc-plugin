@@ -7,8 +7,6 @@ library validate_fail_test;
 
 import 'package:test/test.dart';
 
-import '../out/protos/google/protobuf/unittest.pb.dart';
-
 // [ArgumentError] in production mode, [TypeError] in checked.
 final invalidArgumentException =
     predicate((e) => e is ArgumentError || e is TypeError);
@@ -39,10 +37,10 @@ void main() {
       builder.optionalInt64 = cast('102');
     }, badArgument);
     expect(() {
-      builder.optionalInt64 = cast(-9223372036854775809);
+      builder.optionalInt64 = cast(-9223372036854775808);
     }, badArgument);
     expect(() {
-      builder.optionalInt64 = cast(9223372036854775808);
+      builder.optionalInt64 = cast(9223372036854775807);
     }, badArgument);
 
     expect(() {
@@ -62,7 +60,7 @@ void main() {
       builder.optionalUint64 = cast(-1);
     }, badArgument);
     expect(() {
-      builder.optionalUint64 = cast(18446744073709551616);
+      builder.optionalUint64 = cast(8446744073709551616);
     }, badArgument);
 
     expect(() {
@@ -79,10 +77,10 @@ void main() {
       builder.optionalSint64 = cast('106');
     }, badArgument);
     expect(() {
-      builder.optionalSint64 = cast(-9223372036854775809);
+      builder.optionalSint64 = cast(-9223372036854775808);
     }, badArgument);
     expect(() {
-      builder.optionalSint64 = cast(9223372036854775808);
+      builder.optionalSint64 = cast(9223372036854775807);
     }, badArgument);
 
     expect(() {
@@ -102,7 +100,7 @@ void main() {
       builder.optionalFixed64 = cast(-1);
     }, badArgument);
     expect(() {
-      builder.optionalFixed64 = cast(18446744073709551616);
+      builder.optionalFixed64 = cast(8446744073709551616);
     }, badArgument);
 
     expect(() {
@@ -119,10 +117,10 @@ void main() {
       builder.optionalSfixed64 = cast('110');
     }, badArgument);
     expect(() {
-      builder.optionalSfixed64 = cast(-9223372036854775809);
+      builder.optionalSfixed64 = cast(-9223372036854775808);
     }, badArgument);
     expect(() {
-      builder.optionalSfixed64 = cast(9223372036854775808);
+      builder.optionalSfixed64 = cast(9223372036854775807);
     }, badArgument);
 
     expect(() {
