@@ -7,6 +7,8 @@ library validate_fail_test;
 
 import 'package:test/test.dart';
 
+import '../out/protos/google/protobuf/unittest.pb.dart';
+
 // [ArgumentError] in production mode, [TypeError] in checked.
 final invalidArgumentException =
     predicate((e) => e is ArgumentError || e is TypeError);
