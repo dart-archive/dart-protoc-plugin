@@ -37,12 +37,12 @@ class ClientApiGenerator {
         'ClientContext ctx, $inputType request) async {',
         '}', () {
       out.println('var emptyResponse = new $outputType();');
-      out.println('final response = await _client.invoke(ctx, \'${service._descriptor.name}\', '
+      out.println(
+          'final response = await _client.invoke(ctx, \'${service._descriptor.name}\', '
           '\'${m.name}\', request, emptyResponse);');
-      
+
       out.println('emptyResponse.mergeFromMessage(response);');
       out.println('return emptyResponse;');
-
     });
   }
 }
