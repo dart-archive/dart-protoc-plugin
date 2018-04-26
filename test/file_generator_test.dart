@@ -360,9 +360,9 @@ class TestApi {
   RpcClient _client;
   TestApi(this._client);
 
-  Future<Empty> ping(ClientContext ctx, Empty request) {
+  Future<Empty> ping(ClientContext ctx, Empty request) async {
     var emptyResponse = new Empty();
-    return _client.invoke(ctx, 'Test', 'Ping', request, emptyResponse);
+    return await _client.invoke(ctx, 'Test', 'Ping', request, emptyResponse) as Empty;
   }
 }
 
