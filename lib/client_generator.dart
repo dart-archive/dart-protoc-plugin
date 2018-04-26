@@ -38,11 +38,8 @@ class ClientApiGenerator {
         '}', () {
       out.println('var emptyResponse = new $outputType();');
       out.println(
-          'final response = await _client.invoke(ctx, \'${service._descriptor.name}\', '
-          '\'${m.name}\', request, emptyResponse);');
-
-      out.println('emptyResponse.mergeFromMessage(response);');
-      out.println('return emptyResponse;');
+          'return await _client.invoke(ctx, \'${service._descriptor.name}\', '
+          '\'${m.name}\', request, emptyResponse) as $outputType;');
     });
   }
 }
