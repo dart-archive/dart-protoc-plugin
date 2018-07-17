@@ -28,9 +28,16 @@ class MessageGenerator extends ProtobufContainer {
   final String classname;
 
   /// The fully-qualified name of the message type.
-  ///
-  /// (Used as a unique key and in error messages, not in Dart code.)
   final String fqname;
+
+  // TODO(sigurdm): is this the right thing?
+  String get fullName {
+    if (fqname.startsWith('.')) {
+      return fqname.substring(1);
+    } else {
+      return fqname;
+    }
+  }
 
   final PbMixin mixin;
 
@@ -257,6 +264,10 @@ class MessageGenerator extends ProtobufContainer {
             " checkItemFailed(v, '$classname');");
       });
       generateFieldsAccessorsMutators(out);
+      generateStaticUnpacker(out);
+      if (fullName == 'google.protobuf.Any') {
+        generateAnyMethods(out);
+      }
     });
     out.println();
 
@@ -305,6 +316,32 @@ class MessageGenerator extends ProtobufContainer {
       }
     }
     return false;
+  }
+
+  /// Generates methods for the Any message class for packing and unpacking
+  /// values.
+  void generateAnyMethods(IndentingWriter out) {
+    out.println();
+    out.println(
+        'T unpack<T>(Unpacker<T> unpacker) => unpacker.unpack(value, typeUrl);');
+    out.println();
+    out.addBlock(
+      'static Any pack<T>(GeneratedMessage message, '
+          '{String typeUrlPrefix = \'type.googleapis.com\'}) {',
+      '}',
+      () {
+        out.println('return new Any()');
+        out.println('  ..value = message.writeToBuffer()');
+        out.println(
+            r"  ..typeUrl = '${typeUrlPrefix}/${message.info_.fullName}';");
+      },
+    );
+  }
+
+  void generateStaticUnpacker(IndentingWriter out) {
+    out.println('static Unpacker<$classname> unpacker = '
+        'new Unpacker<$classname>('
+        '(List<int> values) => new $classname()..mergeFromBuffer(values), \'$fullName\');');
   }
 
   void generateFieldsAccessorsMutators(IndentingWriter out) {
