@@ -340,13 +340,16 @@ class MessageGenerator extends ProtobufContainer {
   }
 
   void generateStaticUnpacker(IndentingWriter out) {
+    out.println();
     out.addBlock(
         'static Unpacker<$classname> unpacker = '
         'new Unpacker<$classname>(',
         '', () {
-      out.println(
-          '(List<int> values, {ExtensionRegistry extensionRegistry}) => '
-          'new $classname.fromBuffer(values, extensionRegistry),');
+      out.addBlock(
+          '(List<int> values, {ExtensionRegistry extensionRegistry}) =>',
+          '', () {
+          out.println('  new $classname.fromBuffer(values, extensionRegistry),');
+      }, endWithNewline: false);;
       out.println('_i.fullName);');
     }, endWithNewline: false);
   }
