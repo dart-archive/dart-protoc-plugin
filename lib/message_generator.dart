@@ -32,11 +32,7 @@ class MessageGenerator extends ProtobufContainer {
 
   // TODO(sigurdm): is this the right thing?
   String get fullName {
-    if (fqname.startsWith('.')) {
-      return fqname.substring(1);
-    } else {
-      return fqname;
-    }
+    return (fqname.startsWith('.')) ? fqname.substring(1) : fqname;
   }
 
   final PbMixin mixin;
@@ -215,8 +211,8 @@ class MessageGenerator extends ProtobufContainer {
     out.addBlock(
         'class ${classname} extends GeneratedMessage${mixinClause} {', '}', () {
       out.addBlock(
-          'static final BuilderInfo _i = new BuilderInfo(\'${classname}\')',
-          ';', () {
+          'static final BuilderInfo _i = new BuilderInfo(\'${fullName}\')', ';',
+          () {
         for (ProtobufField field in _fieldList) {
           var dartFieldName = field.memberNames.fieldName;
           out.println(field.generateBuilderInfoCall(package, dartFieldName));
@@ -264,10 +260,10 @@ class MessageGenerator extends ProtobufContainer {
             " checkItemFailed(v, '$classname');");
       });
       generateFieldsAccessorsMutators(out);
-      generateStaticUnpacker(out);
       if (fullName == 'google.protobuf.Any') {
         generateAnyMethods(out);
       }
+      generateStaticUnpacker(out);
     });
     out.println();
 
@@ -322,8 +318,13 @@ class MessageGenerator extends ProtobufContainer {
   /// values.
   void generateAnyMethods(IndentingWriter out) {
     out.println();
-    out.println(
-        'T unpack<T>(Unpacker<T> unpacker) => unpacker.unpack(value, typeUrl);');
+    out.addBlock(
+        'T unpack<T>(Unpacker<T> unpacker, '
+        '{ExtensionRegistry extensionRegistry = ExtensionRegistry.EMPTY}) {',
+        '}', () {
+      out.println('return unpacker.unpack('
+          'value, typeUrl, extensionRegistry: extensionRegistry);');
+    });
     out.println();
     out.addBlock(
       'static Any pack<T>(GeneratedMessage message, '
@@ -339,9 +340,15 @@ class MessageGenerator extends ProtobufContainer {
   }
 
   void generateStaticUnpacker(IndentingWriter out) {
-    out.println('static Unpacker<$classname> unpacker = '
-        'new Unpacker<$classname>('
-        '(List<int> values) => new $classname()..mergeFromBuffer(values), \'$fullName\');');
+    out.addBlock(
+        'static Unpacker<$classname> unpacker = '
+        'new Unpacker<$classname>(',
+        '', () {
+      out.println(
+          '(List<int> values, {ExtensionRegistry extensionRegistry}) => '
+          'new $classname.fromBuffer(values, extensionRegistry),');
+      out.println('_i.fullName);');
+    }, endWithNewline: false);
   }
 
   void generateFieldsAccessorsMutators(IndentingWriter out) {
