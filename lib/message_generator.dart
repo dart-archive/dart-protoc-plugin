@@ -28,11 +28,17 @@ class MessageGenerator extends ProtobufContainer {
   final String classname;
 
   /// The fully-qualified name of the message type.
+  ///
+  /// This correspond to the name references given by protoc and always starts
+  /// with a '.'.
   final String fqname;
 
-  // TODO(sigurdm): is this the right thing?
-  String get fullName {
-    return (fqname.startsWith('.')) ? fqname.substring(1) : fqname;
+  /// The fully-qualified name without the leading '.'
+  ///
+  /// This is what gets passed to the BuilderInfo in the generated code.
+  String get _fullName {
+    assert(fqname[0] == '.');
+    return fqname.substring(1);
   }
 
   final PbMixin mixin;
@@ -211,7 +217,7 @@ class MessageGenerator extends ProtobufContainer {
     out.addBlock(
         'class ${classname} extends GeneratedMessage${mixinClause} {', '}', () {
       out.addBlock(
-          'static final BuilderInfo _i = new BuilderInfo(\'${fullName}\')', ';',
+          'static final BuilderInfo _i = new BuilderInfo(\'$_fullName\')', ';',
           () {
         for (ProtobufField field in _fieldList) {
           var dartFieldName = field.memberNames.fieldName;
@@ -260,7 +266,7 @@ class MessageGenerator extends ProtobufContainer {
             " checkItemFailed(v, '$classname');");
       });
       generateFieldsAccessorsMutators(out);
-      if (fullName == 'google.protobuf.Any') {
+      if (fqname == '.google.protobuf.Any') {
         generateAnyMethods(out);
       }
       generateStaticUnpacker(out);
@@ -346,10 +352,11 @@ class MessageGenerator extends ProtobufContainer {
         'new Unpacker<$classname>(',
         '', () {
       out.addBlock(
-          '(List<int> values, {ExtensionRegistry extensionRegistry}) =>',
-          '', () {
-          out.println('  new $classname.fromBuffer(values, extensionRegistry),');
-      }, endWithNewline: false);;
+          '(List<int> values, {ExtensionRegistry extensionRegistry}) =>', '',
+          () {
+        out.println('  new $classname.fromBuffer(values, extensionRegistry),');
+      }, endWithNewline: false);
+      ;
       out.println('_i.fullName);');
     }, endWithNewline: false);
   }
