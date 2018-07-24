@@ -84,7 +84,7 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class PhoneNumber extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('PhoneNumber')
+  static final BuilderInfo _i = new BuilderInfo('PhoneNumber', packageName: '')
     ..aQS(1, 'number')
     ..a<int>(2, 'type', PbFieldType.O3)
     ..a<String>(3, 'name', PbFieldType.OS, '\$')
@@ -120,6 +120,11 @@ class PhoneNumber extends GeneratedMessage {
   set name(String v) { $_setString(2, v); }
   bool hasName() => $_has(2);
   void clearName() => clearField(3);
+
+  static Unpacker<PhoneNumber> unpacker = new Unpacker<PhoneNumber>(
+    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+        new PhoneNumber.fromBuffer(values, extensionRegistry),
+    _i.fullName);
 }
 
 class _ReadonlyPhoneNumber extends PhoneNumber with ReadonlyMessageMixin {}
@@ -325,7 +330,7 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class Empty extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('Empty')
+  static final BuilderInfo _i = new BuilderInfo('Empty', packageName: '')
     ..hasRequiredFields = false
   ;
 
@@ -344,6 +349,11 @@ class Empty extends GeneratedMessage {
   static void $checkItem(Empty v) {
     if (v is! Empty) checkItemFailed(v, 'Empty');
   }
+
+  static Unpacker<Empty> unpacker = new Unpacker<Empty>(
+    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+        new Empty.fromBuffer(values, extensionRegistry),
+    _i.fullName);
 }
 
 class _ReadonlyEmpty extends Empty with ReadonlyMessageMixin {}
@@ -438,7 +448,7 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class Empty extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('Empty')
+  static final BuilderInfo _i = new BuilderInfo('Empty', packageName: '')
     ..hasRequiredFields = false
   ;
 
@@ -457,6 +467,11 @@ class Empty extends GeneratedMessage {
   static void $checkItem(Empty v) {
     if (v is! Empty) checkItemFailed(v, 'Empty');
   }
+
+  static Unpacker<Empty> unpacker = new Unpacker<Empty>(
+    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+        new Empty.fromBuffer(values, extensionRegistry),
+    _i.fullName);
 }
 
 class _ReadonlyEmpty extends Empty with ReadonlyMessageMixin {}
@@ -661,7 +676,7 @@ import 'package1.pb.dart' as $p1;
 import 'package2.pb.dart' as $p2;
 
 class M extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('M')
+  static final BuilderInfo _i = new BuilderInfo('M', packageName: '')
     ..a<M>(1, 'm', PbFieldType.OM, M.getDefault, M.create)
     ..a<$p1.M>(2, 'm1', PbFieldType.OM, $p1.M.getDefault, $p1.M.create)
     ..a<$p2.M>(3, 'm2', PbFieldType.OM, $p2.M.getDefault, $p2.M.create)
@@ -698,6 +713,11 @@ class M extends GeneratedMessage {
   set m2($p2.M v) { setField(3, v); }
   bool hasM2() => $_has(2);
   void clearM2() => clearField(3);
+
+  static Unpacker<M> unpacker = new Unpacker<M>(
+    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+        new M.fromBuffer(values, extensionRegistry),
+    _i.fullName);
 }
 
 class _ReadonlyM extends M with ReadonlyMessageMixin {}

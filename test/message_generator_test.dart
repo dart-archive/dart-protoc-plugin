@@ -42,7 +42,7 @@ class PhoneNumber_PhoneType extends ProtobufEnum {
 
     String expected = r'''
 class PhoneNumber extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('PhoneNumber')
+  static final BuilderInfo _i = new BuilderInfo('PhoneNumber', packageName: '')
     ..aQS(1, 'number')
     ..e<PhoneNumber_PhoneType>(2, 'type', PbFieldType.OE, PhoneNumber_PhoneType.MOBILE, PhoneNumber_PhoneType.valueOf, PhoneNumber_PhoneType.values)
     ..a<String>(3, 'name', PbFieldType.OS, '\$')
@@ -78,6 +78,11 @@ class PhoneNumber extends GeneratedMessage {
   set name(String v) { $_setString(2, v); }
   bool hasName() => $_has(2);
   void clearName() => clearField(3);
+
+  static Unpacker<PhoneNumber> unpacker = new Unpacker<PhoneNumber>(
+    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+        new PhoneNumber.fromBuffer(values, extensionRegistry),
+    _i.fullName);
 }
 
 class _ReadonlyPhoneNumber extends PhoneNumber with ReadonlyMessageMixin {}
