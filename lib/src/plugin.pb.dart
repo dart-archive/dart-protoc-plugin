@@ -11,12 +11,13 @@ import 'package:protobuf/protobuf.dart';
 import 'descriptor.pb.dart' as $google$protobuf;
 
 class Version extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('Version')
-    ..a<int>(1, 'major', PbFieldType.O3)
-    ..a<int>(2, 'minor', PbFieldType.O3)
-    ..a<int>(3, 'patch', PbFieldType.O3)
-    ..aOS(4, 'suffix')
-    ..hasRequiredFields = false;
+  static final BuilderInfo _i =
+      new BuilderInfo('Version', packageName: 'google.protobuf.compiler')
+        ..a<int>(1, 'major', PbFieldType.O3)
+        ..a<int>(2, 'minor', PbFieldType.O3)
+        ..a<int>(3, 'patch', PbFieldType.O3)
+        ..aOS(4, 'suffix')
+        ..hasRequiredFields = false;
 
   Version() : super();
   Version.fromBuffer(List<int> i,
@@ -69,12 +70,18 @@ class Version extends GeneratedMessage {
 
   bool hasSuffix() => $_has(3);
   void clearSuffix() => clearField(4);
+
+  static Unpacker<Version> unpacker = new Unpacker<Version>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new Version.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyVersion extends Version with ReadonlyMessageMixin {}
 
 class CodeGeneratorRequest extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorRequest')
+  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorRequest',
+      packageName: 'google.protobuf.compiler')
     ..pPS(1, 'fileToGenerate')
     ..aOS(2, 'parameter')
     ..a<Version>(3, 'compilerVersion', PbFieldType.OM, Version.getDefault,
@@ -129,13 +136,20 @@ class CodeGeneratorRequest extends GeneratedMessage {
   void clearCompilerVersion() => clearField(3);
 
   List<$google$protobuf.FileDescriptorProto> get protoFile => $_getList(3);
+
+  static Unpacker<CodeGeneratorRequest> unpacker =
+      new Unpacker<CodeGeneratorRequest>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new CodeGeneratorRequest.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyCodeGeneratorRequest extends CodeGeneratorRequest
     with ReadonlyMessageMixin {}
 
 class CodeGeneratorResponse_File extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorResponse_File')
+  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorResponse_File',
+      packageName: 'google.protobuf.compiler.CodeGeneratorResponse')
     ..aOS(1, 'name')
     ..aOS(2, 'insertionPoint')
     ..aOS(15, 'content')
@@ -190,13 +204,21 @@ class CodeGeneratorResponse_File extends GeneratedMessage {
 
   bool hasContent() => $_has(2);
   void clearContent() => clearField(15);
+
+  static Unpacker<CodeGeneratorResponse_File> unpacker =
+      new Unpacker<CodeGeneratorResponse_File>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new CodeGeneratorResponse_File.fromBuffer(
+                  values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyCodeGeneratorResponse_File extends CodeGeneratorResponse_File
     with ReadonlyMessageMixin {}
 
 class CodeGeneratorResponse extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorResponse')
+  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorResponse',
+      packageName: 'google.protobuf.compiler')
     ..aOS(1, 'error')
     ..pp<CodeGeneratorResponse_File>(
         15,
@@ -240,6 +262,12 @@ class CodeGeneratorResponse extends GeneratedMessage {
   void clearError() => clearField(1);
 
   List<CodeGeneratorResponse_File> get file => $_getList(1);
+
+  static Unpacker<CodeGeneratorResponse> unpacker =
+      new Unpacker<CodeGeneratorResponse>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new CodeGeneratorResponse.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyCodeGeneratorResponse extends CodeGeneratorResponse

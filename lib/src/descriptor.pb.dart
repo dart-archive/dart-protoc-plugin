@@ -14,9 +14,10 @@ import 'descriptor.pbenum.dart';
 export 'descriptor.pbenum.dart';
 
 class FileDescriptorSet extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('FileDescriptorSet')
-    ..pp<FileDescriptorProto>(1, 'file', PbFieldType.PM,
-        FileDescriptorProto.$checkItem, FileDescriptorProto.create);
+  static final BuilderInfo _i =
+      new BuilderInfo('FileDescriptorSet', packageName: 'google.protobuf')
+        ..pp<FileDescriptorProto>(1, 'file', PbFieldType.PM,
+            FileDescriptorProto.$checkItem, FileDescriptorProto.create);
 
   FileDescriptorSet() : super();
   FileDescriptorSet.fromBuffer(List<int> i,
@@ -42,31 +43,37 @@ class FileDescriptorSet extends GeneratedMessage {
   }
 
   List<FileDescriptorProto> get file => $_getList(0);
+
+  static Unpacker<FileDescriptorSet> unpacker = new Unpacker<FileDescriptorSet>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new FileDescriptorSet.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyFileDescriptorSet extends FileDescriptorSet
     with ReadonlyMessageMixin {}
 
 class FileDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('FileDescriptorProto')
-    ..aOS(1, 'name')
-    ..aOS(2, 'package')
-    ..pPS(3, 'dependency')
-    ..pp<DescriptorProto>(4, 'messageType', PbFieldType.PM,
-        DescriptorProto.$checkItem, DescriptorProto.create)
-    ..pp<EnumDescriptorProto>(5, 'enumType', PbFieldType.PM,
-        EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
-    ..pp<ServiceDescriptorProto>(6, 'service', PbFieldType.PM,
-        ServiceDescriptorProto.$checkItem, ServiceDescriptorProto.create)
-    ..pp<FieldDescriptorProto>(7, 'extension', PbFieldType.PM,
-        FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
-    ..a<FileOptions>(8, 'options', PbFieldType.OM, FileOptions.getDefault,
-        FileOptions.create)
-    ..a<SourceCodeInfo>(9, 'sourceCodeInfo', PbFieldType.OM,
-        SourceCodeInfo.getDefault, SourceCodeInfo.create)
-    ..p<int>(10, 'publicDependency', PbFieldType.P3)
-    ..p<int>(11, 'weakDependency', PbFieldType.P3)
-    ..aOS(12, 'syntax');
+  static final BuilderInfo _i =
+      new BuilderInfo('FileDescriptorProto', packageName: 'google.protobuf')
+        ..aOS(1, 'name')
+        ..aOS(2, 'package')
+        ..pPS(3, 'dependency')
+        ..pp<DescriptorProto>(4, 'messageType', PbFieldType.PM,
+            DescriptorProto.$checkItem, DescriptorProto.create)
+        ..pp<EnumDescriptorProto>(5, 'enumType', PbFieldType.PM,
+            EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
+        ..pp<ServiceDescriptorProto>(6, 'service', PbFieldType.PM,
+            ServiceDescriptorProto.$checkItem, ServiceDescriptorProto.create)
+        ..pp<FieldDescriptorProto>(7, 'extension', PbFieldType.PM,
+            FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
+        ..a<FileOptions>(8, 'options', PbFieldType.OM, FileOptions.getDefault,
+            FileOptions.create)
+        ..a<SourceCodeInfo>(9, 'sourceCodeInfo', PbFieldType.OM,
+            SourceCodeInfo.getDefault, SourceCodeInfo.create)
+        ..p<int>(10, 'publicDependency', PbFieldType.P3)
+        ..p<int>(11, 'weakDependency', PbFieldType.P3)
+        ..aOS(12, 'syntax');
 
   FileDescriptorProto() : super();
   FileDescriptorProto.fromBuffer(List<int> i,
@@ -145,17 +152,24 @@ class FileDescriptorProto extends GeneratedMessage {
 
   bool hasSyntax() => $_has(11);
   void clearSyntax() => clearField(12);
+
+  static Unpacker<FileDescriptorProto> unpacker =
+      new Unpacker<FileDescriptorProto>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new FileDescriptorProto.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyFileDescriptorProto extends FileDescriptorProto
     with ReadonlyMessageMixin {}
 
 class DescriptorProto_ExtensionRange extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('DescriptorProto_ExtensionRange')
-        ..a<int>(1, 'start', PbFieldType.O3)
-        ..a<int>(2, 'end', PbFieldType.O3)
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo(
+      'DescriptorProto_ExtensionRange',
+      packageName: 'google.protobuf.DescriptorProto')
+    ..a<int>(1, 'start', PbFieldType.O3)
+    ..a<int>(2, 'end', PbFieldType.O3)
+    ..hasRequiredFields = false;
 
   DescriptorProto_ExtensionRange() : super();
   DescriptorProto_ExtensionRange.fromBuffer(List<int> i,
@@ -198,13 +212,21 @@ class DescriptorProto_ExtensionRange extends GeneratedMessage {
 
   bool hasEnd() => $_has(1);
   void clearEnd() => clearField(2);
+
+  static Unpacker<DescriptorProto_ExtensionRange> unpacker =
+      new Unpacker<DescriptorProto_ExtensionRange>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new DescriptorProto_ExtensionRange.fromBuffer(
+                  values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyDescriptorProto_ExtensionRange
     extends DescriptorProto_ExtensionRange with ReadonlyMessageMixin {}
 
 class DescriptorProto_ReservedRange extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('DescriptorProto_ReservedRange')
+  static final BuilderInfo _i = new BuilderInfo('DescriptorProto_ReservedRange',
+      packageName: 'google.protobuf.DescriptorProto')
     ..a<int>(1, 'start', PbFieldType.O3)
     ..a<int>(2, 'end', PbFieldType.O3)
     ..hasRequiredFields = false;
@@ -250,39 +272,47 @@ class DescriptorProto_ReservedRange extends GeneratedMessage {
 
   bool hasEnd() => $_has(1);
   void clearEnd() => clearField(2);
+
+  static Unpacker<DescriptorProto_ReservedRange> unpacker =
+      new Unpacker<DescriptorProto_ReservedRange>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new DescriptorProto_ReservedRange.fromBuffer(
+                  values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyDescriptorProto_ReservedRange
     extends DescriptorProto_ReservedRange with ReadonlyMessageMixin {}
 
 class DescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('DescriptorProto')
-    ..aOS(1, 'name')
-    ..pp<FieldDescriptorProto>(2, 'field', PbFieldType.PM,
-        FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
-    ..pp<DescriptorProto>(3, 'nestedType', PbFieldType.PM,
-        DescriptorProto.$checkItem, DescriptorProto.create)
-    ..pp<EnumDescriptorProto>(4, 'enumType', PbFieldType.PM,
-        EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
-    ..pp<DescriptorProto_ExtensionRange>(
-        5,
-        'extensionRange',
-        PbFieldType.PM,
-        DescriptorProto_ExtensionRange.$checkItem,
-        DescriptorProto_ExtensionRange.create)
-    ..pp<FieldDescriptorProto>(6, 'extension', PbFieldType.PM,
-        FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
-    ..a<MessageOptions>(7, 'options', PbFieldType.OM, MessageOptions.getDefault,
-        MessageOptions.create)
-    ..pp<OneofDescriptorProto>(8, 'oneofDecl', PbFieldType.PM,
-        OneofDescriptorProto.$checkItem, OneofDescriptorProto.create)
-    ..pp<DescriptorProto_ReservedRange>(
-        9,
-        'reservedRange',
-        PbFieldType.PM,
-        DescriptorProto_ReservedRange.$checkItem,
-        DescriptorProto_ReservedRange.create)
-    ..pPS(10, 'reservedName');
+  static final BuilderInfo _i =
+      new BuilderInfo('DescriptorProto', packageName: 'google.protobuf')
+        ..aOS(1, 'name')
+        ..pp<FieldDescriptorProto>(2, 'field', PbFieldType.PM,
+            FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
+        ..pp<DescriptorProto>(3, 'nestedType', PbFieldType.PM,
+            DescriptorProto.$checkItem, DescriptorProto.create)
+        ..pp<EnumDescriptorProto>(4, 'enumType', PbFieldType.PM,
+            EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
+        ..pp<DescriptorProto_ExtensionRange>(
+            5,
+            'extensionRange',
+            PbFieldType.PM,
+            DescriptorProto_ExtensionRange.$checkItem,
+            DescriptorProto_ExtensionRange.create)
+        ..pp<FieldDescriptorProto>(6, 'extension', PbFieldType.PM,
+            FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
+        ..a<MessageOptions>(7, 'options', PbFieldType.OM,
+            MessageOptions.getDefault, MessageOptions.create)
+        ..pp<OneofDescriptorProto>(8, 'oneofDecl', PbFieldType.PM,
+            OneofDescriptorProto.$checkItem, OneofDescriptorProto.create)
+        ..pp<DescriptorProto_ReservedRange>(
+            9,
+            'reservedRange',
+            PbFieldType.PM,
+            DescriptorProto_ReservedRange.$checkItem,
+            DescriptorProto_ReservedRange.create)
+        ..pPS(10, 'reservedName');
 
   DescriptorProto() : super();
   DescriptorProto.fromBuffer(List<int> i,
@@ -338,36 +368,42 @@ class DescriptorProto extends GeneratedMessage {
   List<DescriptorProto_ReservedRange> get reservedRange => $_getList(8);
 
   List<String> get reservedName => $_getList(9);
+
+  static Unpacker<DescriptorProto> unpacker = new Unpacker<DescriptorProto>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new DescriptorProto.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyDescriptorProto extends DescriptorProto
     with ReadonlyMessageMixin {}
 
 class FieldDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('FieldDescriptorProto')
-    ..aOS(1, 'name')
-    ..aOS(2, 'extendee')
-    ..a<int>(3, 'number', PbFieldType.O3)
-    ..e<FieldDescriptorProto_Label>(
-        4,
-        'label',
-        PbFieldType.OE,
-        FieldDescriptorProto_Label.LABEL_OPTIONAL,
-        FieldDescriptorProto_Label.valueOf,
-        FieldDescriptorProto_Label.values)
-    ..e<FieldDescriptorProto_Type>(
-        5,
-        'type',
-        PbFieldType.OE,
-        FieldDescriptorProto_Type.TYPE_DOUBLE,
-        FieldDescriptorProto_Type.valueOf,
-        FieldDescriptorProto_Type.values)
-    ..aOS(6, 'typeName')
-    ..aOS(7, 'defaultValue')
-    ..a<FieldOptions>(8, 'options', PbFieldType.OM, FieldOptions.getDefault,
-        FieldOptions.create)
-    ..a<int>(9, 'oneofIndex', PbFieldType.O3)
-    ..aOS(10, 'jsonName');
+  static final BuilderInfo _i =
+      new BuilderInfo('FieldDescriptorProto', packageName: 'google.protobuf')
+        ..aOS(1, 'name')
+        ..aOS(2, 'extendee')
+        ..a<int>(3, 'number', PbFieldType.O3)
+        ..e<FieldDescriptorProto_Label>(
+            4,
+            'label',
+            PbFieldType.OE,
+            FieldDescriptorProto_Label.LABEL_OPTIONAL,
+            FieldDescriptorProto_Label.valueOf,
+            FieldDescriptorProto_Label.values)
+        ..e<FieldDescriptorProto_Type>(
+            5,
+            'type',
+            PbFieldType.OE,
+            FieldDescriptorProto_Type.TYPE_DOUBLE,
+            FieldDescriptorProto_Type.valueOf,
+            FieldDescriptorProto_Type.values)
+        ..aOS(6, 'typeName')
+        ..aOS(7, 'defaultValue')
+        ..a<FieldOptions>(8, 'options', PbFieldType.OM, FieldOptions.getDefault,
+            FieldOptions.create)
+        ..a<int>(9, 'oneofIndex', PbFieldType.O3)
+        ..aOS(10, 'jsonName');
 
   FieldDescriptorProto() : super();
   FieldDescriptorProto.fromBuffer(List<int> i,
@@ -472,16 +508,23 @@ class FieldDescriptorProto extends GeneratedMessage {
 
   bool hasJsonName() => $_has(9);
   void clearJsonName() => clearField(10);
+
+  static Unpacker<FieldDescriptorProto> unpacker =
+      new Unpacker<FieldDescriptorProto>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new FieldDescriptorProto.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyFieldDescriptorProto extends FieldDescriptorProto
     with ReadonlyMessageMixin {}
 
 class OneofDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('OneofDescriptorProto')
-    ..aOS(1, 'name')
-    ..a<OneofOptions>(2, 'options', PbFieldType.OM, OneofOptions.getDefault,
-        OneofOptions.create);
+  static final BuilderInfo _i =
+      new BuilderInfo('OneofDescriptorProto', packageName: 'google.protobuf')
+        ..aOS(1, 'name')
+        ..a<OneofOptions>(2, 'options', PbFieldType.OM, OneofOptions.getDefault,
+            OneofOptions.create);
 
   OneofDescriptorProto() : super();
   OneofDescriptorProto.fromBuffer(List<int> i,
@@ -522,18 +565,29 @@ class OneofDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(1);
   void clearOptions() => clearField(2);
+
+  static Unpacker<OneofDescriptorProto> unpacker =
+      new Unpacker<OneofDescriptorProto>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new OneofDescriptorProto.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyOneofDescriptorProto extends OneofDescriptorProto
     with ReadonlyMessageMixin {}
 
 class EnumDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('EnumDescriptorProto')
-    ..aOS(1, 'name')
-    ..pp<EnumValueDescriptorProto>(2, 'value', PbFieldType.PM,
-        EnumValueDescriptorProto.$checkItem, EnumValueDescriptorProto.create)
-    ..a<EnumOptions>(3, 'options', PbFieldType.OM, EnumOptions.getDefault,
-        EnumOptions.create);
+  static final BuilderInfo _i =
+      new BuilderInfo('EnumDescriptorProto', packageName: 'google.protobuf')
+        ..aOS(1, 'name')
+        ..pp<EnumValueDescriptorProto>(
+            2,
+            'value',
+            PbFieldType.PM,
+            EnumValueDescriptorProto.$checkItem,
+            EnumValueDescriptorProto.create)
+        ..a<EnumOptions>(3, 'options', PbFieldType.OM, EnumOptions.getDefault,
+            EnumOptions.create);
 
   EnumDescriptorProto() : super();
   EnumDescriptorProto.fromBuffer(List<int> i,
@@ -576,13 +630,20 @@ class EnumDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(2);
   void clearOptions() => clearField(3);
+
+  static Unpacker<EnumDescriptorProto> unpacker =
+      new Unpacker<EnumDescriptorProto>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new EnumDescriptorProto.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyEnumDescriptorProto extends EnumDescriptorProto
     with ReadonlyMessageMixin {}
 
 class EnumValueDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('EnumValueDescriptorProto')
+  static final BuilderInfo _i = new BuilderInfo('EnumValueDescriptorProto',
+      packageName: 'google.protobuf')
     ..aOS(1, 'name')
     ..a<int>(2, 'number', PbFieldType.O3)
     ..a<EnumValueOptions>(3, 'options', PbFieldType.OM,
@@ -636,18 +697,26 @@ class EnumValueDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(2);
   void clearOptions() => clearField(3);
+
+  static Unpacker<EnumValueDescriptorProto> unpacker =
+      new Unpacker<EnumValueDescriptorProto>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new EnumValueDescriptorProto.fromBuffer(
+                  values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyEnumValueDescriptorProto extends EnumValueDescriptorProto
     with ReadonlyMessageMixin {}
 
 class ServiceDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('ServiceDescriptorProto')
-    ..aOS(1, 'name')
-    ..pp<MethodDescriptorProto>(2, 'method', PbFieldType.PM,
-        MethodDescriptorProto.$checkItem, MethodDescriptorProto.create)
-    ..a<ServiceOptions>(3, 'options', PbFieldType.OM, ServiceOptions.getDefault,
-        ServiceOptions.create);
+  static final BuilderInfo _i =
+      new BuilderInfo('ServiceDescriptorProto', packageName: 'google.protobuf')
+        ..aOS(1, 'name')
+        ..pp<MethodDescriptorProto>(2, 'method', PbFieldType.PM,
+            MethodDescriptorProto.$checkItem, MethodDescriptorProto.create)
+        ..a<ServiceOptions>(3, 'options', PbFieldType.OM,
+            ServiceOptions.getDefault, ServiceOptions.create);
 
   ServiceDescriptorProto() : super();
   ServiceDescriptorProto.fromBuffer(List<int> i,
@@ -691,20 +760,27 @@ class ServiceDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(2);
   void clearOptions() => clearField(3);
+
+  static Unpacker<ServiceDescriptorProto> unpacker =
+      new Unpacker<ServiceDescriptorProto>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new ServiceDescriptorProto.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyServiceDescriptorProto extends ServiceDescriptorProto
     with ReadonlyMessageMixin {}
 
 class MethodDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('MethodDescriptorProto')
-    ..aOS(1, 'name')
-    ..aOS(2, 'inputType')
-    ..aOS(3, 'outputType')
-    ..a<MethodOptions>(4, 'options', PbFieldType.OM, MethodOptions.getDefault,
-        MethodOptions.create)
-    ..aOB(5, 'clientStreaming')
-    ..aOB(6, 'serverStreaming');
+  static final BuilderInfo _i =
+      new BuilderInfo('MethodDescriptorProto', packageName: 'google.protobuf')
+        ..aOS(1, 'name')
+        ..aOS(2, 'inputType')
+        ..aOS(3, 'outputType')
+        ..a<MethodOptions>(4, 'options', PbFieldType.OM,
+            MethodOptions.getDefault, MethodOptions.create)
+        ..aOB(5, 'clientStreaming')
+        ..aOB(6, 'serverStreaming');
 
   MethodDescriptorProto() : super();
   MethodDescriptorProto.fromBuffer(List<int> i,
@@ -778,39 +854,46 @@ class MethodDescriptorProto extends GeneratedMessage {
 
   bool hasServerStreaming() => $_has(5);
   void clearServerStreaming() => clearField(6);
+
+  static Unpacker<MethodDescriptorProto> unpacker =
+      new Unpacker<MethodDescriptorProto>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new MethodDescriptorProto.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyMethodDescriptorProto extends MethodDescriptorProto
     with ReadonlyMessageMixin {}
 
 class FileOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('FileOptions')
-    ..aOS(1, 'javaPackage')
-    ..aOS(8, 'javaOuterClassname')
-    ..e<FileOptions_OptimizeMode>(
-        9,
-        'optimizeFor',
-        PbFieldType.OE,
-        FileOptions_OptimizeMode.SPEED,
-        FileOptions_OptimizeMode.valueOf,
-        FileOptions_OptimizeMode.values)
-    ..aOB(10, 'javaMultipleFiles')
-    ..aOS(11, 'goPackage')
-    ..aOB(16, 'ccGenericServices')
-    ..aOB(17, 'javaGenericServices')
-    ..aOB(18, 'pyGenericServices')
-    ..aOB(20, 'javaGenerateEqualsAndHash')
-    ..aOB(23, 'deprecated')
-    ..aOB(27, 'javaStringCheckUtf8')
-    ..aOB(31, 'ccEnableArenas')
-    ..aOS(36, 'objcClassPrefix')
-    ..aOS(37, 'csharpNamespace')
-    ..aOS(39, 'swiftPrefix')
-    ..aOS(40, 'phpClassPrefix')
-    ..aOS(41, 'phpNamespace')
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('FileOptions', packageName: 'google.protobuf')
+        ..aOS(1, 'javaPackage')
+        ..aOS(8, 'javaOuterClassname')
+        ..e<FileOptions_OptimizeMode>(
+            9,
+            'optimizeFor',
+            PbFieldType.OE,
+            FileOptions_OptimizeMode.SPEED,
+            FileOptions_OptimizeMode.valueOf,
+            FileOptions_OptimizeMode.values)
+        ..aOB(10, 'javaMultipleFiles')
+        ..aOS(11, 'goPackage')
+        ..aOB(16, 'ccGenericServices')
+        ..aOB(17, 'javaGenericServices')
+        ..aOB(18, 'pyGenericServices')
+        ..aOB(20, 'javaGenerateEqualsAndHash')
+        ..aOB(23, 'deprecated')
+        ..aOB(27, 'javaStringCheckUtf8')
+        ..aOB(31, 'ccEnableArenas')
+        ..aOS(36, 'objcClassPrefix')
+        ..aOS(37, 'csharpNamespace')
+        ..aOS(39, 'swiftPrefix')
+        ..aOS(40, 'phpClassPrefix')
+        ..aOS(41, 'phpNamespace')
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   FileOptions() : super();
   FileOptions.fromBuffer(List<int> i,
@@ -970,19 +1053,25 @@ class FileOptions extends GeneratedMessage {
   void clearPhpNamespace() => clearField(41);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(17);
+
+  static Unpacker<FileOptions> unpacker = new Unpacker<FileOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new FileOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyFileOptions extends FileOptions with ReadonlyMessageMixin {}
 
 class MessageOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('MessageOptions')
-    ..aOB(1, 'messageSetWireFormat')
-    ..aOB(2, 'noStandardDescriptorAccessor')
-    ..aOB(3, 'deprecated')
-    ..aOB(7, 'mapEntry')
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('MessageOptions', packageName: 'google.protobuf')
+        ..aOB(1, 'messageSetWireFormat')
+        ..aOB(2, 'noStandardDescriptorAccessor')
+        ..aOB(3, 'deprecated')
+        ..aOB(7, 'mapEntry')
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   MessageOptions() : super();
   MessageOptions.fromBuffer(List<int> i,
@@ -1040,34 +1129,40 @@ class MessageOptions extends GeneratedMessage {
   void clearMapEntry() => clearField(7);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(4);
+
+  static Unpacker<MessageOptions> unpacker = new Unpacker<MessageOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new MessageOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyMessageOptions extends MessageOptions with ReadonlyMessageMixin {
 }
 
 class FieldOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('FieldOptions')
-    ..e<FieldOptions_CType>(
-        1,
-        'ctype',
-        PbFieldType.OE,
-        FieldOptions_CType.STRING,
-        FieldOptions_CType.valueOf,
-        FieldOptions_CType.values)
-    ..aOB(2, 'packed')
-    ..aOB(3, 'deprecated')
-    ..aOB(5, 'lazy')
-    ..e<FieldOptions_JSType>(
-        6,
-        'jstype',
-        PbFieldType.OE,
-        FieldOptions_JSType.JS_NORMAL,
-        FieldOptions_JSType.valueOf,
-        FieldOptions_JSType.values)
-    ..aOB(10, 'weak')
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('FieldOptions', packageName: 'google.protobuf')
+        ..e<FieldOptions_CType>(
+            1,
+            'ctype',
+            PbFieldType.OE,
+            FieldOptions_CType.STRING,
+            FieldOptions_CType.valueOf,
+            FieldOptions_CType.values)
+        ..aOB(2, 'packed')
+        ..aOB(3, 'deprecated')
+        ..aOB(5, 'lazy')
+        ..e<FieldOptions_JSType>(
+            6,
+            'jstype',
+            PbFieldType.OE,
+            FieldOptions_JSType.JS_NORMAL,
+            FieldOptions_JSType.valueOf,
+            FieldOptions_JSType.values)
+        ..aOB(10, 'weak')
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   FieldOptions() : super();
   FieldOptions.fromBuffer(List<int> i,
@@ -1140,15 +1235,21 @@ class FieldOptions extends GeneratedMessage {
   void clearWeak() => clearField(10);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(6);
+
+  static Unpacker<FieldOptions> unpacker = new Unpacker<FieldOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new FieldOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyFieldOptions extends FieldOptions with ReadonlyMessageMixin {}
 
 class OneofOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('OneofOptions')
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('OneofOptions', packageName: 'google.protobuf')
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   OneofOptions() : super();
   OneofOptions.fromBuffer(List<int> i,
@@ -1173,17 +1274,23 @@ class OneofOptions extends GeneratedMessage {
   }
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(0);
+
+  static Unpacker<OneofOptions> unpacker = new Unpacker<OneofOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new OneofOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyOneofOptions extends OneofOptions with ReadonlyMessageMixin {}
 
 class EnumOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('EnumOptions')
-    ..aOB(2, 'allowAlias')
-    ..aOB(3, 'deprecated')
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('EnumOptions', packageName: 'google.protobuf')
+        ..aOB(2, 'allowAlias')
+        ..aOB(3, 'deprecated')
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   EnumOptions() : super();
   EnumOptions.fromBuffer(List<int> i,
@@ -1223,16 +1330,22 @@ class EnumOptions extends GeneratedMessage {
   void clearDeprecated() => clearField(3);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(2);
+
+  static Unpacker<EnumOptions> unpacker = new Unpacker<EnumOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new EnumOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyEnumOptions extends EnumOptions with ReadonlyMessageMixin {}
 
 class EnumValueOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('EnumValueOptions')
-    ..aOB(1, 'deprecated')
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('EnumValueOptions', packageName: 'google.protobuf')
+        ..aOB(1, 'deprecated')
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   EnumValueOptions() : super();
   EnumValueOptions.fromBuffer(List<int> i,
@@ -1266,17 +1379,23 @@ class EnumValueOptions extends GeneratedMessage {
   void clearDeprecated() => clearField(1);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(1);
+
+  static Unpacker<EnumValueOptions> unpacker = new Unpacker<EnumValueOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new EnumValueOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyEnumValueOptions extends EnumValueOptions
     with ReadonlyMessageMixin {}
 
 class ServiceOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('ServiceOptions')
-    ..aOB(33, 'deprecated')
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('ServiceOptions', packageName: 'google.protobuf')
+        ..aOB(33, 'deprecated')
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   ServiceOptions() : super();
   ServiceOptions.fromBuffer(List<int> i,
@@ -1310,24 +1429,30 @@ class ServiceOptions extends GeneratedMessage {
   void clearDeprecated() => clearField(33);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(1);
+
+  static Unpacker<ServiceOptions> unpacker = new Unpacker<ServiceOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new ServiceOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyServiceOptions extends ServiceOptions with ReadonlyMessageMixin {
 }
 
 class MethodOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('MethodOptions')
-    ..aOB(33, 'deprecated')
-    ..e<MethodOptions_IdempotencyLevel>(
-        34,
-        'idempotencyLevel',
-        PbFieldType.OE,
-        MethodOptions_IdempotencyLevel.IDEMPOTENCY_UNKNOWN,
-        MethodOptions_IdempotencyLevel.valueOf,
-        MethodOptions_IdempotencyLevel.values)
-    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-        UninterpretedOption.$checkItem, UninterpretedOption.create)
-    ..hasExtensions = true;
+  static final BuilderInfo _i =
+      new BuilderInfo('MethodOptions', packageName: 'google.protobuf')
+        ..aOB(33, 'deprecated')
+        ..e<MethodOptions_IdempotencyLevel>(
+            34,
+            'idempotencyLevel',
+            PbFieldType.OE,
+            MethodOptions_IdempotencyLevel.IDEMPOTENCY_UNKNOWN,
+            MethodOptions_IdempotencyLevel.valueOf,
+            MethodOptions_IdempotencyLevel.values)
+        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+            UninterpretedOption.$checkItem, UninterpretedOption.create)
+        ..hasExtensions = true;
 
   MethodOptions() : super();
   MethodOptions.fromBuffer(List<int> i,
@@ -1368,12 +1493,18 @@ class MethodOptions extends GeneratedMessage {
   void clearIdempotencyLevel() => clearField(34);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(2);
+
+  static Unpacker<MethodOptions> unpacker = new Unpacker<MethodOptions>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new MethodOptions.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyMethodOptions extends MethodOptions with ReadonlyMessageMixin {}
 
 class UninterpretedOption_NamePart extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('UninterpretedOption_NamePart')
+  static final BuilderInfo _i = new BuilderInfo('UninterpretedOption_NamePart',
+      packageName: 'google.protobuf.UninterpretedOption')
     ..aQS(1, 'namePart')
     ..a<bool>(2, 'isExtension', PbFieldType.QB);
 
@@ -1418,25 +1549,33 @@ class UninterpretedOption_NamePart extends GeneratedMessage {
 
   bool hasIsExtension() => $_has(1);
   void clearIsExtension() => clearField(2);
+
+  static Unpacker<UninterpretedOption_NamePart> unpacker =
+      new Unpacker<UninterpretedOption_NamePart>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new UninterpretedOption_NamePart.fromBuffer(
+                  values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyUninterpretedOption_NamePart extends UninterpretedOption_NamePart
     with ReadonlyMessageMixin {}
 
 class UninterpretedOption extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('UninterpretedOption')
-    ..pp<UninterpretedOption_NamePart>(
-        2,
-        'name',
-        PbFieldType.PM,
-        UninterpretedOption_NamePart.$checkItem,
-        UninterpretedOption_NamePart.create)
-    ..aOS(3, 'identifierValue')
-    ..a<Int64>(4, 'positiveIntValue', PbFieldType.OU6, Int64.ZERO)
-    ..aInt64(5, 'negativeIntValue')
-    ..a<double>(6, 'doubleValue', PbFieldType.OD)
-    ..a<List<int>>(7, 'stringValue', PbFieldType.OY)
-    ..aOS(8, 'aggregateValue');
+  static final BuilderInfo _i =
+      new BuilderInfo('UninterpretedOption', packageName: 'google.protobuf')
+        ..pp<UninterpretedOption_NamePart>(
+            2,
+            'name',
+            PbFieldType.PM,
+            UninterpretedOption_NamePart.$checkItem,
+            UninterpretedOption_NamePart.create)
+        ..aOS(3, 'identifierValue')
+        ..a<Int64>(4, 'positiveIntValue', PbFieldType.OU6, Int64.ZERO)
+        ..aInt64(5, 'negativeIntValue')
+        ..a<double>(6, 'doubleValue', PbFieldType.OD)
+        ..a<List<int>>(7, 'stringValue', PbFieldType.OY)
+        ..aOS(8, 'aggregateValue');
 
   UninterpretedOption() : super();
   UninterpretedOption.fromBuffer(List<int> i,
@@ -1511,13 +1650,20 @@ class UninterpretedOption extends GeneratedMessage {
 
   bool hasAggregateValue() => $_has(6);
   void clearAggregateValue() => clearField(8);
+
+  static Unpacker<UninterpretedOption> unpacker =
+      new Unpacker<UninterpretedOption>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new UninterpretedOption.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyUninterpretedOption extends UninterpretedOption
     with ReadonlyMessageMixin {}
 
 class SourceCodeInfo_Location extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('SourceCodeInfo_Location')
+  static final BuilderInfo _i = new BuilderInfo('SourceCodeInfo_Location',
+      packageName: 'google.protobuf.SourceCodeInfo')
     ..p<int>(1, 'path', PbFieldType.K3)
     ..p<int>(2, 'span', PbFieldType.K3)
     ..aOS(3, 'leadingComments')
@@ -1571,16 +1717,23 @@ class SourceCodeInfo_Location extends GeneratedMessage {
   void clearTrailingComments() => clearField(4);
 
   List<String> get leadingDetachedComments => $_getList(4);
+
+  static Unpacker<SourceCodeInfo_Location> unpacker =
+      new Unpacker<SourceCodeInfo_Location>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new SourceCodeInfo_Location.fromBuffer(values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlySourceCodeInfo_Location extends SourceCodeInfo_Location
     with ReadonlyMessageMixin {}
 
 class SourceCodeInfo extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('SourceCodeInfo')
-    ..pp<SourceCodeInfo_Location>(1, 'location', PbFieldType.PM,
-        SourceCodeInfo_Location.$checkItem, SourceCodeInfo_Location.create)
-    ..hasRequiredFields = false;
+  static final BuilderInfo _i =
+      new BuilderInfo('SourceCodeInfo', packageName: 'google.protobuf')
+        ..pp<SourceCodeInfo_Location>(1, 'location', PbFieldType.PM,
+            SourceCodeInfo_Location.$checkItem, SourceCodeInfo_Location.create)
+        ..hasRequiredFields = false;
 
   SourceCodeInfo() : super();
   SourceCodeInfo.fromBuffer(List<int> i,
@@ -1606,13 +1759,19 @@ class SourceCodeInfo extends GeneratedMessage {
   }
 
   List<SourceCodeInfo_Location> get location => $_getList(0);
+
+  static Unpacker<SourceCodeInfo> unpacker = new Unpacker<SourceCodeInfo>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new SourceCodeInfo.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlySourceCodeInfo extends SourceCodeInfo with ReadonlyMessageMixin {
 }
 
 class GeneratedCodeInfo_Annotation extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('GeneratedCodeInfo_Annotation')
+  static final BuilderInfo _i = new BuilderInfo('GeneratedCodeInfo_Annotation',
+      packageName: 'google.protobuf.GeneratedCodeInfo')
     ..p<int>(1, 'path', PbFieldType.K3)
     ..aOS(2, 'sourceFile')
     ..a<int>(3, 'begin', PbFieldType.O3)
@@ -1670,20 +1829,28 @@ class GeneratedCodeInfo_Annotation extends GeneratedMessage {
 
   bool hasEnd() => $_has(3);
   void clearEnd() => clearField(4);
+
+  static Unpacker<GeneratedCodeInfo_Annotation> unpacker =
+      new Unpacker<GeneratedCodeInfo_Annotation>(
+          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+              new GeneratedCodeInfo_Annotation.fromBuffer(
+                  values, extensionRegistry),
+          _i.fullName);
 }
 
 class _ReadonlyGeneratedCodeInfo_Annotation extends GeneratedCodeInfo_Annotation
     with ReadonlyMessageMixin {}
 
 class GeneratedCodeInfo extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('GeneratedCodeInfo')
-    ..pp<GeneratedCodeInfo_Annotation>(
-        1,
-        'annotation',
-        PbFieldType.PM,
-        GeneratedCodeInfo_Annotation.$checkItem,
-        GeneratedCodeInfo_Annotation.create)
-    ..hasRequiredFields = false;
+  static final BuilderInfo _i =
+      new BuilderInfo('GeneratedCodeInfo', packageName: 'google.protobuf')
+        ..pp<GeneratedCodeInfo_Annotation>(
+            1,
+            'annotation',
+            PbFieldType.PM,
+            GeneratedCodeInfo_Annotation.$checkItem,
+            GeneratedCodeInfo_Annotation.create)
+        ..hasRequiredFields = false;
 
   GeneratedCodeInfo() : super();
   GeneratedCodeInfo.fromBuffer(List<int> i,
@@ -1709,6 +1876,11 @@ class GeneratedCodeInfo extends GeneratedMessage {
   }
 
   List<GeneratedCodeInfo_Annotation> get annotation => $_getList(0);
+
+  static Unpacker<GeneratedCodeInfo> unpacker = new Unpacker<GeneratedCodeInfo>(
+      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
+          new GeneratedCodeInfo.fromBuffer(values, extensionRegistry),
+      _i.fullName);
 }
 
 class _ReadonlyGeneratedCodeInfo extends GeneratedCodeInfo
