@@ -33,13 +33,8 @@ class MessageGenerator extends ProtobufContainer {
   /// with a '.'.
   final String fqname;
 
-  /// The fully-qualified name without the leading '.'
-  ///
-  /// This is what gets passed to the BuilderInfo in the generated code.
-  String get _fullName {
-    assert(fqname[0] == '.');
-    return fqname.substring(1);
-  }
+  /// The fully-qualified name of the package without the leading '.'
+  String get packageName => _parent.fqname.substring(1);
 
   final PbMixin mixin;
 
@@ -214,11 +209,13 @@ class MessageGenerator extends ProtobufContainer {
       mixinClause = ' with ${mixinNames.join(", ")}';
     }
 
+    String packageClause = ', packageName: \'${packageName}\'';
     out.addBlock(
         'class ${classname} extends GeneratedMessage${mixinClause} {', '}', () {
       out.addBlock(
-          'static final BuilderInfo _i = new BuilderInfo(\'$_fullName\')', ';',
-          () {
+          'static final BuilderInfo _i = '
+          'new BuilderInfo(\'$classname\'$packageClause)',
+          ';', () {
         for (ProtobufField field in _fieldList) {
           var dartFieldName = field.memberNames.fieldName;
           out.println(field.generateBuilderInfoCall(package, dartFieldName));
