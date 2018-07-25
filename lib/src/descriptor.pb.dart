@@ -43,11 +43,6 @@ class FileDescriptorSet extends GeneratedMessage {
   }
 
   List<FileDescriptorProto> get file => $_getList(0);
-
-  static Unpacker<FileDescriptorSet> unpacker = new Unpacker<FileDescriptorSet>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new FileDescriptorSet.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyFileDescriptorSet extends FileDescriptorSet
@@ -152,12 +147,6 @@ class FileDescriptorProto extends GeneratedMessage {
 
   bool hasSyntax() => $_has(11);
   void clearSyntax() => clearField(12);
-
-  static Unpacker<FileDescriptorProto> unpacker =
-      new Unpacker<FileDescriptorProto>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new FileDescriptorProto.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyFileDescriptorProto extends FileDescriptorProto
@@ -212,13 +201,6 @@ class DescriptorProto_ExtensionRange extends GeneratedMessage {
 
   bool hasEnd() => $_has(1);
   void clearEnd() => clearField(2);
-
-  static Unpacker<DescriptorProto_ExtensionRange> unpacker =
-      new Unpacker<DescriptorProto_ExtensionRange>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new DescriptorProto_ExtensionRange.fromBuffer(
-                  values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyDescriptorProto_ExtensionRange
@@ -272,13 +254,6 @@ class DescriptorProto_ReservedRange extends GeneratedMessage {
 
   bool hasEnd() => $_has(1);
   void clearEnd() => clearField(2);
-
-  static Unpacker<DescriptorProto_ReservedRange> unpacker =
-      new Unpacker<DescriptorProto_ReservedRange>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new DescriptorProto_ReservedRange.fromBuffer(
-                  values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyDescriptorProto_ReservedRange
@@ -368,11 +343,6 @@ class DescriptorProto extends GeneratedMessage {
   List<DescriptorProto_ReservedRange> get reservedRange => $_getList(8);
 
   List<String> get reservedName => $_getList(9);
-
-  static Unpacker<DescriptorProto> unpacker = new Unpacker<DescriptorProto>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new DescriptorProto.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyDescriptorProto extends DescriptorProto
@@ -508,12 +478,6 @@ class FieldDescriptorProto extends GeneratedMessage {
 
   bool hasJsonName() => $_has(9);
   void clearJsonName() => clearField(10);
-
-  static Unpacker<FieldDescriptorProto> unpacker =
-      new Unpacker<FieldDescriptorProto>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new FieldDescriptorProto.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyFieldDescriptorProto extends FieldDescriptorProto
@@ -565,12 +529,6 @@ class OneofDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(1);
   void clearOptions() => clearField(2);
-
-  static Unpacker<OneofDescriptorProto> unpacker =
-      new Unpacker<OneofDescriptorProto>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new OneofDescriptorProto.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyOneofDescriptorProto extends OneofDescriptorProto
@@ -630,12 +588,6 @@ class EnumDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(2);
   void clearOptions() => clearField(3);
-
-  static Unpacker<EnumDescriptorProto> unpacker =
-      new Unpacker<EnumDescriptorProto>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new EnumDescriptorProto.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyEnumDescriptorProto extends EnumDescriptorProto
@@ -697,13 +649,6 @@ class EnumValueDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(2);
   void clearOptions() => clearField(3);
-
-  static Unpacker<EnumValueDescriptorProto> unpacker =
-      new Unpacker<EnumValueDescriptorProto>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new EnumValueDescriptorProto.fromBuffer(
-                  values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyEnumValueDescriptorProto extends EnumValueDescriptorProto
@@ -760,12 +705,6 @@ class ServiceDescriptorProto extends GeneratedMessage {
 
   bool hasOptions() => $_has(2);
   void clearOptions() => clearField(3);
-
-  static Unpacker<ServiceDescriptorProto> unpacker =
-      new Unpacker<ServiceDescriptorProto>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new ServiceDescriptorProto.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyServiceDescriptorProto extends ServiceDescriptorProto
@@ -854,12 +793,6 @@ class MethodDescriptorProto extends GeneratedMessage {
 
   bool hasServerStreaming() => $_has(5);
   void clearServerStreaming() => clearField(6);
-
-  static Unpacker<MethodDescriptorProto> unpacker =
-      new Unpacker<MethodDescriptorProto>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new MethodDescriptorProto.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyMethodDescriptorProto extends MethodDescriptorProto
@@ -1053,11 +986,6 @@ class FileOptions extends GeneratedMessage {
   void clearPhpNamespace() => clearField(41);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(17);
-
-  static Unpacker<FileOptions> unpacker = new Unpacker<FileOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new FileOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyFileOptions extends FileOptions with ReadonlyMessageMixin {}
@@ -1129,11 +1057,6 @@ class MessageOptions extends GeneratedMessage {
   void clearMapEntry() => clearField(7);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(4);
-
-  static Unpacker<MessageOptions> unpacker = new Unpacker<MessageOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new MessageOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyMessageOptions extends MessageOptions with ReadonlyMessageMixin {
@@ -1235,11 +1158,6 @@ class FieldOptions extends GeneratedMessage {
   void clearWeak() => clearField(10);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(6);
-
-  static Unpacker<FieldOptions> unpacker = new Unpacker<FieldOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new FieldOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyFieldOptions extends FieldOptions with ReadonlyMessageMixin {}
@@ -1274,11 +1192,6 @@ class OneofOptions extends GeneratedMessage {
   }
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(0);
-
-  static Unpacker<OneofOptions> unpacker = new Unpacker<OneofOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new OneofOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyOneofOptions extends OneofOptions with ReadonlyMessageMixin {}
@@ -1330,11 +1243,6 @@ class EnumOptions extends GeneratedMessage {
   void clearDeprecated() => clearField(3);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(2);
-
-  static Unpacker<EnumOptions> unpacker = new Unpacker<EnumOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new EnumOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyEnumOptions extends EnumOptions with ReadonlyMessageMixin {}
@@ -1379,11 +1287,6 @@ class EnumValueOptions extends GeneratedMessage {
   void clearDeprecated() => clearField(1);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(1);
-
-  static Unpacker<EnumValueOptions> unpacker = new Unpacker<EnumValueOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new EnumValueOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyEnumValueOptions extends EnumValueOptions
@@ -1429,11 +1332,6 @@ class ServiceOptions extends GeneratedMessage {
   void clearDeprecated() => clearField(33);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(1);
-
-  static Unpacker<ServiceOptions> unpacker = new Unpacker<ServiceOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new ServiceOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyServiceOptions extends ServiceOptions with ReadonlyMessageMixin {
@@ -1493,11 +1391,6 @@ class MethodOptions extends GeneratedMessage {
   void clearIdempotencyLevel() => clearField(34);
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(2);
-
-  static Unpacker<MethodOptions> unpacker = new Unpacker<MethodOptions>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new MethodOptions.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyMethodOptions extends MethodOptions with ReadonlyMessageMixin {}
@@ -1549,13 +1442,6 @@ class UninterpretedOption_NamePart extends GeneratedMessage {
 
   bool hasIsExtension() => $_has(1);
   void clearIsExtension() => clearField(2);
-
-  static Unpacker<UninterpretedOption_NamePart> unpacker =
-      new Unpacker<UninterpretedOption_NamePart>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new UninterpretedOption_NamePart.fromBuffer(
-                  values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyUninterpretedOption_NamePart extends UninterpretedOption_NamePart
@@ -1650,12 +1536,6 @@ class UninterpretedOption extends GeneratedMessage {
 
   bool hasAggregateValue() => $_has(6);
   void clearAggregateValue() => clearField(8);
-
-  static Unpacker<UninterpretedOption> unpacker =
-      new Unpacker<UninterpretedOption>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new UninterpretedOption.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyUninterpretedOption extends UninterpretedOption
@@ -1717,12 +1597,6 @@ class SourceCodeInfo_Location extends GeneratedMessage {
   void clearTrailingComments() => clearField(4);
 
   List<String> get leadingDetachedComments => $_getList(4);
-
-  static Unpacker<SourceCodeInfo_Location> unpacker =
-      new Unpacker<SourceCodeInfo_Location>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new SourceCodeInfo_Location.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlySourceCodeInfo_Location extends SourceCodeInfo_Location
@@ -1759,11 +1633,6 @@ class SourceCodeInfo extends GeneratedMessage {
   }
 
   List<SourceCodeInfo_Location> get location => $_getList(0);
-
-  static Unpacker<SourceCodeInfo> unpacker = new Unpacker<SourceCodeInfo>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new SourceCodeInfo.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlySourceCodeInfo extends SourceCodeInfo with ReadonlyMessageMixin {
@@ -1829,13 +1698,6 @@ class GeneratedCodeInfo_Annotation extends GeneratedMessage {
 
   bool hasEnd() => $_has(3);
   void clearEnd() => clearField(4);
-
-  static Unpacker<GeneratedCodeInfo_Annotation> unpacker =
-      new Unpacker<GeneratedCodeInfo_Annotation>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new GeneratedCodeInfo_Annotation.fromBuffer(
-                  values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyGeneratedCodeInfo_Annotation extends GeneratedCodeInfo_Annotation
@@ -1876,11 +1738,6 @@ class GeneratedCodeInfo extends GeneratedMessage {
   }
 
   List<GeneratedCodeInfo_Annotation> get annotation => $_getList(0);
-
-  static Unpacker<GeneratedCodeInfo> unpacker = new Unpacker<GeneratedCodeInfo>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new GeneratedCodeInfo.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyGeneratedCodeInfo extends GeneratedCodeInfo

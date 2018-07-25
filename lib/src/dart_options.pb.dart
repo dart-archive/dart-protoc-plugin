@@ -59,11 +59,6 @@ class DartMixin extends GeneratedMessage {
 
   bool hasParent() => $_has(2);
   void clearParent() => clearField(3);
-
-  static Unpacker<DartMixin> unpacker = new Unpacker<DartMixin>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new DartMixin.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyDartMixin extends DartMixin with ReadonlyMessageMixin {}
@@ -96,11 +91,6 @@ class Imports extends GeneratedMessage {
   }
 
   List<DartMixin> get mixins => $_getList(0);
-
-  static Unpacker<Imports> unpacker = new Unpacker<Imports>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new Imports.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyImports extends Imports with ReadonlyMessageMixin {}

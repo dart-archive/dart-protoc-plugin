@@ -70,11 +70,6 @@ class Version extends GeneratedMessage {
 
   bool hasSuffix() => $_has(3);
   void clearSuffix() => clearField(4);
-
-  static Unpacker<Version> unpacker = new Unpacker<Version>(
-      (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-          new Version.fromBuffer(values, extensionRegistry),
-      _i.fullName);
 }
 
 class _ReadonlyVersion extends Version with ReadonlyMessageMixin {}
@@ -136,12 +131,6 @@ class CodeGeneratorRequest extends GeneratedMessage {
   void clearCompilerVersion() => clearField(3);
 
   List<$google$protobuf.FileDescriptorProto> get protoFile => $_getList(3);
-
-  static Unpacker<CodeGeneratorRequest> unpacker =
-      new Unpacker<CodeGeneratorRequest>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new CodeGeneratorRequest.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyCodeGeneratorRequest extends CodeGeneratorRequest
@@ -204,13 +193,6 @@ class CodeGeneratorResponse_File extends GeneratedMessage {
 
   bool hasContent() => $_has(2);
   void clearContent() => clearField(15);
-
-  static Unpacker<CodeGeneratorResponse_File> unpacker =
-      new Unpacker<CodeGeneratorResponse_File>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new CodeGeneratorResponse_File.fromBuffer(
-                  values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyCodeGeneratorResponse_File extends CodeGeneratorResponse_File
@@ -262,12 +244,6 @@ class CodeGeneratorResponse extends GeneratedMessage {
   void clearError() => clearField(1);
 
   List<CodeGeneratorResponse_File> get file => $_getList(1);
-
-  static Unpacker<CodeGeneratorResponse> unpacker =
-      new Unpacker<CodeGeneratorResponse>(
-          (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-              new CodeGeneratorResponse.fromBuffer(values, extensionRegistry),
-          _i.fullName);
 }
 
 class _ReadonlyCodeGeneratorResponse extends CodeGeneratorResponse

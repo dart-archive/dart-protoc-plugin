@@ -1,5 +1,10 @@
 ## 0.8.0 - 2018-05-17
 
+* Breaking change: Support for [any](https://developers.google.com/protocol-buffers/docs/proto3#any) messages.
+  Generated files require package:protobuf version 0.10.0 or newer.
+
+## 0.8.0 - 2018-05-17
+
 * Breaking change: Generated RpcClient stubs use the generic invoke method.
   Requires package:protobuf version 0.8.0 or newer.
 * Dart 2 fixes.

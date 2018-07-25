@@ -78,11 +78,6 @@ class PhoneNumber extends GeneratedMessage {
   set name(String v) { $_setString(2, v); }
   bool hasName() => $_has(2);
   void clearName() => clearField(3);
-
-  static Unpacker<PhoneNumber> unpacker = new Unpacker<PhoneNumber>(
-    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-        new PhoneNumber.fromBuffer(values, extensionRegistry),
-    _i.fullName);
 }
 
 class _ReadonlyPhoneNumber extends PhoneNumber with ReadonlyMessageMixin {}

@@ -266,7 +266,6 @@ class MessageGenerator extends ProtobufContainer {
       if (fqname == '.google.protobuf.Any') {
         generateAnyMethods(out);
       }
-      generateStaticUnpacker(out);
     });
     out.println();
 
@@ -321,16 +320,30 @@ class MessageGenerator extends ProtobufContainer {
   /// values.
   void generateAnyMethods(IndentingWriter out) {
     out.println();
+    out.println('/// Unpacks the message in [value] into [instance].');
+    out.println('///');
+    out.println('/// Throws a [InvalidProtocolBufferException] if '
+        '[typeUrl] does not correspond');
+    out.println('/// with the type of [instance].');
+    out.println('///');
+    out.println('/// A typical usage would be `any.unpack(new Message())`.');
+    out.println('///');
+    out.println('/// Returns [instance].');
     out.addBlock(
-        'T unpack<T>(Unpacker<T> unpacker, '
+        'T unpack<T extends GeneratedMessage>(T instance, '
         '{ExtensionRegistry extensionRegistry = ExtensionRegistry.EMPTY}) {',
         '}', () {
-      out.println('return unpacker.unpack('
-          'value, typeUrl, extensionRegistry: extensionRegistry);');
+      out.println('unpackInto('
+          'instance, value, typeUrl, extensionRegistry: extensionRegistry);');
+      out.println('return instance;');
     });
     out.println();
+    out.println('/// Creates a new [Any] encoding [message].');
+    out.println('///');
+    out.println('/// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is ');
+    out.println('/// the fully qualified name of the type of [message].');
     out.addBlock(
-      'static Any pack<T>(GeneratedMessage message, '
+      'static Any pack(GeneratedMessage message, '
           '{String typeUrlPrefix = \'type.googleapis.com\'}) {',
       '}',
       () {
@@ -340,22 +353,6 @@ class MessageGenerator extends ProtobufContainer {
             r"  ..typeUrl = '${typeUrlPrefix}/${message.info_.fullName}';");
       },
     );
-  }
-
-  void generateStaticUnpacker(IndentingWriter out) {
-    out.println();
-    out.addBlock(
-        'static Unpacker<$classname> unpacker = '
-        'new Unpacker<$classname>(',
-        '', () {
-      out.addBlock(
-          '(List<int> values, {ExtensionRegistry extensionRegistry}) =>', '',
-          () {
-        out.println('  new $classname.fromBuffer(values, extensionRegistry),');
-      }, endWithNewline: false);
-      ;
-      out.println('_i.fullName);');
-    }, endWithNewline: false);
   }
 
   void generateFieldsAccessorsMutators(IndentingWriter out) {

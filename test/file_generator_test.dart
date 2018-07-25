@@ -120,11 +120,6 @@ class PhoneNumber extends GeneratedMessage {
   set name(String v) { $_setString(2, v); }
   bool hasName() => $_has(2);
   void clearName() => clearField(3);
-
-  static Unpacker<PhoneNumber> unpacker = new Unpacker<PhoneNumber>(
-    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-        new PhoneNumber.fromBuffer(values, extensionRegistry),
-    _i.fullName);
 }
 
 class _ReadonlyPhoneNumber extends PhoneNumber with ReadonlyMessageMixin {}
@@ -349,11 +344,6 @@ class Empty extends GeneratedMessage {
   static void $checkItem(Empty v) {
     if (v is! Empty) checkItemFailed(v, 'Empty');
   }
-
-  static Unpacker<Empty> unpacker = new Unpacker<Empty>(
-    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-        new Empty.fromBuffer(values, extensionRegistry),
-    _i.fullName);
 }
 
 class _ReadonlyEmpty extends Empty with ReadonlyMessageMixin {}
@@ -467,11 +457,6 @@ class Empty extends GeneratedMessage {
   static void $checkItem(Empty v) {
     if (v is! Empty) checkItemFailed(v, 'Empty');
   }
-
-  static Unpacker<Empty> unpacker = new Unpacker<Empty>(
-    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-        new Empty.fromBuffer(values, extensionRegistry),
-    _i.fullName);
 }
 
 class _ReadonlyEmpty extends Empty with ReadonlyMessageMixin {}
@@ -713,11 +698,6 @@ class M extends GeneratedMessage {
   set m2($p2.M v) { setField(3, v); }
   bool hasM2() => $_has(2);
   void clearM2() => clearField(3);
-
-  static Unpacker<M> unpacker = new Unpacker<M>(
-    (List<int> values, {ExtensionRegistry extensionRegistry}) =>
-        new M.fromBuffer(values, extensionRegistry),
-    _i.fullName);
 }
 
 class _ReadonlyM extends M with ReadonlyMessageMixin {}
