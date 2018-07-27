@@ -337,7 +337,7 @@ class MessageGenerator extends ProtobufContainer {
       {String typeUrlPrefix = \'type.googleapis.com\'}) {
     return new Any()
         ..value = message.writeToBuffer()
-        ..typeUrl = '\${typeUrlPrefix}/\${message.info_.fullName}';
+        ..typeUrl = '\${typeUrlPrefix}/\${message.info_.messageName}';
   }''');
   }
 
