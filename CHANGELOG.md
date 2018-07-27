@@ -2,7 +2,7 @@
 
 * Dart SDK upper constraint raised to declare compatability with Dart 2.0 stable.
 
-## 0.8.0 - 2018-05-17
+## 0.9.0 - 2018-05-17
 
 * Breaking change: Support for [any](https://developers.google.com/protocol-buffers/docs/proto3#any) messages.
   Generated files require package:protobuf version 0.10.0 or newer.
