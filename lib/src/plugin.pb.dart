@@ -12,7 +12,7 @@ import 'descriptor.pb.dart' as $google$protobuf;
 
 class Version extends GeneratedMessage {
   static final BuilderInfo _i =
-      new BuilderInfo('Version', packageName: 'google.protobuf.compiler')
+      new BuilderInfo('google.protobuf.compiler.Version')
         ..a<int>(1, 'major', PbFieldType.O3)
         ..a<int>(2, 'minor', PbFieldType.O3)
         ..a<int>(3, 'patch', PbFieldType.O3)
@@ -36,7 +36,7 @@ class Version extends GeneratedMessage {
 
   static Version _defaultInstance;
   static void $checkItem(Version v) {
-    if (v is! Version) checkItemFailed(v, 'Version');
+    if (v is! Version) checkItemFailed(v, 'google.protobuf.compiler.Version');
   }
 
   int get major => $_get(0, 0);
@@ -75,18 +75,18 @@ class Version extends GeneratedMessage {
 class _ReadonlyVersion extends Version with ReadonlyMessageMixin {}
 
 class CodeGeneratorRequest extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorRequest',
-      packageName: 'google.protobuf.compiler')
-    ..pPS(1, 'fileToGenerate')
-    ..aOS(2, 'parameter')
-    ..a<Version>(3, 'compilerVersion', PbFieldType.OM, Version.getDefault,
-        Version.create)
-    ..pp<$google$protobuf.FileDescriptorProto>(
-        15,
-        'protoFile',
-        PbFieldType.PM,
-        $google$protobuf.FileDescriptorProto.$checkItem,
-        $google$protobuf.FileDescriptorProto.create);
+  static final BuilderInfo _i =
+      new BuilderInfo('google.protobuf.compiler.CodeGeneratorRequest')
+        ..pPS(1, 'fileToGenerate')
+        ..aOS(2, 'parameter')
+        ..a<Version>(3, 'compilerVersion', PbFieldType.OM, Version.getDefault,
+            Version.create)
+        ..pp<$google$protobuf.FileDescriptorProto>(
+            15,
+            'protoFile',
+            PbFieldType.PM,
+            $google$protobuf.FileDescriptorProto.$checkItem,
+            $google$protobuf.FileDescriptorProto.create);
 
   CodeGeneratorRequest() : super();
   CodeGeneratorRequest.fromBuffer(List<int> i,
@@ -109,7 +109,8 @@ class CodeGeneratorRequest extends GeneratedMessage {
 
   static CodeGeneratorRequest _defaultInstance;
   static void $checkItem(CodeGeneratorRequest v) {
-    if (v is! CodeGeneratorRequest) checkItemFailed(v, 'CodeGeneratorRequest');
+    if (v is! CodeGeneratorRequest)
+      checkItemFailed(v, 'google.protobuf.compiler.CodeGeneratorRequest');
   }
 
   List<String> get fileToGenerate => $_getList(0);
@@ -137,12 +138,12 @@ class _ReadonlyCodeGeneratorRequest extends CodeGeneratorRequest
     with ReadonlyMessageMixin {}
 
 class CodeGeneratorResponse_File extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorResponse_File',
-      packageName: 'google.protobuf.compiler.CodeGeneratorResponse')
-    ..aOS(1, 'name')
-    ..aOS(2, 'insertionPoint')
-    ..aOS(15, 'content')
-    ..hasRequiredFields = false;
+  static final BuilderInfo _i =
+      new BuilderInfo('google.protobuf.compiler.CodeGeneratorResponse.File')
+        ..aOS(1, 'name')
+        ..aOS(2, 'insertionPoint')
+        ..aOS(15, 'content')
+        ..hasRequiredFields = false;
 
   CodeGeneratorResponse_File() : super();
   CodeGeneratorResponse_File.fromBuffer(List<int> i,
@@ -167,7 +168,7 @@ class CodeGeneratorResponse_File extends GeneratedMessage {
   static CodeGeneratorResponse_File _defaultInstance;
   static void $checkItem(CodeGeneratorResponse_File v) {
     if (v is! CodeGeneratorResponse_File)
-      checkItemFailed(v, 'CodeGeneratorResponse_File');
+      checkItemFailed(v, 'google.protobuf.compiler.CodeGeneratorResponse.File');
   }
 
   String get name => $_getS(0, '');
@@ -199,16 +200,16 @@ class _ReadonlyCodeGeneratorResponse_File extends CodeGeneratorResponse_File
     with ReadonlyMessageMixin {}
 
 class CodeGeneratorResponse extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorResponse',
-      packageName: 'google.protobuf.compiler')
-    ..aOS(1, 'error')
-    ..pp<CodeGeneratorResponse_File>(
-        15,
-        'file',
-        PbFieldType.PM,
-        CodeGeneratorResponse_File.$checkItem,
-        CodeGeneratorResponse_File.create)
-    ..hasRequiredFields = false;
+  static final BuilderInfo _i =
+      new BuilderInfo('google.protobuf.compiler.CodeGeneratorResponse')
+        ..aOS(1, 'error')
+        ..pp<CodeGeneratorResponse_File>(
+            15,
+            'file',
+            PbFieldType.PM,
+            CodeGeneratorResponse_File.$checkItem,
+            CodeGeneratorResponse_File.create)
+        ..hasRequiredFields = false;
 
   CodeGeneratorResponse() : super();
   CodeGeneratorResponse.fromBuffer(List<int> i,
@@ -232,7 +233,7 @@ class CodeGeneratorResponse extends GeneratedMessage {
   static CodeGeneratorResponse _defaultInstance;
   static void $checkItem(CodeGeneratorResponse v) {
     if (v is! CodeGeneratorResponse)
-      checkItemFailed(v, 'CodeGeneratorResponse');
+      checkItemFailed(v, 'google.protobuf.compiler.CodeGeneratorResponse');
   }
 
   String get error => $_getS(0, '');

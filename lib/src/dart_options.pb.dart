@@ -9,12 +9,11 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class DartMixin extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('DartMixin', packageName: 'dart_options')
-        ..aOS(1, 'name')
-        ..aOS(2, 'importFrom')
-        ..aOS(3, 'parent')
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('dart_options.DartMixin')
+    ..aOS(1, 'name')
+    ..aOS(2, 'importFrom')
+    ..aOS(3, 'parent')
+    ..hasRequiredFields = false;
 
   DartMixin() : super();
   DartMixin.fromBuffer(List<int> i,
@@ -33,7 +32,7 @@ class DartMixin extends GeneratedMessage {
 
   static DartMixin _defaultInstance;
   static void $checkItem(DartMixin v) {
-    if (v is! DartMixin) checkItemFailed(v, 'DartMixin');
+    if (v is! DartMixin) checkItemFailed(v, 'dart_options.DartMixin');
   }
 
   String get name => $_getS(0, '');
@@ -64,11 +63,10 @@ class DartMixin extends GeneratedMessage {
 class _ReadonlyDartMixin extends DartMixin with ReadonlyMessageMixin {}
 
 class Imports extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('Imports', packageName: 'dart_options')
-        ..pp<DartMixin>(
-            1, 'mixins', PbFieldType.PM, DartMixin.$checkItem, DartMixin.create)
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('dart_options.Imports')
+    ..pp<DartMixin>(
+        1, 'mixins', PbFieldType.PM, DartMixin.$checkItem, DartMixin.create)
+    ..hasRequiredFields = false;
 
   Imports() : super();
   Imports.fromBuffer(List<int> i,
@@ -87,7 +85,7 @@ class Imports extends GeneratedMessage {
 
   static Imports _defaultInstance;
   static void $checkItem(Imports v) {
-    if (v is! Imports) checkItemFailed(v, 'Imports');
+    if (v is! Imports) checkItemFailed(v, 'dart_options.Imports');
   }
 
   List<DartMixin> get mixins => $_getList(0);
@@ -96,22 +94,39 @@ class Imports extends GeneratedMessage {
 class _ReadonlyImports extends Imports with ReadonlyMessageMixin {}
 
 class Dart_options {
-  static final Extension imports = new Extension<Imports>('FileOptions',
-      'imports', 28125061, PbFieldType.OM, Imports.getDefault, Imports.create);
+  static final Extension imports = new Extension<Imports>(
+      'google.protobuf.FileOptions',
+      'imports',
+      28125061,
+      PbFieldType.OM,
+      Imports.getDefault,
+      Imports.create);
   static final Extension defaultMixin = new Extension<String>(
-      'FileOptions', 'defaultMixin', 96128839, PbFieldType.OS);
+      'google.protobuf.FileOptions', 'defaultMixin', 96128839, PbFieldType.OS);
   static final Extension mixin = new Extension<String>(
-      'MessageOptions', 'mixin', 96128839, PbFieldType.OS);
+      'google.protobuf.MessageOptions', 'mixin', 96128839, PbFieldType.OS);
   static final Extension overrideGetter = new Extension<bool>(
-      'FieldOptions', 'overrideGetter', 28205290, PbFieldType.OB);
+      'google.protobuf.FieldOptions',
+      'overrideGetter',
+      28205290,
+      PbFieldType.OB);
   static final Extension overrideSetter = new Extension<bool>(
-      'FieldOptions', 'overrideSetter', 28937366, PbFieldType.OB);
+      'google.protobuf.FieldOptions',
+      'overrideSetter',
+      28937366,
+      PbFieldType.OB);
   static final Extension overrideHasMethod = new Extension<bool>(
-      'FieldOptions', 'overrideHasMethod', 28937461, PbFieldType.OB);
+      'google.protobuf.FieldOptions',
+      'overrideHasMethod',
+      28937461,
+      PbFieldType.OB);
   static final Extension overrideClearMethod = new Extension<bool>(
-      'FieldOptions', 'overrideClearMethod', 28907907, PbFieldType.OB);
+      'google.protobuf.FieldOptions',
+      'overrideClearMethod',
+      28907907,
+      PbFieldType.OB);
   static final Extension dartName = new Extension<String>(
-      'FieldOptions', 'dartName', 28700919, PbFieldType.OS);
+      'google.protobuf.FieldOptions', 'dartName', 28700919, PbFieldType.OS);
   static void registerAllExtensions(ExtensionRegistry registry) {
     registry.add(imports);
     registry.add(defaultMixin);
