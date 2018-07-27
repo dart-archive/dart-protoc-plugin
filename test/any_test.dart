@@ -7,6 +7,7 @@ import 'package:test/test.dart';
 
 import '../out/protos/google/protobuf/any.pb.dart';
 import '../out/protos/service.pb.dart';
+import '../out/protos/toplevel.pb.dart' as toplevel;
 import '../out/protos/using_any.pb.dart';
 
 void main() {
@@ -25,10 +26,28 @@ void main() {
     }, throwsA(const TypeMatcher<InvalidProtocolBufferException>()));
   });
 
-  test('nested any', () {
+  test('any inside any', () {
     Any any = Any.pack(Any.pack(new SearchRequest()..query = 'hest'));
     expect(any.typeUrl, 'type.googleapis.com/google.protobuf.Any');
     expect(any.unpack(new Any()).unpack(new SearchRequest()).query, 'hest');
+  });
+
+  test('toplevel', () {
+    Any any = Any.pack(new toplevel.T()
+      ..a = 127
+      ..b = 'hest');
+    expect(any.typeUrl, 'type.googleapis.com/T');
+    var t2 = any.unpack(new toplevel.T());
+    expect(t2.a, 127);
+    expect(t2.b, 'hest');
+  });
+
+  test('nested message', () {
+    Any any = Any.pack(new Container_Nested()..int32Value = 127);
+    expect(
+        any.typeUrl, 'type.googleapis.com/protobuf_unittest.Container.Nested');
+    var t2 = any.unpack(new Container_Nested());
+    expect(t2.int32Value, 127);
   });
 
   test('using any', () {

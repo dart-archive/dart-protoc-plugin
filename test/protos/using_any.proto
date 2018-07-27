@@ -13,3 +13,9 @@ message TestAny {
   google.protobuf.Any any_value = 2;
   repeated google.protobuf.Any repeated_any_value = 3;
 }
+
+message Container {
+  message Nested {
+    int32 int32_value = 1;
+  }
+}
