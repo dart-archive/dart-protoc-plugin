@@ -311,41 +311,34 @@ class MessageGenerator extends ProtobufContainer {
   /// Generates methods for the Any message class for packing and unpacking
   /// values.
   void generateAnyMethods(IndentingWriter out) {
-    out.println();
-    out.println('/// Unpacks the message in [value] into [instance].');
-    out.println('///');
-    out.println('/// Throws a [InvalidProtocolBufferException] if '
-        '[typeUrl] does not correspond');
-    out.println('/// with the type of [instance].');
-    out.println('///');
-    out.println('/// A typical usage would be `any.unpack(new Message())`.');
-    out.println('///');
-    out.println('/// Returns [instance].');
-    out.addBlock(
-        'T unpack<T extends GeneratedMessage>(T instance, '
-        '{ExtensionRegistry extensionRegistry = ExtensionRegistry.EMPTY}) {',
-        '}', () {
-      out.println('unpackInto('
-          'instance, value, typeUrl, extensionRegistry: extensionRegistry);');
-      out.println('return instance;');
-    });
-    out.println();
-    out.println('/// Creates a new [Any] encoding [message].');
-    out.println('///');
-    out.println(
-        '/// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is ');
-    out.println('/// the fully qualified name of the type of [message].');
-    out.addBlock(
-      'static Any pack(GeneratedMessage message, '
-          '{String typeUrlPrefix = \'type.googleapis.com\'}) {',
-      '}',
-      () {
-        out.println('return new Any()');
-        out.println('  ..value = message.writeToBuffer()');
-        out.println(
-            r"  ..typeUrl = '${typeUrlPrefix}/${message.info_.fullName}';");
-      },
-    );
+    out.println('''
+  /// Unpacks the message in [value] into [instance].
+  ///
+  /// Throws a [InvalidProtocolBufferException] if [typeUrl] does not correspond
+  /// with the type of [instance].
+  ///
+  /// A typical usage would be `any.unpack(new Message())`.
+  ///
+  /// Returns [instance].
+  T unpack<T extends GeneratedMessage>(
+      T instance,
+      {ExtensionRegistry extensionRegistry = ExtensionRegistry.EMPTY}) {
+    unpackInto(
+          instance, value, typeUrl, extensionRegistry: extensionRegistry);
+      return instance;
+  }
+
+  /// Creates a new [Any] encoding [message].
+  ///
+  /// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is
+  /// the fully qualified name of the type of [message].
+  static Any pack(
+      GeneratedMessage message,
+      {String typeUrlPrefix = \'type.googleapis.com\'}) {
+    return new Any()
+        ..value = message.writeToBuffer()
+        ..typeUrl = '\${typeUrlPrefix}/\${message.info_.fullName}';
+  }''');
   }
 
   void generateFieldsAccessorsMutators(IndentingWriter out) {
