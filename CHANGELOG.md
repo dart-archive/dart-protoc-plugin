@@ -1,11 +1,12 @@
-## 0.8.0+1 - 2018-07-13
-
-* Dart SDK upper constraint raised to declare compatability with Dart 2.0 stable.
-
 ## 0.9.0 - 2018-05-17
 
 * Breaking change: Support for [any](https://developers.google.com/protocol-buffers/docs/proto3#any) messages.
-  Generated files require package:protobuf version 0.10.0 or newer.
+  Generated files require package:protobuf version 0.9.2 or newer.
+  `BuilderInfo.messageName` will now be the fully qualified name for generated messages.
+
+## 0.8.0+1 - 2018-07-13
+
+* Dart SDK upper constraint raised to declare compatability with Dart 2.0 stable.
 
 ## 0.8.0 - 2018-05-17
 
