@@ -84,7 +84,7 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class PhoneNumber extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('PhoneNumber', packageName: '')
+  static final BuilderInfo _i = new BuilderInfo('PhoneNumber')
     ..aQS(1, 'number')
     ..a<int>(2, 'type', PbFieldType.O3)
     ..a<String>(3, 'name', PbFieldType.OS, '\$')
@@ -325,7 +325,7 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class Empty extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('Empty', packageName: '')
+  static final BuilderInfo _i = new BuilderInfo('Empty')
     ..hasRequiredFields = false
   ;
 
@@ -438,7 +438,7 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class Empty extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('Empty', packageName: '')
+  static final BuilderInfo _i = new BuilderInfo('Empty')
     ..hasRequiredFields = false
   ;
 
@@ -661,7 +661,7 @@ import 'package1.pb.dart' as $p1;
 import 'package2.pb.dart' as $p2;
 
 class M extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('M', packageName: '')
+  static final BuilderInfo _i = new BuilderInfo('M')
     ..a<M>(1, 'm', PbFieldType.OM, M.getDefault, M.create)
     ..a<$p1.M>(2, 'm1', PbFieldType.OM, $p1.M.getDefault, $p1.M.create)
     ..a<$p2.M>(3, 'm2', PbFieldType.OM, $p2.M.getDefault, $p2.M.create)

@@ -27,14 +27,8 @@ class MessageGenerator extends ProtobufContainer {
   /// The name of the Dart class to generate.
   final String classname;
 
-  /// The fully-qualified name of the message type.
-  ///
-  /// This correspond to the name references given by protoc and always starts
-  /// with a '.'.
-  final String fqname;
-
-  /// The fully-qualified name of the package without the leading '.'
-  String get packageName => _parent.fqname.substring(1);
+  /// The fully-qualified name of the message (without any leading '.').
+  final String fullName;
 
   final PbMixin mixin;
 
@@ -52,11 +46,10 @@ class MessageGenerator extends ProtobufContainer {
       : _descriptor = descriptor,
         _parent = parent,
         classname = messageClassName(descriptor, parent: parent.classname),
-        fqname = (parent == null || parent.fqname == null)
+        assert(parent != null),
+        fullName = parent.fullName == ''
             ? descriptor.name
-            : (parent.fqname == '.'
-                ? '.${descriptor.name}'
-                : '${parent.fqname}.${descriptor.name}'),
+            : '${parent.fullName}.${descriptor.name}',
         mixin = _getMixin(descriptor, parent.fileGen.descriptor, declaredMixins,
             defaultMixin) {
     for (EnumDescriptorProto e in _descriptor.enumType) {
@@ -81,7 +74,7 @@ class MessageGenerator extends ProtobufContainer {
   /// Throws an exception if [resolve] hasn't been called yet.
   void checkResolved() {
     if (_fieldList == null) {
-      throw new StateError("message not resolved: ${fqname}");
+      throw new StateError("message not resolved: ${fullName}");
     }
   }
 
@@ -107,7 +100,7 @@ class MessageGenerator extends ProtobufContainer {
 
   // Registers message and enum types that can be used elsewhere.
   void register(GenerationContext ctx) {
-    ctx.registerFieldType(fqname, this);
+    ctx.registerFieldType(this);
     for (var m in _messageGenerators) {
       m.register(ctx);
     }
@@ -209,12 +202,11 @@ class MessageGenerator extends ProtobufContainer {
       mixinClause = ' with ${mixinNames.join(", ")}';
     }
 
-    String packageClause = ', packageName: \'${packageName}\'';
     out.addBlock(
         'class ${classname} extends GeneratedMessage${mixinClause} {', '}', () {
       out.addBlock(
           'static final BuilderInfo _i = '
-          'new BuilderInfo(\'$classname\'$packageClause)',
+          'new BuilderInfo(\'${fullName}\')',
           ';', () {
         for (ProtobufField field in _fieldList) {
           var dartFieldName = field.memberNames.fieldName;
@@ -260,10 +252,10 @@ class MessageGenerator extends ProtobufContainer {
       out.println('static ${classname} _defaultInstance;');
       out.addBlock('static void $checkItem($classname v) {', '}', () {
         out.println('if (v is! $classname)'
-            " checkItemFailed(v, '$classname');");
+            " checkItemFailed(v, '$fullName');");
       });
       generateFieldsAccessorsMutators(out);
-      if (fqname == '.google.protobuf.Any') {
+      if (fullName == 'google.protobuf.Any') {
         generateAnyMethods(out);
       }
     });
@@ -283,7 +275,7 @@ class MessageGenerator extends ProtobufContainer {
   bool _hasRequiredFields(MessageGenerator type, Set alreadySeen) {
     if (type._fieldList == null) throw new StateError("message not resolved");
 
-    if (alreadySeen.contains(type.fqname)) {
+    if (alreadySeen.contains(type.fullName)) {
       // The type is already in cache.  This means that either:
       // a. The type has no required fields.
       // b. We are in the midst of checking if the type has required fields,
@@ -294,7 +286,7 @@ class MessageGenerator extends ProtobufContainer {
       //    here.
       return false;
     }
-    alreadySeen.add(type.fqname);
+    alreadySeen.add(type.fullName);
     // If the type has extensions, an extension with message type could contain
     // required fields, so we have to be conservative and assume such an
     // extension exists.
@@ -340,7 +332,8 @@ class MessageGenerator extends ProtobufContainer {
     out.println();
     out.println('/// Creates a new [Any] encoding [message].');
     out.println('///');
-    out.println('/// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is ');
+    out.println(
+        '/// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is ');
     out.println('/// the fully qualified name of the type of [message].');
     out.addBlock(
       'static Any pack(GeneratedMessage message, '
@@ -375,15 +368,15 @@ class MessageGenerator extends ProtobufContainer {
 
     if (field.isRepeated) {
       if (field.overridesSetter) {
-        throw 'Field ${field.fqname} cannot override a setter for '
+        throw 'Field ${field.fullName} cannot override a setter for '
             '${names.fieldName} because it is repeated.';
       }
       if (field.overridesHasMethod) {
-        throw 'Field ${field.fqname} cannot override '
+        throw 'Field ${field.fullName} cannot override '
             '${names.hasMethodName}() because it is repeated.';
       }
       if (field.overridesClearMethod) {
-        throw 'Field ${field.fqname} cannot override '
+        throw 'Field ${field.fullName} cannot override '
             '${names.clearMethodName}() because it is repeated.';
       }
     } else {

@@ -73,7 +73,7 @@ class GrpcServiceGenerator {
       return;
     }
     mg.checkResolved();
-    _deps[mg.fqname] = mg;
+    _deps['.${mg.fullName}'] = mg;
   }
 
   /// Adds dependencies of [generate] to [imports].
