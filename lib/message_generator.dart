@@ -206,7 +206,7 @@ class MessageGenerator extends ProtobufContainer {
         'class ${classname} extends GeneratedMessage${mixinClause} {', '}', () {
       out.addBlock(
           'static final BuilderInfo _i = '
-          'new BuilderInfo(\'${fullName}\')',
+          'new BuilderInfo(\'${classname}\')',
           ';', () {
         for (ProtobufField field in _fieldList) {
           var dartFieldName = field.memberNames.fieldName;
@@ -238,6 +238,7 @@ class MessageGenerator extends ProtobufContainer {
           ' new ${classname}()..mergeFromMessage(this);');
 
       out.println('BuilderInfo get info_ => _i;');
+      out.println('String get \$fullName => \'$fullName\';');
 
       // Factory functions which can be used as default value closures.
       out.println('static ${classname} create() =>'
@@ -252,7 +253,7 @@ class MessageGenerator extends ProtobufContainer {
       out.println('static ${classname} _defaultInstance;');
       out.addBlock('static void $checkItem($classname v) {', '}', () {
         out.println('if (v is! $classname)'
-            " checkItemFailed(v, '$fullName');");
+            " checkItemFailed(v, info_.messageName);");
       });
       generateFieldsAccessorsMutators(out);
       if (fullName == 'google.protobuf.Any') {
@@ -337,7 +338,7 @@ class MessageGenerator extends ProtobufContainer {
       {String typeUrlPrefix = \'type.googleapis.com\'}) {
     return new Any()
         ..value = message.writeToBuffer()
-        ..typeUrl = '\${typeUrlPrefix}/\${message.info_.messageName}';
+        ..typeUrl = '\${typeUrlPrefix}/\${message.$fullName}';
   }''');
   }
 

@@ -15,9 +15,11 @@ export 'descriptor.pbenum.dart';
 
 class FileDescriptorSet extends GeneratedMessage {
   static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.FileDescriptorSet')
+      new BuilderInfo('FileDescriptorSet')
         ..pp<FileDescriptorProto>(1, 'file', PbFieldType.PM,
             FileDescriptorProto.$checkItem, FileDescriptorProto.create);
+
+  String get $fullname => 'package.FileDescriptorSet';
 
   FileDescriptorSet() : super();
   FileDescriptorSet.fromBuffer(List<int> i,
