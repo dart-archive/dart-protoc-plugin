@@ -103,7 +103,7 @@ class PhoneNumber extends GeneratedMessage {
   }
   static PhoneNumber _defaultInstance;
   static void $checkItem(PhoneNumber v) {
-    if (v is! PhoneNumber) checkItemFailed(v, 'PhoneNumber');
+    if (v is! PhoneNumber) checkItemFailed(v, _i.messageName);
   }
 
   String get number => $_getS(0, '');
@@ -342,7 +342,7 @@ class Empty extends GeneratedMessage {
   }
   static Empty _defaultInstance;
   static void $checkItem(Empty v) {
-    if (v is! Empty) checkItemFailed(v, 'Empty');
+    if (v is! Empty) checkItemFailed(v, _i.messageName);
   }
 }
 
@@ -455,7 +455,7 @@ class Empty extends GeneratedMessage {
   }
   static Empty _defaultInstance;
   static void $checkItem(Empty v) {
-    if (v is! Empty) checkItemFailed(v, 'Empty');
+    if (v is! Empty) checkItemFailed(v, _i.messageName);
   }
 }
 
@@ -681,7 +681,7 @@ class M extends GeneratedMessage {
   }
   static M _defaultInstance;
   static void $checkItem(M v) {
-    if (v is! M) checkItemFailed(v, 'M');
+    if (v is! M) checkItemFailed(v, _i.messageName);
   }
 
   M get m => $_getN(0);

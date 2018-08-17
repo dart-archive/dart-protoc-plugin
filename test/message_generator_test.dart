@@ -61,7 +61,7 @@ class PhoneNumber extends GeneratedMessage {
   }
   static PhoneNumber _defaultInstance;
   static void $checkItem(PhoneNumber v) {
-    if (v is! PhoneNumber) checkItemFailed(v, 'PhoneNumber');
+    if (v is! PhoneNumber) checkItemFailed(v, _i.messageName);
   }
 
   String get number => $_getS(0, '');
