@@ -46,7 +46,8 @@ class MessageGenerator extends ProtobufContainer {
   /// ```
   /// The nested message will have a `fullName` of 'foo.Container.Nested', and a
   /// `messageName` of 'Container.Nested'.
-  String get messageName => fullName.substring(package.length);
+  String get messageName =>
+      fullName.substring(package.length == 0 ? 0 : package.length + 1);
 
   final PbMixin mixin;
 
@@ -331,33 +332,39 @@ class MessageGenerator extends ProtobufContainer {
   /// Generates methods for the Any message class for packing and unpacking
   /// values.
   void generateAnyMethods(IndentingWriter out) {
-    out.println('''
+    out.println(r'''
   /// Unpacks the message in [value] into [instance].
   ///
   /// Throws a [InvalidProtocolBufferException] if [typeUrl] does not correspond
-  /// with the type of [instance].
+  /// to the type of [instance].
   ///
-  /// A typical usage would be `any.unpack(new Message())`.
+  /// A typical usage would be `any.unpackInto(new Message())`.
   ///
   /// Returns [instance].
-  T unpack<T extends GeneratedMessage>(
-      T instance,
+  T unpackInto<T extends GeneratedMessage>(T instance,
       {ExtensionRegistry extensionRegistry = ExtensionRegistry.EMPTY}) {
-    unpackInto(
-          instance, value, typeUrl, extensionRegistry: extensionRegistry);
-      return instance;
+    unpackIntoHelper(value, instance, typeUrl,
+        extensionRegistry: extensionRegistry);
+    return instance;
+  }
+
+  /// Returns `true` if the encoded message matches the type of [instance].
+  ///
+  /// Can be used with a default instance:
+  /// `any.canUnpackInto(Message.getDefault())`
+  bool canUnpackInto(GeneratedMessage instance) {
+    return canUnpackIntoHelper(instance, typeUrl);
   }
 
   /// Creates a new [Any] encoding [message].
   ///
   /// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is
   /// the fully qualified name of the type of [message].
-  static Any pack(
-      GeneratedMessage message,
-      {String typeUrlPrefix = \'type.googleapis.com\'}) {
+  static Any pack(GeneratedMessage message,
+      {String typeUrlPrefix = 'type.googleapis.com'}) {
     return new Any()
-        ..value = message.writeToBuffer()
-        ..typeUrl = '\${typeUrlPrefix}/\${message.info_.messageName}';
+      ..value = message.writeToBuffer()
+      ..typeUrl = '${typeUrlPrefix}/${message.info_.messageName}';
   }''');
   }
 
