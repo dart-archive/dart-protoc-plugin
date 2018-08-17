@@ -9,11 +9,12 @@ import 'dart:core' show int, bool, double, String, List, override;
 import 'package:protobuf/protobuf.dart';
 
 class DartMixin extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('dart_options.DartMixin')
-    ..aOS(1, 'name')
-    ..aOS(2, 'importFrom')
-    ..aOS(3, 'parent')
-    ..hasRequiredFields = false;
+  static final BuilderInfo _i =
+      new BuilderInfo('DartMixin', package: const PackageName('dart_options'))
+        ..aOS(1, 'name')
+        ..aOS(2, 'importFrom')
+        ..aOS(3, 'parent')
+        ..hasRequiredFields = false;
 
   DartMixin() : super();
   DartMixin.fromBuffer(List<int> i,
@@ -32,7 +33,7 @@ class DartMixin extends GeneratedMessage {
 
   static DartMixin _defaultInstance;
   static void $checkItem(DartMixin v) {
-    if (v is! DartMixin) checkItemFailed(v, 'dart_options.DartMixin');
+    if (v is! DartMixin) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -63,10 +64,11 @@ class DartMixin extends GeneratedMessage {
 class _ReadonlyDartMixin extends DartMixin with ReadonlyMessageMixin {}
 
 class Imports extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('dart_options.Imports')
-    ..pp<DartMixin>(
-        1, 'mixins', PbFieldType.PM, DartMixin.$checkItem, DartMixin.create)
-    ..hasRequiredFields = false;
+  static final BuilderInfo _i =
+      new BuilderInfo('Imports', package: const PackageName('dart_options'))
+        ..pp<DartMixin>(
+            1, 'mixins', PbFieldType.PM, DartMixin.$checkItem, DartMixin.create)
+        ..hasRequiredFields = false;
 
   Imports() : super();
   Imports.fromBuffer(List<int> i,
@@ -85,7 +87,7 @@ class Imports extends GeneratedMessage {
 
   static Imports _defaultInstance;
   static void $checkItem(Imports v) {
-    if (v is! Imports) checkItemFailed(v, 'dart_options.Imports');
+    if (v is! Imports) checkItemFailed(v, _i.messageName);
   }
 
   List<DartMixin> get mixins => $_getList(0);

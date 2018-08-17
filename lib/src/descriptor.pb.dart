@@ -14,12 +14,10 @@ import 'descriptor.pbenum.dart';
 export 'descriptor.pbenum.dart';
 
 class FileDescriptorSet extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('FileDescriptorSet')
-        ..pp<FileDescriptorProto>(1, 'file', PbFieldType.PM,
-            FileDescriptorProto.$checkItem, FileDescriptorProto.create);
-
-  String get $fullname => 'package.FileDescriptorSet';
+  static final BuilderInfo _i = new BuilderInfo('FileDescriptorSet',
+      package: const PackageName('google.protobuf'))
+    ..pp<FileDescriptorProto>(1, 'file', PbFieldType.PM,
+        FileDescriptorProto.$checkItem, FileDescriptorProto.create);
 
   FileDescriptorSet() : super();
   FileDescriptorSet.fromBuffer(List<int> i,
@@ -41,8 +39,7 @@ class FileDescriptorSet extends GeneratedMessage {
 
   static FileDescriptorSet _defaultInstance;
   static void $checkItem(FileDescriptorSet v) {
-    if (v is! FileDescriptorSet)
-      checkItemFailed(v, 'google.protobuf.FileDescriptorSet');
+    if (v is! FileDescriptorSet) checkItemFailed(v, _i.messageName);
   }
 
   List<FileDescriptorProto> get file => $_getList(0);
@@ -52,26 +49,26 @@ class _ReadonlyFileDescriptorSet extends FileDescriptorSet
     with ReadonlyMessageMixin {}
 
 class FileDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.FileDescriptorProto')
-        ..aOS(1, 'name')
-        ..aOS(2, 'package')
-        ..pPS(3, 'dependency')
-        ..pp<DescriptorProto>(4, 'messageType', PbFieldType.PM,
-            DescriptorProto.$checkItem, DescriptorProto.create)
-        ..pp<EnumDescriptorProto>(5, 'enumType', PbFieldType.PM,
-            EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
-        ..pp<ServiceDescriptorProto>(6, 'service', PbFieldType.PM,
-            ServiceDescriptorProto.$checkItem, ServiceDescriptorProto.create)
-        ..pp<FieldDescriptorProto>(7, 'extension', PbFieldType.PM,
-            FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
-        ..a<FileOptions>(8, 'options', PbFieldType.OM, FileOptions.getDefault,
-            FileOptions.create)
-        ..a<SourceCodeInfo>(9, 'sourceCodeInfo', PbFieldType.OM,
-            SourceCodeInfo.getDefault, SourceCodeInfo.create)
-        ..p<int>(10, 'publicDependency', PbFieldType.P3)
-        ..p<int>(11, 'weakDependency', PbFieldType.P3)
-        ..aOS(12, 'syntax');
+  static final BuilderInfo _i = new BuilderInfo('FileDescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..aOS(2, 'package')
+    ..pPS(3, 'dependency')
+    ..pp<DescriptorProto>(4, 'messageType', PbFieldType.PM,
+        DescriptorProto.$checkItem, DescriptorProto.create)
+    ..pp<EnumDescriptorProto>(5, 'enumType', PbFieldType.PM,
+        EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
+    ..pp<ServiceDescriptorProto>(6, 'service', PbFieldType.PM,
+        ServiceDescriptorProto.$checkItem, ServiceDescriptorProto.create)
+    ..pp<FieldDescriptorProto>(7, 'extension', PbFieldType.PM,
+        FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
+    ..a<FileOptions>(8, 'options', PbFieldType.OM, FileOptions.getDefault,
+        FileOptions.create)
+    ..a<SourceCodeInfo>(9, 'sourceCodeInfo', PbFieldType.OM,
+        SourceCodeInfo.getDefault, SourceCodeInfo.create)
+    ..p<int>(10, 'publicDependency', PbFieldType.P3)
+    ..p<int>(11, 'weakDependency', PbFieldType.P3)
+    ..aOS(12, 'syntax');
 
   FileDescriptorProto() : super();
   FileDescriptorProto.fromBuffer(List<int> i,
@@ -94,8 +91,7 @@ class FileDescriptorProto extends GeneratedMessage {
 
   static FileDescriptorProto _defaultInstance;
   static void $checkItem(FileDescriptorProto v) {
-    if (v is! FileDescriptorProto)
-      checkItemFailed(v, 'google.protobuf.FileDescriptorProto');
+    if (v is! FileDescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -157,11 +153,11 @@ class _ReadonlyFileDescriptorProto extends FileDescriptorProto
     with ReadonlyMessageMixin {}
 
 class DescriptorProto_ExtensionRange extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.DescriptorProto.ExtensionRange')
-        ..a<int>(1, 'start', PbFieldType.O3)
-        ..a<int>(2, 'end', PbFieldType.O3)
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('ExtensionRange',
+      package: const PackageName('google.protobuf'))
+    ..a<int>(1, 'start', PbFieldType.O3)
+    ..a<int>(2, 'end', PbFieldType.O3)
+    ..hasRequiredFields = false;
 
   DescriptorProto_ExtensionRange() : super();
   DescriptorProto_ExtensionRange.fromBuffer(List<int> i,
@@ -186,7 +182,7 @@ class DescriptorProto_ExtensionRange extends GeneratedMessage {
   static DescriptorProto_ExtensionRange _defaultInstance;
   static void $checkItem(DescriptorProto_ExtensionRange v) {
     if (v is! DescriptorProto_ExtensionRange)
-      checkItemFailed(v, 'google.protobuf.DescriptorProto.ExtensionRange');
+      checkItemFailed(v, _i.messageName);
   }
 
   int get start => $_get(0, 0);
@@ -210,11 +206,11 @@ class _ReadonlyDescriptorProto_ExtensionRange
     extends DescriptorProto_ExtensionRange with ReadonlyMessageMixin {}
 
 class DescriptorProto_ReservedRange extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.DescriptorProto.ReservedRange')
-        ..a<int>(1, 'start', PbFieldType.O3)
-        ..a<int>(2, 'end', PbFieldType.O3)
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('ReservedRange',
+      package: const PackageName('google.protobuf'))
+    ..a<int>(1, 'start', PbFieldType.O3)
+    ..a<int>(2, 'end', PbFieldType.O3)
+    ..hasRequiredFields = false;
 
   DescriptorProto_ReservedRange() : super();
   DescriptorProto_ReservedRange.fromBuffer(List<int> i,
@@ -238,8 +234,7 @@ class DescriptorProto_ReservedRange extends GeneratedMessage {
 
   static DescriptorProto_ReservedRange _defaultInstance;
   static void $checkItem(DescriptorProto_ReservedRange v) {
-    if (v is! DescriptorProto_ReservedRange)
-      checkItemFailed(v, 'google.protobuf.DescriptorProto.ReservedRange');
+    if (v is! DescriptorProto_ReservedRange) checkItemFailed(v, _i.messageName);
   }
 
   int get start => $_get(0, 0);
@@ -263,34 +258,34 @@ class _ReadonlyDescriptorProto_ReservedRange
     extends DescriptorProto_ReservedRange with ReadonlyMessageMixin {}
 
 class DescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.DescriptorProto')
-        ..aOS(1, 'name')
-        ..pp<FieldDescriptorProto>(2, 'field', PbFieldType.PM,
-            FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
-        ..pp<DescriptorProto>(3, 'nestedType', PbFieldType.PM,
-            DescriptorProto.$checkItem, DescriptorProto.create)
-        ..pp<EnumDescriptorProto>(4, 'enumType', PbFieldType.PM,
-            EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
-        ..pp<DescriptorProto_ExtensionRange>(
-            5,
-            'extensionRange',
-            PbFieldType.PM,
-            DescriptorProto_ExtensionRange.$checkItem,
-            DescriptorProto_ExtensionRange.create)
-        ..pp<FieldDescriptorProto>(6, 'extension', PbFieldType.PM,
-            FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
-        ..a<MessageOptions>(7, 'options', PbFieldType.OM,
-            MessageOptions.getDefault, MessageOptions.create)
-        ..pp<OneofDescriptorProto>(8, 'oneofDecl', PbFieldType.PM,
-            OneofDescriptorProto.$checkItem, OneofDescriptorProto.create)
-        ..pp<DescriptorProto_ReservedRange>(
-            9,
-            'reservedRange',
-            PbFieldType.PM,
-            DescriptorProto_ReservedRange.$checkItem,
-            DescriptorProto_ReservedRange.create)
-        ..pPS(10, 'reservedName');
+  static final BuilderInfo _i = new BuilderInfo('DescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..pp<FieldDescriptorProto>(2, 'field', PbFieldType.PM,
+        FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
+    ..pp<DescriptorProto>(3, 'nestedType', PbFieldType.PM,
+        DescriptorProto.$checkItem, DescriptorProto.create)
+    ..pp<EnumDescriptorProto>(4, 'enumType', PbFieldType.PM,
+        EnumDescriptorProto.$checkItem, EnumDescriptorProto.create)
+    ..pp<DescriptorProto_ExtensionRange>(
+        5,
+        'extensionRange',
+        PbFieldType.PM,
+        DescriptorProto_ExtensionRange.$checkItem,
+        DescriptorProto_ExtensionRange.create)
+    ..pp<FieldDescriptorProto>(6, 'extension', PbFieldType.PM,
+        FieldDescriptorProto.$checkItem, FieldDescriptorProto.create)
+    ..a<MessageOptions>(7, 'options', PbFieldType.OM, MessageOptions.getDefault,
+        MessageOptions.create)
+    ..pp<OneofDescriptorProto>(8, 'oneofDecl', PbFieldType.PM,
+        OneofDescriptorProto.$checkItem, OneofDescriptorProto.create)
+    ..pp<DescriptorProto_ReservedRange>(
+        9,
+        'reservedRange',
+        PbFieldType.PM,
+        DescriptorProto_ReservedRange.$checkItem,
+        DescriptorProto_ReservedRange.create)
+    ..pPS(10, 'reservedName');
 
   DescriptorProto() : super();
   DescriptorProto.fromBuffer(List<int> i,
@@ -312,8 +307,7 @@ class DescriptorProto extends GeneratedMessage {
 
   static DescriptorProto _defaultInstance;
   static void $checkItem(DescriptorProto v) {
-    if (v is! DescriptorProto)
-      checkItemFailed(v, 'google.protobuf.DescriptorProto');
+    if (v is! DescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -353,31 +347,31 @@ class _ReadonlyDescriptorProto extends DescriptorProto
     with ReadonlyMessageMixin {}
 
 class FieldDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.FieldDescriptorProto')
-        ..aOS(1, 'name')
-        ..aOS(2, 'extendee')
-        ..a<int>(3, 'number', PbFieldType.O3)
-        ..e<FieldDescriptorProto_Label>(
-            4,
-            'label',
-            PbFieldType.OE,
-            FieldDescriptorProto_Label.LABEL_OPTIONAL,
-            FieldDescriptorProto_Label.valueOf,
-            FieldDescriptorProto_Label.values)
-        ..e<FieldDescriptorProto_Type>(
-            5,
-            'type',
-            PbFieldType.OE,
-            FieldDescriptorProto_Type.TYPE_DOUBLE,
-            FieldDescriptorProto_Type.valueOf,
-            FieldDescriptorProto_Type.values)
-        ..aOS(6, 'typeName')
-        ..aOS(7, 'defaultValue')
-        ..a<FieldOptions>(8, 'options', PbFieldType.OM, FieldOptions.getDefault,
-            FieldOptions.create)
-        ..a<int>(9, 'oneofIndex', PbFieldType.O3)
-        ..aOS(10, 'jsonName');
+  static final BuilderInfo _i = new BuilderInfo('FieldDescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..aOS(2, 'extendee')
+    ..a<int>(3, 'number', PbFieldType.O3)
+    ..e<FieldDescriptorProto_Label>(
+        4,
+        'label',
+        PbFieldType.OE,
+        FieldDescriptorProto_Label.LABEL_OPTIONAL,
+        FieldDescriptorProto_Label.valueOf,
+        FieldDescriptorProto_Label.values)
+    ..e<FieldDescriptorProto_Type>(
+        5,
+        'type',
+        PbFieldType.OE,
+        FieldDescriptorProto_Type.TYPE_DOUBLE,
+        FieldDescriptorProto_Type.valueOf,
+        FieldDescriptorProto_Type.values)
+    ..aOS(6, 'typeName')
+    ..aOS(7, 'defaultValue')
+    ..a<FieldOptions>(8, 'options', PbFieldType.OM, FieldOptions.getDefault,
+        FieldOptions.create)
+    ..a<int>(9, 'oneofIndex', PbFieldType.O3)
+    ..aOS(10, 'jsonName');
 
   FieldDescriptorProto() : super();
   FieldDescriptorProto.fromBuffer(List<int> i,
@@ -400,8 +394,7 @@ class FieldDescriptorProto extends GeneratedMessage {
 
   static FieldDescriptorProto _defaultInstance;
   static void $checkItem(FieldDescriptorProto v) {
-    if (v is! FieldDescriptorProto)
-      checkItemFailed(v, 'google.protobuf.FieldDescriptorProto');
+    if (v is! FieldDescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -489,11 +482,11 @@ class _ReadonlyFieldDescriptorProto extends FieldDescriptorProto
     with ReadonlyMessageMixin {}
 
 class OneofDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.OneofDescriptorProto')
-        ..aOS(1, 'name')
-        ..a<OneofOptions>(2, 'options', PbFieldType.OM, OneofOptions.getDefault,
-            OneofOptions.create);
+  static final BuilderInfo _i = new BuilderInfo('OneofDescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..a<OneofOptions>(2, 'options', PbFieldType.OM, OneofOptions.getDefault,
+        OneofOptions.create);
 
   OneofDescriptorProto() : super();
   OneofDescriptorProto.fromBuffer(List<int> i,
@@ -516,8 +509,7 @@ class OneofDescriptorProto extends GeneratedMessage {
 
   static OneofDescriptorProto _defaultInstance;
   static void $checkItem(OneofDescriptorProto v) {
-    if (v is! OneofDescriptorProto)
-      checkItemFailed(v, 'google.protobuf.OneofDescriptorProto');
+    if (v is! OneofDescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -541,17 +533,13 @@ class _ReadonlyOneofDescriptorProto extends OneofDescriptorProto
     with ReadonlyMessageMixin {}
 
 class EnumDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.EnumDescriptorProto')
-        ..aOS(1, 'name')
-        ..pp<EnumValueDescriptorProto>(
-            2,
-            'value',
-            PbFieldType.PM,
-            EnumValueDescriptorProto.$checkItem,
-            EnumValueDescriptorProto.create)
-        ..a<EnumOptions>(3, 'options', PbFieldType.OM, EnumOptions.getDefault,
-            EnumOptions.create);
+  static final BuilderInfo _i = new BuilderInfo('EnumDescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..pp<EnumValueDescriptorProto>(2, 'value', PbFieldType.PM,
+        EnumValueDescriptorProto.$checkItem, EnumValueDescriptorProto.create)
+    ..a<EnumOptions>(3, 'options', PbFieldType.OM, EnumOptions.getDefault,
+        EnumOptions.create);
 
   EnumDescriptorProto() : super();
   EnumDescriptorProto.fromBuffer(List<int> i,
@@ -574,8 +562,7 @@ class EnumDescriptorProto extends GeneratedMessage {
 
   static EnumDescriptorProto _defaultInstance;
   static void $checkItem(EnumDescriptorProto v) {
-    if (v is! EnumDescriptorProto)
-      checkItemFailed(v, 'google.protobuf.EnumDescriptorProto');
+    if (v is! EnumDescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -601,12 +588,12 @@ class _ReadonlyEnumDescriptorProto extends EnumDescriptorProto
     with ReadonlyMessageMixin {}
 
 class EnumValueDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.EnumValueDescriptorProto')
-        ..aOS(1, 'name')
-        ..a<int>(2, 'number', PbFieldType.O3)
-        ..a<EnumValueOptions>(3, 'options', PbFieldType.OM,
-            EnumValueOptions.getDefault, EnumValueOptions.create);
+  static final BuilderInfo _i = new BuilderInfo('EnumValueDescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..a<int>(2, 'number', PbFieldType.O3)
+    ..a<EnumValueOptions>(3, 'options', PbFieldType.OM,
+        EnumValueOptions.getDefault, EnumValueOptions.create);
 
   EnumValueDescriptorProto() : super();
   EnumValueDescriptorProto.fromBuffer(List<int> i,
@@ -629,8 +616,7 @@ class EnumValueDescriptorProto extends GeneratedMessage {
 
   static EnumValueDescriptorProto _defaultInstance;
   static void $checkItem(EnumValueDescriptorProto v) {
-    if (v is! EnumValueDescriptorProto)
-      checkItemFailed(v, 'google.protobuf.EnumValueDescriptorProto');
+    if (v is! EnumValueDescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -662,13 +648,13 @@ class _ReadonlyEnumValueDescriptorProto extends EnumValueDescriptorProto
     with ReadonlyMessageMixin {}
 
 class ServiceDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.ServiceDescriptorProto')
-        ..aOS(1, 'name')
-        ..pp<MethodDescriptorProto>(2, 'method', PbFieldType.PM,
-            MethodDescriptorProto.$checkItem, MethodDescriptorProto.create)
-        ..a<ServiceOptions>(3, 'options', PbFieldType.OM,
-            ServiceOptions.getDefault, ServiceOptions.create);
+  static final BuilderInfo _i = new BuilderInfo('ServiceDescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..pp<MethodDescriptorProto>(2, 'method', PbFieldType.PM,
+        MethodDescriptorProto.$checkItem, MethodDescriptorProto.create)
+    ..a<ServiceOptions>(3, 'options', PbFieldType.OM, ServiceOptions.getDefault,
+        ServiceOptions.create);
 
   ServiceDescriptorProto() : super();
   ServiceDescriptorProto.fromBuffer(List<int> i,
@@ -691,8 +677,7 @@ class ServiceDescriptorProto extends GeneratedMessage {
 
   static ServiceDescriptorProto _defaultInstance;
   static void $checkItem(ServiceDescriptorProto v) {
-    if (v is! ServiceDescriptorProto)
-      checkItemFailed(v, 'google.protobuf.ServiceDescriptorProto');
+    if (v is! ServiceDescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -718,15 +703,15 @@ class _ReadonlyServiceDescriptorProto extends ServiceDescriptorProto
     with ReadonlyMessageMixin {}
 
 class MethodDescriptorProto extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.MethodDescriptorProto')
-        ..aOS(1, 'name')
-        ..aOS(2, 'inputType')
-        ..aOS(3, 'outputType')
-        ..a<MethodOptions>(4, 'options', PbFieldType.OM,
-            MethodOptions.getDefault, MethodOptions.create)
-        ..aOB(5, 'clientStreaming')
-        ..aOB(6, 'serverStreaming');
+  static final BuilderInfo _i = new BuilderInfo('MethodDescriptorProto',
+      package: const PackageName('google.protobuf'))
+    ..aOS(1, 'name')
+    ..aOS(2, 'inputType')
+    ..aOS(3, 'outputType')
+    ..a<MethodOptions>(4, 'options', PbFieldType.OM, MethodOptions.getDefault,
+        MethodOptions.create)
+    ..aOB(5, 'clientStreaming')
+    ..aOB(6, 'serverStreaming');
 
   MethodDescriptorProto() : super();
   MethodDescriptorProto.fromBuffer(List<int> i,
@@ -749,8 +734,7 @@ class MethodDescriptorProto extends GeneratedMessage {
 
   static MethodDescriptorProto _defaultInstance;
   static void $checkItem(MethodDescriptorProto v) {
-    if (v is! MethodDescriptorProto)
-      checkItemFailed(v, 'google.protobuf.MethodDescriptorProto');
+    if (v is! MethodDescriptorProto) checkItemFailed(v, _i.messageName);
   }
 
   String get name => $_getS(0, '');
@@ -806,7 +790,8 @@ class _ReadonlyMethodDescriptorProto extends MethodDescriptorProto
     with ReadonlyMessageMixin {}
 
 class FileOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('google.protobuf.FileOptions')
+  static final BuilderInfo _i = new BuilderInfo('FileOptions',
+      package: const PackageName('google.protobuf'))
     ..aOS(1, 'javaPackage')
     ..aOS(8, 'javaOuterClassname')
     ..e<FileOptions_OptimizeMode>(
@@ -852,7 +837,7 @@ class FileOptions extends GeneratedMessage {
 
   static FileOptions _defaultInstance;
   static void $checkItem(FileOptions v) {
-    if (v is! FileOptions) checkItemFailed(v, 'google.protobuf.FileOptions');
+    if (v is! FileOptions) checkItemFailed(v, _i.messageName);
   }
 
   String get javaPackage => $_getS(0, '');
@@ -997,15 +982,15 @@ class FileOptions extends GeneratedMessage {
 class _ReadonlyFileOptions extends FileOptions with ReadonlyMessageMixin {}
 
 class MessageOptions extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.MessageOptions')
-        ..aOB(1, 'messageSetWireFormat')
-        ..aOB(2, 'noStandardDescriptorAccessor')
-        ..aOB(3, 'deprecated')
-        ..aOB(7, 'mapEntry')
-        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-            UninterpretedOption.$checkItem, UninterpretedOption.create)
-        ..hasExtensions = true;
+  static final BuilderInfo _i = new BuilderInfo('MessageOptions',
+      package: const PackageName('google.protobuf'))
+    ..aOB(1, 'messageSetWireFormat')
+    ..aOB(2, 'noStandardDescriptorAccessor')
+    ..aOB(3, 'deprecated')
+    ..aOB(7, 'mapEntry')
+    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+        UninterpretedOption.$checkItem, UninterpretedOption.create)
+    ..hasExtensions = true;
 
   MessageOptions() : super();
   MessageOptions.fromBuffer(List<int> i,
@@ -1027,8 +1012,7 @@ class MessageOptions extends GeneratedMessage {
 
   static MessageOptions _defaultInstance;
   static void $checkItem(MessageOptions v) {
-    if (v is! MessageOptions)
-      checkItemFailed(v, 'google.protobuf.MessageOptions');
+    if (v is! MessageOptions) checkItemFailed(v, _i.messageName);
   }
 
   bool get messageSetWireFormat => $_get(0, false);
@@ -1070,7 +1054,8 @@ class _ReadonlyMessageOptions extends MessageOptions with ReadonlyMessageMixin {
 }
 
 class FieldOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('google.protobuf.FieldOptions')
+  static final BuilderInfo _i = new BuilderInfo('FieldOptions',
+      package: const PackageName('google.protobuf'))
     ..e<FieldOptions_CType>(
         1,
         'ctype',
@@ -1112,7 +1097,7 @@ class FieldOptions extends GeneratedMessage {
 
   static FieldOptions _defaultInstance;
   static void $checkItem(FieldOptions v) {
-    if (v is! FieldOptions) checkItemFailed(v, 'google.protobuf.FieldOptions');
+    if (v is! FieldOptions) checkItemFailed(v, _i.messageName);
   }
 
   FieldOptions_CType get ctype => $_getN(0);
@@ -1169,7 +1154,8 @@ class FieldOptions extends GeneratedMessage {
 class _ReadonlyFieldOptions extends FieldOptions with ReadonlyMessageMixin {}
 
 class OneofOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('google.protobuf.OneofOptions')
+  static final BuilderInfo _i = new BuilderInfo('OneofOptions',
+      package: const PackageName('google.protobuf'))
     ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
         UninterpretedOption.$checkItem, UninterpretedOption.create)
     ..hasExtensions = true;
@@ -1193,7 +1179,7 @@ class OneofOptions extends GeneratedMessage {
 
   static OneofOptions _defaultInstance;
   static void $checkItem(OneofOptions v) {
-    if (v is! OneofOptions) checkItemFailed(v, 'google.protobuf.OneofOptions');
+    if (v is! OneofOptions) checkItemFailed(v, _i.messageName);
   }
 
   List<UninterpretedOption> get uninterpretedOption => $_getList(0);
@@ -1202,7 +1188,8 @@ class OneofOptions extends GeneratedMessage {
 class _ReadonlyOneofOptions extends OneofOptions with ReadonlyMessageMixin {}
 
 class EnumOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('google.protobuf.EnumOptions')
+  static final BuilderInfo _i = new BuilderInfo('EnumOptions',
+      package: const PackageName('google.protobuf'))
     ..aOB(2, 'allowAlias')
     ..aOB(3, 'deprecated')
     ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
@@ -1227,7 +1214,7 @@ class EnumOptions extends GeneratedMessage {
 
   static EnumOptions _defaultInstance;
   static void $checkItem(EnumOptions v) {
-    if (v is! EnumOptions) checkItemFailed(v, 'google.protobuf.EnumOptions');
+    if (v is! EnumOptions) checkItemFailed(v, _i.messageName);
   }
 
   bool get allowAlias => $_get(0, false);
@@ -1252,12 +1239,12 @@ class EnumOptions extends GeneratedMessage {
 class _ReadonlyEnumOptions extends EnumOptions with ReadonlyMessageMixin {}
 
 class EnumValueOptions extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.EnumValueOptions')
-        ..aOB(1, 'deprecated')
-        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-            UninterpretedOption.$checkItem, UninterpretedOption.create)
-        ..hasExtensions = true;
+  static final BuilderInfo _i = new BuilderInfo('EnumValueOptions',
+      package: const PackageName('google.protobuf'))
+    ..aOB(1, 'deprecated')
+    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+        UninterpretedOption.$checkItem, UninterpretedOption.create)
+    ..hasExtensions = true;
 
   EnumValueOptions() : super();
   EnumValueOptions.fromBuffer(List<int> i,
@@ -1279,8 +1266,7 @@ class EnumValueOptions extends GeneratedMessage {
 
   static EnumValueOptions _defaultInstance;
   static void $checkItem(EnumValueOptions v) {
-    if (v is! EnumValueOptions)
-      checkItemFailed(v, 'google.protobuf.EnumValueOptions');
+    if (v is! EnumValueOptions) checkItemFailed(v, _i.messageName);
   }
 
   bool get deprecated => $_get(0, false);
@@ -1298,12 +1284,12 @@ class _ReadonlyEnumValueOptions extends EnumValueOptions
     with ReadonlyMessageMixin {}
 
 class ServiceOptions extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.ServiceOptions')
-        ..aOB(33, 'deprecated')
-        ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
-            UninterpretedOption.$checkItem, UninterpretedOption.create)
-        ..hasExtensions = true;
+  static final BuilderInfo _i = new BuilderInfo('ServiceOptions',
+      package: const PackageName('google.protobuf'))
+    ..aOB(33, 'deprecated')
+    ..pp<UninterpretedOption>(999, 'uninterpretedOption', PbFieldType.PM,
+        UninterpretedOption.$checkItem, UninterpretedOption.create)
+    ..hasExtensions = true;
 
   ServiceOptions() : super();
   ServiceOptions.fromBuffer(List<int> i,
@@ -1325,8 +1311,7 @@ class ServiceOptions extends GeneratedMessage {
 
   static ServiceOptions _defaultInstance;
   static void $checkItem(ServiceOptions v) {
-    if (v is! ServiceOptions)
-      checkItemFailed(v, 'google.protobuf.ServiceOptions');
+    if (v is! ServiceOptions) checkItemFailed(v, _i.messageName);
   }
 
   bool get deprecated => $_get(0, false);
@@ -1344,7 +1329,8 @@ class _ReadonlyServiceOptions extends ServiceOptions with ReadonlyMessageMixin {
 }
 
 class MethodOptions extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('google.protobuf.MethodOptions')
+  static final BuilderInfo _i = new BuilderInfo('MethodOptions',
+      package: const PackageName('google.protobuf'))
     ..aOB(33, 'deprecated')
     ..e<MethodOptions_IdempotencyLevel>(
         34,
@@ -1376,8 +1362,7 @@ class MethodOptions extends GeneratedMessage {
 
   static MethodOptions _defaultInstance;
   static void $checkItem(MethodOptions v) {
-    if (v is! MethodOptions)
-      checkItemFailed(v, 'google.protobuf.MethodOptions');
+    if (v is! MethodOptions) checkItemFailed(v, _i.messageName);
   }
 
   bool get deprecated => $_get(0, false);
@@ -1403,7 +1388,7 @@ class _ReadonlyMethodOptions extends MethodOptions with ReadonlyMessageMixin {}
 
 class UninterpretedOption_NamePart extends GeneratedMessage {
   static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.UninterpretedOption.NamePart')
+      new BuilderInfo('NamePart', package: const PackageName('google.protobuf'))
         ..aQS(1, 'namePart')
         ..a<bool>(2, 'isExtension', PbFieldType.QB);
 
@@ -1429,8 +1414,7 @@ class UninterpretedOption_NamePart extends GeneratedMessage {
 
   static UninterpretedOption_NamePart _defaultInstance;
   static void $checkItem(UninterpretedOption_NamePart v) {
-    if (v is! UninterpretedOption_NamePart)
-      checkItemFailed(v, 'google.protobuf.UninterpretedOption.NamePart');
+    if (v is! UninterpretedOption_NamePart) checkItemFailed(v, _i.messageName);
   }
 
   String get namePart => $_getS(0, '');
@@ -1454,20 +1438,20 @@ class _ReadonlyUninterpretedOption_NamePart extends UninterpretedOption_NamePart
     with ReadonlyMessageMixin {}
 
 class UninterpretedOption extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.UninterpretedOption')
-        ..pp<UninterpretedOption_NamePart>(
-            2,
-            'name',
-            PbFieldType.PM,
-            UninterpretedOption_NamePart.$checkItem,
-            UninterpretedOption_NamePart.create)
-        ..aOS(3, 'identifierValue')
-        ..a<Int64>(4, 'positiveIntValue', PbFieldType.OU6, Int64.ZERO)
-        ..aInt64(5, 'negativeIntValue')
-        ..a<double>(6, 'doubleValue', PbFieldType.OD)
-        ..a<List<int>>(7, 'stringValue', PbFieldType.OY)
-        ..aOS(8, 'aggregateValue');
+  static final BuilderInfo _i = new BuilderInfo('UninterpretedOption',
+      package: const PackageName('google.protobuf'))
+    ..pp<UninterpretedOption_NamePart>(
+        2,
+        'name',
+        PbFieldType.PM,
+        UninterpretedOption_NamePart.$checkItem,
+        UninterpretedOption_NamePart.create)
+    ..aOS(3, 'identifierValue')
+    ..a<Int64>(4, 'positiveIntValue', PbFieldType.OU6, Int64.ZERO)
+    ..aInt64(5, 'negativeIntValue')
+    ..a<double>(6, 'doubleValue', PbFieldType.OD)
+    ..a<List<int>>(7, 'stringValue', PbFieldType.OY)
+    ..aOS(8, 'aggregateValue');
 
   UninterpretedOption() : super();
   UninterpretedOption.fromBuffer(List<int> i,
@@ -1490,8 +1474,7 @@ class UninterpretedOption extends GeneratedMessage {
 
   static UninterpretedOption _defaultInstance;
   static void $checkItem(UninterpretedOption v) {
-    if (v is! UninterpretedOption)
-      checkItemFailed(v, 'google.protobuf.UninterpretedOption');
+    if (v is! UninterpretedOption) checkItemFailed(v, _i.messageName);
   }
 
   List<UninterpretedOption_NamePart> get name => $_getList(0);
@@ -1550,7 +1533,7 @@ class _ReadonlyUninterpretedOption extends UninterpretedOption
 
 class SourceCodeInfo_Location extends GeneratedMessage {
   static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.SourceCodeInfo.Location')
+      new BuilderInfo('Location', package: const PackageName('google.protobuf'))
         ..p<int>(1, 'path', PbFieldType.K3)
         ..p<int>(2, 'span', PbFieldType.K3)
         ..aOS(3, 'leadingComments')
@@ -1579,8 +1562,7 @@ class SourceCodeInfo_Location extends GeneratedMessage {
 
   static SourceCodeInfo_Location _defaultInstance;
   static void $checkItem(SourceCodeInfo_Location v) {
-    if (v is! SourceCodeInfo_Location)
-      checkItemFailed(v, 'google.protobuf.SourceCodeInfo.Location');
+    if (v is! SourceCodeInfo_Location) checkItemFailed(v, _i.messageName);
   }
 
   List<int> get path => $_getList(0);
@@ -1610,11 +1592,11 @@ class _ReadonlySourceCodeInfo_Location extends SourceCodeInfo_Location
     with ReadonlyMessageMixin {}
 
 class SourceCodeInfo extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.SourceCodeInfo')
-        ..pp<SourceCodeInfo_Location>(1, 'location', PbFieldType.PM,
-            SourceCodeInfo_Location.$checkItem, SourceCodeInfo_Location.create)
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('SourceCodeInfo',
+      package: const PackageName('google.protobuf'))
+    ..pp<SourceCodeInfo_Location>(1, 'location', PbFieldType.PM,
+        SourceCodeInfo_Location.$checkItem, SourceCodeInfo_Location.create)
+    ..hasRequiredFields = false;
 
   SourceCodeInfo() : super();
   SourceCodeInfo.fromBuffer(List<int> i,
@@ -1636,8 +1618,7 @@ class SourceCodeInfo extends GeneratedMessage {
 
   static SourceCodeInfo _defaultInstance;
   static void $checkItem(SourceCodeInfo v) {
-    if (v is! SourceCodeInfo)
-      checkItemFailed(v, 'google.protobuf.SourceCodeInfo');
+    if (v is! SourceCodeInfo) checkItemFailed(v, _i.messageName);
   }
 
   List<SourceCodeInfo_Location> get location => $_getList(0);
@@ -1647,13 +1628,13 @@ class _ReadonlySourceCodeInfo extends SourceCodeInfo with ReadonlyMessageMixin {
 }
 
 class GeneratedCodeInfo_Annotation extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.GeneratedCodeInfo.Annotation')
-        ..p<int>(1, 'path', PbFieldType.K3)
-        ..aOS(2, 'sourceFile')
-        ..a<int>(3, 'begin', PbFieldType.O3)
-        ..a<int>(4, 'end', PbFieldType.O3)
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('Annotation',
+      package: const PackageName('google.protobuf'))
+    ..p<int>(1, 'path', PbFieldType.K3)
+    ..aOS(2, 'sourceFile')
+    ..a<int>(3, 'begin', PbFieldType.O3)
+    ..a<int>(4, 'end', PbFieldType.O3)
+    ..hasRequiredFields = false;
 
   GeneratedCodeInfo_Annotation() : super();
   GeneratedCodeInfo_Annotation.fromBuffer(List<int> i,
@@ -1677,8 +1658,7 @@ class GeneratedCodeInfo_Annotation extends GeneratedMessage {
 
   static GeneratedCodeInfo_Annotation _defaultInstance;
   static void $checkItem(GeneratedCodeInfo_Annotation v) {
-    if (v is! GeneratedCodeInfo_Annotation)
-      checkItemFailed(v, 'google.protobuf.GeneratedCodeInfo.Annotation');
+    if (v is! GeneratedCodeInfo_Annotation) checkItemFailed(v, _i.messageName);
   }
 
   List<int> get path => $_getList(0);
@@ -1712,15 +1692,15 @@ class _ReadonlyGeneratedCodeInfo_Annotation extends GeneratedCodeInfo_Annotation
     with ReadonlyMessageMixin {}
 
 class GeneratedCodeInfo extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('google.protobuf.GeneratedCodeInfo')
-        ..pp<GeneratedCodeInfo_Annotation>(
-            1,
-            'annotation',
-            PbFieldType.PM,
-            GeneratedCodeInfo_Annotation.$checkItem,
-            GeneratedCodeInfo_Annotation.create)
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('GeneratedCodeInfo',
+      package: const PackageName('google.protobuf'))
+    ..pp<GeneratedCodeInfo_Annotation>(
+        1,
+        'annotation',
+        PbFieldType.PM,
+        GeneratedCodeInfo_Annotation.$checkItem,
+        GeneratedCodeInfo_Annotation.create)
+    ..hasRequiredFields = false;
 
   GeneratedCodeInfo() : super();
   GeneratedCodeInfo.fromBuffer(List<int> i,
@@ -1742,8 +1722,7 @@ class GeneratedCodeInfo extends GeneratedMessage {
 
   static GeneratedCodeInfo _defaultInstance;
   static void $checkItem(GeneratedCodeInfo v) {
-    if (v is! GeneratedCodeInfo)
-      checkItemFailed(v, 'google.protobuf.GeneratedCodeInfo');
+    if (v is! GeneratedCodeInfo) checkItemFailed(v, _i.messageName);
   }
 
   List<GeneratedCodeInfo_Annotation> get annotation => $_getList(0);

@@ -30,6 +30,24 @@ class MessageGenerator extends ProtobufContainer {
   /// The fully-qualified name of the message (without any leading '.').
   final String fullName;
 
+  /// The part of the fully qualified name that comes after the package prefix.
+  ///
+  /// For nested messages this will include the names of the parents.
+  ///
+  /// For example:
+  /// ```
+  /// package foo;
+  ///
+  /// message Container {
+  ///   message Nested {
+  ///     int32 int32_value = 1;
+  ///   }
+  /// }
+  /// ```
+  /// The nested message will have a `fullName` of 'foo.Container.Nested', and a
+  /// `messageName` of 'Container.Nested'.
+  String get messageName => fullName.substring(package.length);
+
   final PbMixin mixin;
 
   final ProtobufContainer _parent;
@@ -202,11 +220,13 @@ class MessageGenerator extends ProtobufContainer {
       mixinClause = ' with ${mixinNames.join(", ")}';
     }
 
+    String packageClause =
+        package == '' ? '' : ', package: const PackageName(\'$package\')';
     out.addBlock(
         'class ${classname} extends GeneratedMessage${mixinClause} {', '}', () {
       out.addBlock(
           'static final BuilderInfo _i = '
-          'new BuilderInfo(\'${classname}\')',
+          'new BuilderInfo(\'${messageName}\'$packageClause)',
           ';', () {
         for (ProtobufField field in _fieldList) {
           var dartFieldName = field.memberNames.fieldName;
@@ -238,7 +258,6 @@ class MessageGenerator extends ProtobufContainer {
           ' new ${classname}()..mergeFromMessage(this);');
 
       out.println('BuilderInfo get info_ => _i;');
-      out.println('String get \$fullName => \'$fullName\';');
 
       // Factory functions which can be used as default value closures.
       out.println('static ${classname} create() =>'
@@ -253,7 +272,7 @@ class MessageGenerator extends ProtobufContainer {
       out.println('static ${classname} _defaultInstance;');
       out.addBlock('static void $checkItem($classname v) {', '}', () {
         out.println('if (v is! $classname)'
-            " checkItemFailed(v, info_.messageName);");
+            " checkItemFailed(v, _i.messageName);");
       });
       generateFieldsAccessorsMutators(out);
       if (fullName == 'google.protobuf.Any') {
@@ -338,7 +357,7 @@ class MessageGenerator extends ProtobufContainer {
       {String typeUrlPrefix = \'type.googleapis.com\'}) {
     return new Any()
         ..value = message.writeToBuffer()
-        ..typeUrl = '\${typeUrlPrefix}/\${message.$fullName}';
+        ..typeUrl = '\${typeUrlPrefix}/\${message.info_.messageName}';
   }''');
   }
 
