@@ -153,7 +153,8 @@ class _ReadonlyFileDescriptorProto extends FileDescriptorProto
     with ReadonlyMessageMixin {}
 
 class DescriptorProto_ExtensionRange extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('ExtensionRange',
+  static final BuilderInfo _i = new BuilderInfo(
+      'DescriptorProto.ExtensionRange',
       package: const PackageName('google.protobuf'))
     ..a<int>(1, 'start', PbFieldType.O3)
     ..a<int>(2, 'end', PbFieldType.O3)
@@ -206,7 +207,7 @@ class _ReadonlyDescriptorProto_ExtensionRange
     extends DescriptorProto_ExtensionRange with ReadonlyMessageMixin {}
 
 class DescriptorProto_ReservedRange extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('ReservedRange',
+  static final BuilderInfo _i = new BuilderInfo('DescriptorProto.ReservedRange',
       package: const PackageName('google.protobuf'))
     ..a<int>(1, 'start', PbFieldType.O3)
     ..a<int>(2, 'end', PbFieldType.O3)
@@ -1387,10 +1388,10 @@ class MethodOptions extends GeneratedMessage {
 class _ReadonlyMethodOptions extends MethodOptions with ReadonlyMessageMixin {}
 
 class UninterpretedOption_NamePart extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('NamePart', package: const PackageName('google.protobuf'))
-        ..aQS(1, 'namePart')
-        ..a<bool>(2, 'isExtension', PbFieldType.QB);
+  static final BuilderInfo _i = new BuilderInfo('UninterpretedOption.NamePart',
+      package: const PackageName('google.protobuf'))
+    ..aQS(1, 'namePart')
+    ..a<bool>(2, 'isExtension', PbFieldType.QB);
 
   UninterpretedOption_NamePart() : super();
   UninterpretedOption_NamePart.fromBuffer(List<int> i,
@@ -1532,14 +1533,14 @@ class _ReadonlyUninterpretedOption extends UninterpretedOption
     with ReadonlyMessageMixin {}
 
 class SourceCodeInfo_Location extends GeneratedMessage {
-  static final BuilderInfo _i =
-      new BuilderInfo('Location', package: const PackageName('google.protobuf'))
-        ..p<int>(1, 'path', PbFieldType.K3)
-        ..p<int>(2, 'span', PbFieldType.K3)
-        ..aOS(3, 'leadingComments')
-        ..aOS(4, 'trailingComments')
-        ..pPS(6, 'leadingDetachedComments')
-        ..hasRequiredFields = false;
+  static final BuilderInfo _i = new BuilderInfo('SourceCodeInfo.Location',
+      package: const PackageName('google.protobuf'))
+    ..p<int>(1, 'path', PbFieldType.K3)
+    ..p<int>(2, 'span', PbFieldType.K3)
+    ..aOS(3, 'leadingComments')
+    ..aOS(4, 'trailingComments')
+    ..pPS(6, 'leadingDetachedComments')
+    ..hasRequiredFields = false;
 
   SourceCodeInfo_Location() : super();
   SourceCodeInfo_Location.fromBuffer(List<int> i,
@@ -1628,7 +1629,7 @@ class _ReadonlySourceCodeInfo extends SourceCodeInfo with ReadonlyMessageMixin {
 }
 
 class GeneratedCodeInfo_Annotation extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('Annotation',
+  static final BuilderInfo _i = new BuilderInfo('GeneratedCodeInfo.Annotation',
       package: const PackageName('google.protobuf'))
     ..p<int>(1, 'path', PbFieldType.K3)
     ..aOS(2, 'sourceFile')

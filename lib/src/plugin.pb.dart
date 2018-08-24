@@ -137,7 +137,7 @@ class _ReadonlyCodeGeneratorRequest extends CodeGeneratorRequest
     with ReadonlyMessageMixin {}
 
 class CodeGeneratorResponse_File extends GeneratedMessage {
-  static final BuilderInfo _i = new BuilderInfo('File',
+  static final BuilderInfo _i = new BuilderInfo('CodeGeneratorResponse.File',
       package: const PackageName('google.protobuf.compiler'))
     ..aOS(1, 'name')
     ..aOS(2, 'insertionPoint')
