@@ -26,8 +26,6 @@ void main() {
 
     var writer = new IndentingWriter();
     fg.serviceGenerators[0].generate(writer);
-    expectMatchesGoldenFile(
-        writer.toString(), 'test/goldens/serviceGenerator');
-
+    expectMatchesGoldenFile(writer.toString(), 'test/goldens/serviceGenerator');
   });
 }

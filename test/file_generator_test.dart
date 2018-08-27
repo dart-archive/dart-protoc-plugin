@@ -117,7 +117,6 @@ void main() {
     link(options, [fg]);
     expectMatchesGoldenFile(
         fg.generateJsonFile(), 'test/goldens/topLevelEnum.pbjson');
-
   });
 
   test('FileGenerator outputs library for a .proto in a package', () {
@@ -182,8 +181,7 @@ void main() {
 
     var writer = new IndentingWriter();
     fg.writeMainHeader(writer);
-    expectMatchesGoldenFile(
-        fg.generateMainFile(), 'test/goldens/service.pb');
+    expectMatchesGoldenFile(fg.generateMainFile(), 'test/goldens/service.pb');
     expectMatchesGoldenFile(
         fg.generateServerFile(), 'test/goldens/service.pbserver');
   });
@@ -364,8 +362,7 @@ void main() {
     FileGenerator fg = new FileGenerator(fd, options);
     link(options,
         [fg, new FileGenerator(fd1, options), new FileGenerator(fd2, options)]);
-    expectMatchesGoldenFile(
-        fg.generateMainFile(), 'test/goldens/imports.pb');
+    expectMatchesGoldenFile(fg.generateMainFile(), 'test/goldens/imports.pb');
     expectMatchesGoldenFile(
         fg.generateEnumFile(), 'test/goldens/imports.pbjson');
   });
