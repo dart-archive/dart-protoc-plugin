@@ -206,7 +206,8 @@ class MessageGenerator extends ProtobufContainer {
     }
 
     out.addBlock(
-        'class ${classname} extends $_protobufImportPrefix.GeneratedMessage${mixinClause} {', '}', () {
+        'class ${classname} extends $_protobufImportPrefix.GeneratedMessage${mixinClause} {',
+        '}', () {
       out.addBlock(
           'static final $_protobufImportPrefix.BuilderInfo _i = new $_protobufImportPrefix.BuilderInfo(\'${classname}\')',
           ';', () {
@@ -244,7 +245,8 @@ class MessageGenerator extends ProtobufContainer {
       // Factory functions which can be used as default value closures.
       out.println('static ${classname} create() =>'
           ' new ${classname}();');
-      out.println('static $_protobufImportPrefix.PbList<${classname}> createRepeated() =>'
+      out.println(
+          'static $_protobufImportPrefix.PbList<${classname}> createRepeated() =>'
           ' new $_protobufImportPrefix.PbList<${classname}>();');
       out.addBlock('static ${classname} getDefault() {', '}', () {
         out.println(

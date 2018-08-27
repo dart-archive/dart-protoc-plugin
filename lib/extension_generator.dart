@@ -88,7 +88,8 @@ class ExtensionGenerator {
         out.println(', $dartType.$checkItem, null, '
             '$dartType.valueOf, $dartType.values);');
       } else {
-        out.println(", $_protobufImportPrefix.getCheckFunction(${_field.typeConstant}));");
+        out.println(
+            ", $_protobufImportPrefix.getCheckFunction(${_field.typeConstant}));");
       }
       return;
     }

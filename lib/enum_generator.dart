@@ -60,7 +60,9 @@ class EnumGenerator extends ProtobufContainer {
   }
 
   void generate(IndentingWriter out) {
-    out.addBlock('class ${classname} extends $_protobufImportPrefix.ProtobufEnum {', '}\n', () {
+    out.addBlock(
+        'class ${classname} extends $_protobufImportPrefix.ProtobufEnum {',
+        '}\n', () {
       // -----------------------------------------------------------------
       // Define enum types.
       for (EnumValueDescriptorProto val in _canonicalValues) {
