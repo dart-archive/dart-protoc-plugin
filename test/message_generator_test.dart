@@ -69,8 +69,7 @@ void main() {
 
     var writer = new IndentingWriter();
     mg.generate(writer);
-    expectMatchesGoldenFile(
-        writer.toString(), 'test/goldens/messageGenerator');
+    expectMatchesGoldenFile(writer.toString(), 'test/goldens/messageGenerator');
 
     writer = new IndentingWriter();
     mg.generateEnums(writer);

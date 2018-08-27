@@ -28,7 +28,6 @@ void main() {
 
     IndentingWriter writer = new IndentingWriter();
     cag.generate(writer);
-    expectMatchesGoldenFile(
-        writer.toString(), 'test/goldens/client');
+    expectMatchesGoldenFile(writer.toString(), 'test/goldens/client');
   });
 }
