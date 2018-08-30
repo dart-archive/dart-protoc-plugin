@@ -1,6 +1,7 @@
-## 0.8.3
+## 0.9.0
 
-* Add `copyWith()` to message classes and update `getDefault()` to use `freeze()`.
+* Breaking change: Add `copyWith()` to message classes and update `getDefault()` to use `freeze()`.
+  Requires package:protobuf version 0.10.0 or newer.
 
 ## 0.8.2
 
