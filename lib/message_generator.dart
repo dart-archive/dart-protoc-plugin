@@ -221,13 +221,14 @@ class MessageGenerator extends ProtobufContainer {
       mixinClause = ' with ${mixinNames.join(", ")}';
     }
 
-    String packageClause =
-        package == '' ? '' : ', package: const PackageName(\'$package\')';
+    String packageClause = package == ''
+        ? ''
+        : ', package: const $_protobufImportPrefix.PackageName(\'$package\')';
     out.addBlock(
         'class ${classname} extends $_protobufImportPrefix.GeneratedMessage${mixinClause} {',
         '}', () {
       out.addBlock(
-          'static final BuilderInfo _i = '
+          'static final $_protobufImportPrefix.BuilderInfo _i = '
           'new $_protobufImportPrefix.BuilderInfo(\'${messageName}\'$packageClause)',
           ';', () {
         for (ProtobufField field in _fieldList) {
@@ -329,7 +330,7 @@ class MessageGenerator extends ProtobufContainer {
   /// Generates methods for the Any message class for packing and unpacking
   /// values.
   void generateAnyMethods(IndentingWriter out) {
-    out.println(r'''
+    out.println('''
   /// Unpacks the message in [value] into [instance].
   ///
   /// Throws a [InvalidProtocolBufferException] if [typeUrl] does not correspond
@@ -338,9 +339,9 @@ class MessageGenerator extends ProtobufContainer {
   /// A typical usage would be `any.unpackInto(new Message())`.
   ///
   /// Returns [instance].
-  T unpackInto<T extends GeneratedMessage>(T instance,
-      {ExtensionRegistry extensionRegistry = ExtensionRegistry.EMPTY}) {
-    unpackIntoHelper(value, instance, typeUrl,
+  T unpackInto<T extends $_protobufImportPrefix.GeneratedMessage>(T instance,
+      {$_protobufImportPrefix.ExtensionRegistry extensionRegistry = $_protobufImportPrefix.ExtensionRegistry.EMPTY}) {
+    $_protobufImportPrefix.unpackIntoHelper(value, instance, typeUrl,
         extensionRegistry: extensionRegistry);
     return instance;
   }
@@ -349,19 +350,19 @@ class MessageGenerator extends ProtobufContainer {
   ///
   /// Can be used with a default instance:
   /// `any.canUnpackInto(Message.getDefault())`
-  bool canUnpackInto(GeneratedMessage instance) {
-    return canUnpackIntoHelper(instance, typeUrl);
+  bool canUnpackInto($_protobufImportPrefix.GeneratedMessage instance) {
+    return $_protobufImportPrefix.canUnpackIntoHelper(instance, typeUrl);
   }
 
   /// Creates a new [Any] encoding [message].
   ///
   /// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is
   /// the fully qualified name of the type of [message].
-  static Any pack(GeneratedMessage message,
+  static Any pack($_protobufImportPrefix.GeneratedMessage message,
       {String typeUrlPrefix = 'type.googleapis.com'}) {
     return new Any()
       ..value = message.writeToBuffer()
-      ..typeUrl = '${typeUrlPrefix}/${message.info_.messageName}';
+      ..typeUrl = '\${typeUrlPrefix}/\${message.info_.messageName}';
   }''');
   }
 
