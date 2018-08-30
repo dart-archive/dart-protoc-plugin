@@ -1,8 +1,18 @@
-## 0.9.0 - 2018-05-17
+## 0.10.0
 
 * Breaking change: Support for [any](https://developers.google.com/protocol-buffers/docs/proto3#any) messages.
-  Generated files require package:protobuf version 0.9.2 or newer.
+  Generated files require package:protobuf version 0.10.1 or newer.
   `BuilderInfo.messageName` will now be the fully qualified name for generated messages.
+
+## 0.9.0
+
+* Breaking change: Add `copyWith()` to message classes and update `getDefault()` to use `freeze()`.
+  Requires package:protobuf version 0.10.0 or newer.
+
+## 0.8.2
+
+* Generated code now imports 'package:protobuf/protobuf.dart' prefixed.
+  This avoids name clashes between user defined message names and the protobuf library.
 
 ## 0.8.1
 
