@@ -25,7 +25,7 @@ class DartMixin extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   DartMixin clone() => new DartMixin()..mergeFromMessage(this);
   DartMixin copyWith(void Function(DartMixin) updates) =>
-      super.copyWith((message) => updates(message as DartMixin));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static DartMixin create() => new DartMixin();
   static $pb.PbList<DartMixin> createRepeated() => new $pb.PbList<DartMixin>();
@@ -76,7 +76,7 @@ class Imports extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   Imports clone() => new Imports()..mergeFromMessage(this);
   Imports copyWith(void Function(Imports) updates) =>
-      super.copyWith((message) => updates(message as Imports));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static Imports create() => new Imports();
   static $pb.PbList<Imports> createRepeated() => new $pb.PbList<Imports>();

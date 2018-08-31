@@ -28,7 +28,7 @@ class FileDescriptorSet extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   FileDescriptorSet clone() => new FileDescriptorSet()..mergeFromMessage(this);
   FileDescriptorSet copyWith(void Function(FileDescriptorSet) updates) =>
-      super.copyWith((message) => updates(message as FileDescriptorSet));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static FileDescriptorSet create() => new FileDescriptorSet();
   static $pb.PbList<FileDescriptorSet> createRepeated() =>
@@ -75,7 +75,7 @@ class FileDescriptorProto extends $pb.GeneratedMessage {
   FileDescriptorProto clone() =>
       new FileDescriptorProto()..mergeFromMessage(this);
   FileDescriptorProto copyWith(void Function(FileDescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as FileDescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static FileDescriptorProto create() => new FileDescriptorProto();
   static $pb.PbList<FileDescriptorProto> createRepeated() =>
@@ -161,8 +161,7 @@ class DescriptorProto_ExtensionRange extends $pb.GeneratedMessage {
       new DescriptorProto_ExtensionRange()..mergeFromMessage(this);
   DescriptorProto_ExtensionRange copyWith(
           void Function(DescriptorProto_ExtensionRange) updates) =>
-      super.copyWith(
-          (message) => updates(message as DescriptorProto_ExtensionRange));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static DescriptorProto_ExtensionRange create() =>
       new DescriptorProto_ExtensionRange();
@@ -212,8 +211,7 @@ class DescriptorProto_ReservedRange extends $pb.GeneratedMessage {
       new DescriptorProto_ReservedRange()..mergeFromMessage(this);
   DescriptorProto_ReservedRange copyWith(
           void Function(DescriptorProto_ReservedRange) updates) =>
-      super.copyWith(
-          (message) => updates(message as DescriptorProto_ReservedRange));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static DescriptorProto_ReservedRange create() =>
       new DescriptorProto_ReservedRange();
@@ -283,7 +281,7 @@ class DescriptorProto extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   DescriptorProto clone() => new DescriptorProto()..mergeFromMessage(this);
   DescriptorProto copyWith(void Function(DescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as DescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static DescriptorProto create() => new DescriptorProto();
   static $pb.PbList<DescriptorProto> createRepeated() =>
@@ -365,7 +363,7 @@ class FieldDescriptorProto extends $pb.GeneratedMessage {
   FieldDescriptorProto clone() =>
       new FieldDescriptorProto()..mergeFromMessage(this);
   FieldDescriptorProto copyWith(void Function(FieldDescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as FieldDescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static FieldDescriptorProto create() => new FieldDescriptorProto();
   static $pb.PbList<FieldDescriptorProto> createRepeated() =>
@@ -475,7 +473,7 @@ class OneofDescriptorProto extends $pb.GeneratedMessage {
   OneofDescriptorProto clone() =>
       new OneofDescriptorProto()..mergeFromMessage(this);
   OneofDescriptorProto copyWith(void Function(OneofDescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as OneofDescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static OneofDescriptorProto create() => new OneofDescriptorProto();
   static $pb.PbList<OneofDescriptorProto> createRepeated() =>
@@ -523,7 +521,7 @@ class EnumDescriptorProto extends $pb.GeneratedMessage {
   EnumDescriptorProto clone() =>
       new EnumDescriptorProto()..mergeFromMessage(this);
   EnumDescriptorProto copyWith(void Function(EnumDescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as EnumDescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static EnumDescriptorProto create() => new EnumDescriptorProto();
   static $pb.PbList<EnumDescriptorProto> createRepeated() =>
@@ -574,7 +572,7 @@ class EnumValueDescriptorProto extends $pb.GeneratedMessage {
       new EnumValueDescriptorProto()..mergeFromMessage(this);
   EnumValueDescriptorProto copyWith(
           void Function(EnumValueDescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as EnumValueDescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static EnumValueDescriptorProto create() => new EnumValueDescriptorProto();
   static $pb.PbList<EnumValueDescriptorProto> createRepeated() =>
@@ -632,7 +630,7 @@ class ServiceDescriptorProto extends $pb.GeneratedMessage {
       new ServiceDescriptorProto()..mergeFromMessage(this);
   ServiceDescriptorProto copyWith(
           void Function(ServiceDescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as ServiceDescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static ServiceDescriptorProto create() => new ServiceDescriptorProto();
   static $pb.PbList<ServiceDescriptorProto> createRepeated() =>
@@ -685,7 +683,7 @@ class MethodDescriptorProto extends $pb.GeneratedMessage {
       new MethodDescriptorProto()..mergeFromMessage(this);
   MethodDescriptorProto copyWith(
           void Function(MethodDescriptorProto) updates) =>
-      super.copyWith((message) => updates(message as MethodDescriptorProto));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static MethodDescriptorProto create() => new MethodDescriptorProto();
   static $pb.PbList<MethodDescriptorProto> createRepeated() =>
@@ -785,7 +783,7 @@ class FileOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   FileOptions clone() => new FileOptions()..mergeFromMessage(this);
   FileOptions copyWith(void Function(FileOptions) updates) =>
-      super.copyWith((message) => updates(message as FileOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static FileOptions create() => new FileOptions();
   static $pb.PbList<FileOptions> createRepeated() =>
@@ -955,7 +953,7 @@ class MessageOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   MessageOptions clone() => new MessageOptions()..mergeFromMessage(this);
   MessageOptions copyWith(void Function(MessageOptions) updates) =>
-      super.copyWith((message) => updates(message as MessageOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static MessageOptions create() => new MessageOptions();
   static $pb.PbList<MessageOptions> createRepeated() =>
@@ -1035,7 +1033,7 @@ class FieldOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   FieldOptions clone() => new FieldOptions()..mergeFromMessage(this);
   FieldOptions copyWith(void Function(FieldOptions) updates) =>
-      super.copyWith((message) => updates(message as FieldOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static FieldOptions create() => new FieldOptions();
   static $pb.PbList<FieldOptions> createRepeated() =>
@@ -1113,7 +1111,7 @@ class OneofOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   OneofOptions clone() => new OneofOptions()..mergeFromMessage(this);
   OneofOptions copyWith(void Function(OneofOptions) updates) =>
-      super.copyWith((message) => updates(message as OneofOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static OneofOptions create() => new OneofOptions();
   static $pb.PbList<OneofOptions> createRepeated() =>
@@ -1145,7 +1143,7 @@ class EnumOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   EnumOptions clone() => new EnumOptions()..mergeFromMessage(this);
   EnumOptions copyWith(void Function(EnumOptions) updates) =>
-      super.copyWith((message) => updates(message as EnumOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static EnumOptions create() => new EnumOptions();
   static $pb.PbList<EnumOptions> createRepeated() =>
@@ -1192,7 +1190,7 @@ class EnumValueOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   EnumValueOptions clone() => new EnumValueOptions()..mergeFromMessage(this);
   EnumValueOptions copyWith(void Function(EnumValueOptions) updates) =>
-      super.copyWith((message) => updates(message as EnumValueOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static EnumValueOptions create() => new EnumValueOptions();
   static $pb.PbList<EnumValueOptions> createRepeated() =>
@@ -1232,7 +1230,7 @@ class ServiceOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   ServiceOptions clone() => new ServiceOptions()..mergeFromMessage(this);
   ServiceOptions copyWith(void Function(ServiceOptions) updates) =>
-      super.copyWith((message) => updates(message as ServiceOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static ServiceOptions create() => new ServiceOptions();
   static $pb.PbList<ServiceOptions> createRepeated() =>
@@ -1278,7 +1276,7 @@ class MethodOptions extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   MethodOptions clone() => new MethodOptions()..mergeFromMessage(this);
   MethodOptions copyWith(void Function(MethodOptions) updates) =>
-      super.copyWith((message) => updates(message as MethodOptions));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static MethodOptions create() => new MethodOptions();
   static $pb.PbList<MethodOptions> createRepeated() =>
@@ -1326,8 +1324,7 @@ class UninterpretedOption_NamePart extends $pb.GeneratedMessage {
       new UninterpretedOption_NamePart()..mergeFromMessage(this);
   UninterpretedOption_NamePart copyWith(
           void Function(UninterpretedOption_NamePart) updates) =>
-      super.copyWith(
-          (message) => updates(message as UninterpretedOption_NamePart));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static UninterpretedOption_NamePart create() =>
       new UninterpretedOption_NamePart();
@@ -1384,7 +1381,7 @@ class UninterpretedOption extends $pb.GeneratedMessage {
   UninterpretedOption clone() =>
       new UninterpretedOption()..mergeFromMessage(this);
   UninterpretedOption copyWith(void Function(UninterpretedOption) updates) =>
-      super.copyWith((message) => updates(message as UninterpretedOption));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static UninterpretedOption create() => new UninterpretedOption();
   static $pb.PbList<UninterpretedOption> createRepeated() =>
@@ -1469,7 +1466,7 @@ class SourceCodeInfo_Location extends $pb.GeneratedMessage {
       new SourceCodeInfo_Location()..mergeFromMessage(this);
   SourceCodeInfo_Location copyWith(
           void Function(SourceCodeInfo_Location) updates) =>
-      super.copyWith((message) => updates(message as SourceCodeInfo_Location));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static SourceCodeInfo_Location create() => new SourceCodeInfo_Location();
   static $pb.PbList<SourceCodeInfo_Location> createRepeated() =>
@@ -1520,7 +1517,7 @@ class SourceCodeInfo extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   SourceCodeInfo clone() => new SourceCodeInfo()..mergeFromMessage(this);
   SourceCodeInfo copyWith(void Function(SourceCodeInfo) updates) =>
-      super.copyWith((message) => updates(message as SourceCodeInfo));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static SourceCodeInfo create() => new SourceCodeInfo();
   static $pb.PbList<SourceCodeInfo> createRepeated() =>
@@ -1555,8 +1552,7 @@ class GeneratedCodeInfo_Annotation extends $pb.GeneratedMessage {
       new GeneratedCodeInfo_Annotation()..mergeFromMessage(this);
   GeneratedCodeInfo_Annotation copyWith(
           void Function(GeneratedCodeInfo_Annotation) updates) =>
-      super.copyWith(
-          (message) => updates(message as GeneratedCodeInfo_Annotation));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static GeneratedCodeInfo_Annotation create() =>
       new GeneratedCodeInfo_Annotation();
@@ -1617,7 +1613,7 @@ class GeneratedCodeInfo extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   GeneratedCodeInfo clone() => new GeneratedCodeInfo()..mergeFromMessage(this);
   GeneratedCodeInfo copyWith(void Function(GeneratedCodeInfo) updates) =>
-      super.copyWith((message) => updates(message as GeneratedCodeInfo));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static GeneratedCodeInfo create() => new GeneratedCodeInfo();
   static $pb.PbList<GeneratedCodeInfo> createRepeated() =>

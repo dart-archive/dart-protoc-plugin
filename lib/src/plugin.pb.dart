@@ -28,7 +28,7 @@ class Version extends $pb.GeneratedMessage {
       : super.fromJson(i, r);
   Version clone() => new Version()..mergeFromMessage(this);
   Version copyWith(void Function(Version) updates) =>
-      super.copyWith((message) => updates(message as Version));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static Version create() => new Version();
   static $pb.PbList<Version> createRepeated() => new $pb.PbList<Version>();
@@ -95,7 +95,7 @@ class CodeGeneratorRequest extends $pb.GeneratedMessage {
   CodeGeneratorRequest clone() =>
       new CodeGeneratorRequest()..mergeFromMessage(this);
   CodeGeneratorRequest copyWith(void Function(CodeGeneratorRequest) updates) =>
-      super.copyWith((message) => updates(message as CodeGeneratorRequest));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static CodeGeneratorRequest create() => new CodeGeneratorRequest();
   static $pb.PbList<CodeGeneratorRequest> createRepeated() =>
@@ -148,8 +148,7 @@ class CodeGeneratorResponse_File extends $pb.GeneratedMessage {
       new CodeGeneratorResponse_File()..mergeFromMessage(this);
   CodeGeneratorResponse_File copyWith(
           void Function(CodeGeneratorResponse_File) updates) =>
-      super.copyWith(
-          (message) => updates(message as CodeGeneratorResponse_File));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static CodeGeneratorResponse_File create() =>
       new CodeGeneratorResponse_File();
@@ -211,7 +210,7 @@ class CodeGeneratorResponse extends $pb.GeneratedMessage {
       new CodeGeneratorResponse()..mergeFromMessage(this);
   CodeGeneratorResponse copyWith(
           void Function(CodeGeneratorResponse) updates) =>
-      super.copyWith((message) => updates(message as CodeGeneratorResponse));
+      $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static CodeGeneratorResponse create() => new CodeGeneratorResponse();
   static $pb.PbList<CodeGeneratorResponse> createRepeated() =>
