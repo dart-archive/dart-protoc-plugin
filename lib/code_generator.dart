@@ -11,7 +11,7 @@ abstract class ProtobufContainer {
 
   /// The fully qualified name with a leading '.'.
   ///
-  /// This exists because names from protoc comes like this.
+  /// This exists because names from protoc come like this.
   String get dottedName => '.$fullName';
 
   String get packageImportPrefix =>
