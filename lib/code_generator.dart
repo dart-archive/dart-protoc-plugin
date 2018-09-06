@@ -19,7 +19,7 @@ abstract class ProtobufContainer {
   String get dottedName => '.$fullName';
 
   String get fileImportPrefix => _getFileImportPrefix();
-  
+
   String _getFileImportPrefix() {
     String path = fileGen.protoFileUri.toString();
     if (importPrefixes.containsKey(path)) {
