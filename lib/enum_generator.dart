@@ -24,7 +24,7 @@ class EnumGenerator extends ProtobufContainer {
         _parent = parent,
         classname = messageOrEnumClassName(descriptor.name,
             parent: parent?.classname ?? ''),
-      fullName = parent.fullName == ''
+        fullName = parent.fullName == ''
             ? descriptor.name
             : '${parent.fullName}.${descriptor.name}',
         _descriptor = descriptor {

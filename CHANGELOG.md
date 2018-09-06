@@ -1,4 +1,4 @@
-## 0.11.0
+## 0.10.1
 
 * Breaking change: Prefix generated Dart proto imports by proto file path instead of by package.
   Tighten up member name checks for generated enum classes.
