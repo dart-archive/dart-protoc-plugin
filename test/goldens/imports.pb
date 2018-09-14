@@ -23,7 +23,7 @@ class M extends $pb.GeneratedMessage {
   M.fromBuffer(List<int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromBuffer(i, r);
   M.fromJson(String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromJson(i, r);
   M clone() => new M()..mergeFromMessage(this);
-  M copyWith(void Function(M) updates) => super.copyWith((message) => updates(message as M));
+  M copyWith(void Function(M) updates) => $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static M create() => new M();
   static $pb.PbList<M> createRepeated() => new $pb.PbList<M>();

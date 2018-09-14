@@ -19,7 +19,7 @@ class PhoneNumber extends $pb.GeneratedMessage {
   PhoneNumber.fromBuffer(List<int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromBuffer(i, r);
   PhoneNumber.fromJson(String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromJson(i, r);
   PhoneNumber clone() => new PhoneNumber()..mergeFromMessage(this);
-  PhoneNumber copyWith(void Function(PhoneNumber) updates) => super.copyWith((message) => updates(message as PhoneNumber));
+  PhoneNumber copyWith(void Function(PhoneNumber) updates) => $pb.$copyWithHelper(this, updates);
   $pb.BuilderInfo get info_ => _i;
   static PhoneNumber create() => new PhoneNumber();
   static $pb.PbList<PhoneNumber> createRepeated() => new $pb.PbList<PhoneNumber>();
