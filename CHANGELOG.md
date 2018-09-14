@@ -1,3 +1,8 @@
+## 0.11.0
+
+* Breaking change: Generate improved code for `GeneratedMessage.copyWith` overrides. Generated code requires protobuf
+  package 0.11.0 or newer.
+
 ## 0.10.0
 
 * Breaking change: Support for [any](https://developers.google.com/protocol-buffers/docs/proto3#any) messages.
