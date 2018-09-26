@@ -239,7 +239,8 @@ class FileGenerator extends ProtobufContainer {
     // We only add the dart:async import if there are generic client API
     // generators for services in the FileDescriptorProto.
     if (clientApiGenerators.isNotEmpty) {
-      out.println("import 'dart:async';");
+      out.println("// ignore: UNUSED_SHOWN_NAME\n"
+          "import 'dart:async' show Future, Stream;");
     }
 
     // Make sure any other symbols in dart:core don't cause name conflicts with

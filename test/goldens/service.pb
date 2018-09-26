@@ -4,7 +4,8 @@
 ///
 // ignore_for_file: non_constant_identifier_names,library_prefixes,unused_import
 
-import 'dart:async';
+// ignore: UNUSED_SHOWN_NAME
+import 'dart:async' show Future, Stream;
 // ignore: UNUSED_SHOWN_NAME
 import 'dart:core' show int, bool, double, String, List, override;
 
