@@ -32,26 +32,26 @@ class TestClient extends Client {
   TestClient(ClientChannel channel, {CallOptions options})
       : super(channel, options: options);
 
-  ResponseFuture<Output> unary(Input request, {CallOptions options}) {
+  $async.Future<Output> unary(Input request, {CallOptions options}) {
     final call = $createCall(_$unary, new $async.Stream.fromIterable([request]),
         options: options);
     return new ResponseFuture(call);
   }
 
-  ResponseFuture<Output> clientStreaming($async.Stream<Input> request,
+  $async.Future<Output> clientStreaming($async.Stream<Input> request,
       {CallOptions options}) {
     final call = $createCall(_$clientStreaming, request, options: options);
     return new ResponseFuture(call);
   }
 
-  ResponseStream<Output> serverStreaming(Input request, {CallOptions options}) {
+  $async.Stream<Output> serverStreaming(Input request, {CallOptions options}) {
     final call = $createCall(
         _$serverStreaming, new $async.Stream.fromIterable([request]),
         options: options);
     return new ResponseStream(call);
   }
 
-  ResponseStream<Output> bidirectional($async.Stream<Input> request,
+  $async.Stream<Output> bidirectional($async.Stream<Input> request,
       {CallOptions options}) {
     final call = $createCall(_$bidirectional, request, options: options);
     return new ResponseStream(call);

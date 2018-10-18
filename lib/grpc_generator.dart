@@ -157,8 +157,7 @@ class _GrpcMethod {
   final String _responseType;
 
   final String _argumentType;
-  final String _clientReturnType;
-  final String _serverReturnType;
+  final String _returnType;
 
   _GrpcMethod._(
       this._grpcName,
@@ -169,8 +168,7 @@ class _GrpcMethod {
       this._requestType,
       this._responseType,
       this._argumentType,
-      this._clientReturnType,
-      this._serverReturnType);
+      this._returnType);
 
   factory _GrpcMethod(GrpcServiceGenerator service, GenerationContext ctx,
       MethodDescriptorProto method) {
@@ -189,10 +187,7 @@ class _GrpcMethod {
 
     final argumentType =
         clientStreaming ? '\$async.Stream<$requestType>' : requestType;
-    final clientReturnType = serverStreaming
-        ? 'ResponseStream<$responseType>'
-        : 'ResponseFuture<$responseType>';
-    final serverReturnType = serverStreaming
+    final returnType = serverStreaming
         ? '\$async.Stream<$responseType>'
         : '\$async.Future<$responseType>';
 
@@ -205,8 +200,7 @@ class _GrpcMethod {
         requestType,
         responseType,
         argumentType,
-        clientReturnType,
-        serverReturnType);
+        returnType);
   }
 
   void generateClientMethodDescriptor(IndentingWriter out) {
@@ -221,7 +215,7 @@ class _GrpcMethod {
   void generateClientStub(IndentingWriter out) {
     out.println();
     out.addBlock(
-        '$_clientReturnType $_dartName($_argumentType request, {CallOptions options}) {',
+        '$_returnType $_dartName($_argumentType request, {CallOptions options}) {',
         '}', () {
       final requestStream = _clientStreaming
           ? 'request'
@@ -252,7 +246,7 @@ class _GrpcMethod {
     if (_clientStreaming) return;
 
     out.addBlock(
-        '$_serverReturnType ${_dartName}_Pre(ServiceCall call, \$async.Future request) async${_serverStreaming ? '*' : ''} {',
+        '$_returnType ${_dartName}_Pre(ServiceCall call, \$async.Future request) async${_serverStreaming ? '*' : ''} {',
         '}', () {
       if (_serverStreaming) {
         out.println(
@@ -266,6 +260,6 @@ class _GrpcMethod {
 
   void generateServiceMethodStub(IndentingWriter out) {
     out.println(
-        '$_serverReturnType $_dartName(ServiceCall call, $_argumentType request);');
+        '$_returnType $_dartName(ServiceCall call, $_argumentType request);');
   }
 }
