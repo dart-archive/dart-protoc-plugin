@@ -1,3 +1,8 @@
+## 0.11.0
+
+* Breaking change: Support for [map fields](https://developers.google.com/protocol-buffers/docs/proto3#maps)
+  Generated files require package:protobuf version 0.10.5 or newer.
+
 ## 0.10.5
 
 * Generated files now import `dart:async` with a prefix to prevent name

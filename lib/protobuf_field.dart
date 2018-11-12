@@ -72,11 +72,23 @@ class ProtobufField {
   /// True if this field uses the Int64 from the fixnum package.
   bool get needsFixnumImport => baseType.unprefixed == "Int64";
 
+  bool get isMapField {
+    if (!isRepeated || !baseType.isMessage) return false;
+    MessageGenerator generator = baseType.generator;
+    return generator._descriptor.options.hasMapEntry();
+  }
+
   /// Returns the expression to use for the Dart type.
   ///
   /// This will be a List for repeated types.
   /// [fileGen] represents the .proto file where we are generating code.
   String getDartType(FileGenerator fileGen) {
+    if (isMapField) {
+      MessageGenerator d = baseType.generator;
+      String keyType = d._fieldList[0].baseType.getDartType(fileGen);
+      String valueType = d._fieldList[1].baseType.getDartType(fileGen);
+      return 'Map<$keyType, $valueType>';
+    }
     if (isRepeated) return baseType.getRepeatedDartType(fileGen);
     return baseType.getDartType(fileGen);
   }
@@ -106,18 +118,41 @@ class ProtobufField {
     String quotedName = "'$dartFieldName'";
     String type = baseType.getDartType(fileGen);
 
+    if (isMapField) {
+      MessageGenerator d = baseType.generator;
+      ProtobufField key = d._fieldList[0];
+      ProtobufField value = d._fieldList[1];
+      String keyType = key.baseType.getDartType(fileGen);
+      String valueType = value.baseType.getDartType(fileGen);
+      String keyTypeConstant = key.typeConstant;
+      String valTypeConstant = value.typeConstant;
+
+      if (value.baseType.isMessage || value.baseType.isGroup) {
+        return '..m<$keyType, $valueType>($number, $quotedName, '
+            '$keyTypeConstant, $valTypeConstant, $valueType.create)';
+      }
+      if (value.baseType.isEnum) {
+        return '..m<$keyType, $valueType>($number, $quotedName, '
+            '$keyTypeConstant, $valTypeConstant, null, $valueType.valueOf, '
+            '$valueType.values)';
+      }
+      return '..m<$keyType, $valueType>($number, $quotedName, '
+          '$keyTypeConstant, $valTypeConstant)';
+    }
+
     if (isRepeated) {
       if (baseType.isMessage || baseType.isGroup) {
         return '..pp<$type>($number, $quotedName, $typeConstant,'
             ' $type.$checkItem, $type.create)';
-      } else if (baseType.isEnum) {
+      }
+      if (baseType.isEnum) {
         return '..pp<$type>($number, $quotedName, $typeConstant,'
             ' $type.$checkItem, null, $type.valueOf, $type.values)';
-      } else if (typeConstant == '$_protobufImportPrefix.PbFieldType.PS') {
-        return '..pPS($number, $quotedName)';
-      } else {
-        return '..p<$type>($number, $quotedName, $typeConstant)';
       }
+      if (typeConstant == '$_protobufImportPrefix.PbFieldType.PS') {
+        return '..pPS($number, $quotedName)';
+      }
+      return '..p<$type>($number, $quotedName, $typeConstant)';
     }
 
     String makeDefault = generateDefaultFunction(fileGen);
