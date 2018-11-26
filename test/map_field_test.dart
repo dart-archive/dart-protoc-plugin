@@ -212,7 +212,7 @@ void main() {
     _expectEmpty(testMap);
   });
 
-  test('Merge from other message', () {
+  test('merge from other message', () {
     TestMap testMap = TestMap();
     _setValues(testMap);
 
@@ -232,6 +232,20 @@ void main() {
     expect(testMap.int32ToMessageField[2].value, 44);
   });
 
+  test('parse duplicate keys', () {
+    TestMap testMap = TestMap()..int32ToStringField[1] = 'foo';
+    TestMap testMap2 = TestMap()..int32ToStringField[1] = 'bar';
+
+    TestMap merge = TestMap.fromBuffer(
+        []..addAll(testMap.writeToBuffer())..addAll(testMap2.writeToBuffer()));
+
+    // When parsing from the wire, if there are duplicate map keys the last key
+    // seen should be used.
+    expect(merge.int32ToStringField.length, 1);
+    expect(merge.int32ToStringField[1], 'bar');
+  });
+
+  // TODO(zarah): remove skip once https://github.com/dart-lang/protobuf/issues/139 is fixed.
   test('Deep merge from other message', () {
     Inner i1 = Inner()..innerMap['a'] = 'a';
     Inner i2 = Inner()..innerMap['b'] = 'b';
@@ -240,8 +254,18 @@ void main() {
     Outer o2 = Outer()..i = i2;
 
     o1.mergeFromMessage(o2);
+    expect(o1.i.innerMap.length, 2);
+  }, skip: true);
 
-    // TODO(zarah): comment in once https://github.com/dart-lang/protobuf/issues/139 is fixed.
-    // expect(o1.i.innerMap.length, 2);
+  test('retain explicit default values of sub-messages', () {
+    TestMap testMap = TestMap()
+      ..int32ToMessageField[1] = TestMap_MessageValue();
+    expect(testMap.int32ToMessageField[1].secondValue, 42);
+
+    TestMap testMap2 = TestMap()
+      ..int32ToMessageField[2] = TestMap_MessageValue();
+
+    testMap.mergeFromBuffer(testMap2.writeToBuffer());
+    expect(testMap.int32ToMessageField[2].secondValue, 42);
   });
 }

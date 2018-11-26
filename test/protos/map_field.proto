@@ -2,14 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-syntax = "proto3";
+syntax = "proto2";
 
 package protobuf_unittest;
 
 message TestMap {
     message MessageValue {
-        int32 value = 1;
-        int32 secondValue = 2;
+        optional int32 value = 1;
+        optional int32 secondValue = 2 [default = 42];
     }
 
     enum EnumValue {
@@ -34,5 +34,5 @@ message Inner  {
 }
 
 message Outer {
-    Inner i = 1;
+    optional Inner i = 1;
 }
