@@ -4,8 +4,6 @@
 
 syntax = "proto2";
 
-import "dart_options.proto";
-
 package _leading_underscores;
 
 message _A {
@@ -15,6 +13,10 @@ message _A {
   extend A {
     optional int64 _q = 3;
   }
+}
+
+message A_ {
+  optional string foo = 1;
 }
 
 message A {
