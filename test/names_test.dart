@@ -133,6 +133,13 @@ void main() {
     expect(names.avoidInitialUnderscore('_foo'), 'foo_');
     expect(names.avoidInitialUnderscore('__foo'), 'foo__');
   });
+
+  test('legalDartIdentifier', () {
+    expect(names.legalDartIdentifier("foo"), "foo");
+    expect(names.legalDartIdentifier("_foo"), "_foo");
+    expect(names.legalDartIdentifier("-foo"), "_foo");
+    expect(names.legalDartIdentifier("foo.\$a{b}c(d)e_"), "foo_\$a_b_c_d_e_");
+  });
 }
 
 FieldDescriptorProto stringField(String name, int number, String dartName) {

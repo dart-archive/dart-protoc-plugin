@@ -5,7 +5,6 @@
 import 'package:protobuf/meta.dart';
 import 'package:protoc_plugin/src/dart_options.pb.dart';
 import 'package:protoc_plugin/src/descriptor.pb.dart';
-import 'dart:io';
 
 /// A Dart function called on each item added to a repeated list
 /// to check its type and range.
@@ -69,11 +68,19 @@ Iterable<String> extensionSuffixes() sync* {
   }
 }
 
+/// Replaces all characters in [imput] that are not valid in a dart identifier
+/// with _.
+///
+/// This function does not take care of leading underscores.
+String legalDartIdentifier(String imput) {
+  return imput.replaceAll(new RegExp(r'[^a-zA-Z0-9$_]'), '_');
+}
+
 /// Chooses the name of the Dart class holding top-level extensions.
 String extensionClassName(
     FileDescriptorProto descriptor, Set<String> usedNames) {
-  String s = avoidInitialUnderscore(
-      _fileNameWithoutExtension(descriptor).replaceAll('-', '_'));
+  String s = avoidInitialUnderscore(legalDartIdentifier(
+      _fileNameWithoutExtension(descriptor)));
   String candidate = '${s[0].toUpperCase()}${s.substring(1)}';
   return disambiguateName(candidate, usedNames, suffixes: extensionSuffixes());
 }
@@ -100,8 +107,8 @@ Iterable<String> defaultSuffixGenerator() sync* {
   }
 }
 
-/// Returns a [name] that is not contained in usedNames by suffixing it with the
-/// first possible suffix from [suffixes].
+/// Returns a [name] that is not contained in [usedNames] by suffixing it with
+/// the first possible suffix from [suffixes].
 ///
 /// The chosen name is added to [usedNames].
 ///
