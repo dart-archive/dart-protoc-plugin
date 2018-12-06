@@ -361,7 +361,7 @@ bool _isDartFieldName(name) => name.startsWith(_dartFieldNameExpr);
 
 final _dartFieldNameExpr = new RegExp(r'^[a-z]\w+$');
 
-/// Names that would collide with capitalized core dart names as top-level
+/// Names that would collide with capitalized core Dart names as top-level
 /// identifiers.
 final List<String> toplevelReservedCapitalizedNames = const <String>[
   'List',
