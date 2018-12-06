@@ -19,20 +19,20 @@ class EnumGenerator extends ProtobufContainer {
       <EnumValueDescriptorProto>[];
   final List<EnumAlias> _aliases = <EnumAlias>[];
 
-  // Maps the name of an enum value to the dart name we will use for it.
+  /// Maps the name of an enum value to the Dart name we will use for it.
   final Map<String, String> dartNames = <String, String>{};
 
   EnumGenerator(EnumDescriptorProto descriptor, ProtobufContainer parent,
-      Set<String> usedNames)
+      Set<String> usedClassNames)
       : assert(parent != null),
         _parent = parent,
-        classname = messageOrEnumClassName(descriptor.name, usedNames,
+        classname = messageOrEnumClassName(descriptor.name, usedClassNames,
             parent: parent?.classname ?? ''),
         fullName = parent.fullName == ''
             ? descriptor.name
             : '${parent.fullName}.${descriptor.name}',
         _descriptor = descriptor {
-    final dissallowedNames = reservedEnumNames;
+    final usedNames = reservedEnumNames;
     for (EnumValueDescriptorProto value in descriptor.value) {
       EnumValueDescriptorProto canonicalValue =
           descriptor.value.firstWhere((v) => v.number == value.number);
@@ -41,7 +41,8 @@ class EnumGenerator extends ProtobufContainer {
       } else {
         _aliases.add(new EnumAlias(value, canonicalValue));
       }
-      dartNames[value.name] = disambiguateName(avoidInitialUnderscore(value.name), dissallowedNames, suffixes: enumSuffixes());
+      dartNames[value.name] = disambiguateName(
+          avoidInitialUnderscore(value.name), usedNames, enumSuffixes());
     }
   }
 

@@ -3,7 +3,7 @@
 * Breaking change: Handle identifiers starting with a leading underscore.
   This covers message names, enum names, enum value identifiers and file names.
 
-  Before these would appear in the generated Dart code as private identifiers.
+  Before, these would appear in the generated Dart code as private identifiers.
   Now the underscore is moved to the end.
 
   Field names and extension field names already had all underscores removed, and these are not

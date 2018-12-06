@@ -9,7 +9,7 @@ import 'package:fixnum/fixnum.dart';
 import '../out/protos/_leading_underscores.pb.dart';
 
 void main() {
-  test('can set, read and all fields and refer to types', () {
+  test('can set, read and clear all fields and refer to types', () {
     A_ message = new A_();
     message.setExtension(Leading_underscores_.p, Int64(99));
     expect(message.getExtension(Leading_underscores_.p), Int64(99));
@@ -42,5 +42,4 @@ void main() {
     A__ a = A__()..foo = 'hi';
     expect(a.foo, 'hi');
   });
-
 }

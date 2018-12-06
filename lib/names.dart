@@ -79,10 +79,10 @@ String legalDartIdentifier(String imput) {
 /// Chooses the name of the Dart class holding top-level extensions.
 String extensionClassName(
     FileDescriptorProto descriptor, Set<String> usedNames) {
-  String s = avoidInitialUnderscore(legalDartIdentifier(
-      _fileNameWithoutExtension(descriptor)));
+  String s = avoidInitialUnderscore(
+      legalDartIdentifier(_fileNameWithoutExtension(descriptor)));
   String candidate = '${s[0].toUpperCase()}${s.substring(1)}';
-  return disambiguateName(candidate, usedNames, suffixes: extensionSuffixes());
+  return disambiguateName(candidate, usedNames, extensionSuffixes());
 }
 
 String _fileNameWithoutExtension(FileDescriptorProto descriptor) {
@@ -99,30 +99,19 @@ class DartNameOptionException implements Exception {
   String toString() => "$message";
 }
 
-Iterable<String> defaultSuffixGenerator() sync* {
-  int i = 0;
-  while (true) {
-    yield '_$i';
-    i++;
-  }
-}
-
 /// Returns a [name] that is not contained in [usedNames] by suffixing it with
 /// the first possible suffix from [suffixes].
 ///
 /// The chosen name is added to [usedNames].
 ///
-/// The default [suffixes] is [defaultSuffixGenerator].
-///
 /// If [variants] is given, all the variants of a name must be available before
 /// that name is chosen, and all the chosen variants will be added to
 /// [usedNames].
 /// The returned name is that, which will generate the accepted variants.
-String disambiguateName(String name, Set<String> usedNames,
-    {Iterable<String> suffixes,
-    List<String> Function(String candidate) generateVariants}) {
+String disambiguateName(
+    String name, Set<String> usedNames, Iterable<String> suffixes,
+    {List<String> Function(String candidate) generateVariants}) {
   generateVariants ??= (String name) => <String>[name];
-  suffixes ??= defaultSuffixGenerator();
 
   bool allVariantsAvailable(List<String> variants) {
     return variants.every((String variant) => !usedNames.contains(variant));
@@ -145,11 +134,12 @@ String disambiguateName(String name, Set<String> usedNames,
   return '$name$usedSuffix';
 }
 
-Iterable<String> _messageOrEnumClassSuffixes() sync* {
+Iterable<String> defaultSuffixes() sync* {
   yield '_';
   int i = 0;
   while (true) {
     yield ('_$i');
+    i++;
   }
 }
 
@@ -162,8 +152,8 @@ String messageOrEnumClassName(String descriptorName, Set<String> usedNames,
   if (parent != '') {
     descriptorName = '${parent}_${descriptorName}';
   }
-  return disambiguateName(avoidInitialUnderscore(descriptorName), usedNames,
-      suffixes: _messageOrEnumClassSuffixes());
+  return disambiguateName(
+      avoidInitialUnderscore(descriptorName), usedNames, defaultSuffixes());
 }
 
 /// Returns the set of names reserved by the ProtobufEnum class and its
@@ -305,9 +295,8 @@ MemberNames _unusedMemberNames(
     return new MemberNames(
         field,
         index,
-        disambiguateName(
-            _defaultFieldName(_fieldMethodSuffix(field)), existingNames,
-            suffixes: _memberNamesSuffix(field.number)));
+        disambiguateName(_defaultFieldName(_fieldMethodSuffix(field)),
+            existingNames, _memberNamesSuffix(field.number)));
   }
 
   List<String> generateNameVariants(String name) {
@@ -319,8 +308,8 @@ MemberNames _unusedMemberNames(
   }
 
   String name = disambiguateName(_fieldMethodSuffix(field), existingNames,
-      generateVariants: generateNameVariants,
-      suffixes: _memberNamesSuffix(field.number));
+      _memberNamesSuffix(field.number),
+      generateVariants: generateNameVariants);
   return new MemberNames(field, index, _defaultFieldName(name),
       hasMethodName: _defaultHasMethodName(name),
       clearMethodName: _defaultClearMethodName(name));
@@ -376,7 +365,8 @@ final _dartFieldNameExpr = new RegExp(r'^[a-z]\w+$');
 /// identifiers.
 final List<String> toplevelReservedCapitalizedNames = const <String>[
   'List',
-  'Function'
+  'Function',
+  'Map',
 ];
 
 final List<String> reservedMemberNames = <String>[]

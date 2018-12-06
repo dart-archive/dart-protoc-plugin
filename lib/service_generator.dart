@@ -40,7 +40,8 @@ class ServiceGenerator {
   ServiceGenerator(this._descriptor, this.fileGen, Set<String> usedNames)
       : classname = disambiguateName(
             serviceBaseName(avoidInitialUnderscore(_descriptor.name)),
-            usedNames);
+            usedNames,
+            defaultSuffixes());
 
   /// Finds all message types used by this service.
   ///

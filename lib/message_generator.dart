@@ -60,8 +60,11 @@ class MessageGenerator extends ProtobufContainer {
   // populated by resolve()
   List<ProtobufField> _fieldList;
 
-  MessageGenerator(DescriptorProto descriptor, ProtobufContainer parent,
-      Map<String, PbMixin> declaredMixins, PbMixin defaultMixin,
+  MessageGenerator(
+      DescriptorProto descriptor,
+      ProtobufContainer parent,
+      Map<String, PbMixin> declaredMixins,
+      PbMixin defaultMixin,
       Set<String> usedNames)
       : _descriptor = descriptor,
         _parent = parent,
@@ -78,8 +81,8 @@ class MessageGenerator extends ProtobufContainer {
     }
 
     for (DescriptorProto n in _descriptor.nestedType) {
-      _messageGenerators
-          .add(new MessageGenerator(n, this, declaredMixins, defaultMixin, usedNames));
+      _messageGenerators.add(new MessageGenerator(
+          n, this, declaredMixins, defaultMixin, usedNames));
     }
 
     for (FieldDescriptorProto x in _descriptor.extension) {

@@ -104,7 +104,7 @@ class FileGenerator extends ProtobufContainer {
   final serviceGenerators = <ServiceGenerator>[];
   final grpcGenerators = <GrpcServiceGenerator>[];
 
-  /// Used to avoid collisions after names have been mangled to match the dart
+  /// Used to avoid collisions after names have been mangled to match the Dart
   /// style.
   final Set<String> usedTopLevelNames = Set<String>()
     ..addAll(toplevelReservedCapitalizedNames);

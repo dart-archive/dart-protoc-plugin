@@ -91,39 +91,35 @@ void main() {
     Iterable<String> oneTwoThree() sync* {
       yield* ['_one', '_two', '_three'];
     }
+
     {
       final used = Set<String>.from(['moo']);
-      expect(names.disambiguateName('foo', used), 'foo');
+      expect(names.disambiguateName('foo', used, oneTwoThree()), 'foo');
       expect(used, Set<String>.from(['moo', 'foo']));
     }
     {
       final used = Set<String>.from(['foo']);
-      expect(names.disambiguateName('foo', used), 'foo_0');
-      expect(used, Set<String>.from(['foo', 'foo_0']));
-    }
-    {
-      final used = Set<String>.from(['foo']);
-      expect(
-          names.disambiguateName('foo', used, suffixes: oneTwoThree()),
-          'foo_one');
+      expect(names.disambiguateName('foo', used, oneTwoThree()), 'foo_one');
       expect(used, Set<String>.from(['foo', 'foo_one']));
     }
     {
       final used = Set<String>.from(['foo', 'foo_one']);
-      expect(names.disambiguateName(
-          'foo', used, suffixes: oneTwoThree()),
-          'foo_two');
+      expect(names.disambiguateName('foo', used, oneTwoThree()), 'foo_two');
       expect(used, Set<String>.from(['foo', 'foo_one', 'foo_two']));
-
     }
 
     {
       List<String> variants(String s) {
         return ['a_' + s, 'b_' + s];
       }
-      final used = Set<String>.from(['a_foo', 'b_foo_0']);
-      expect(names.disambiguateName('foo', used, generateVariants: variants), 'foo_1');
-      expect(used, Set<String>.from(['a_foo', 'b_foo_0', 'a_foo_1', 'b_foo_1']));
+
+      final used = Set<String>.from(['a_foo', 'b_foo_one']);
+      expect(
+          names.disambiguateName('foo', used, oneTwoThree(),
+              generateVariants: variants),
+          'foo_two');
+      expect(used,
+          Set<String>.from(['a_foo', 'b_foo_one', 'a_foo_two', 'b_foo_two']));
     }
   });
 
@@ -139,6 +135,11 @@ void main() {
     expect(names.legalDartIdentifier("_foo"), "_foo");
     expect(names.legalDartIdentifier("-foo"), "_foo");
     expect(names.legalDartIdentifier("foo.\$a{b}c(d)e_"), "foo_\$a_b_c_d_e_");
+  });
+
+  test('defaultSuffixes', () {
+    expect(names.defaultSuffixes().take(5).toList(),
+        ['_', '_0', '_1', '_2', '_3']);
   });
 }
 

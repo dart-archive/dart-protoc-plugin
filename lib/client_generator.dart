@@ -13,7 +13,9 @@ class ClientApiGenerator {
 
   ClientApiGenerator(this.service, Set<String> usedNames)
       : className = disambiguateName(
-            avoidInitialUnderscore(service._descriptor.name), usedNames);
+            avoidInitialUnderscore(service._descriptor.name),
+            usedNames,
+            defaultSuffixes());
 
   // Subclasses can override this.
   String get _clientType => '$_protobufImportPrefix.RpcClient';
@@ -34,7 +36,9 @@ class ClientApiGenerator {
   // Subclasses can override this.
   void generateMethod(IndentingWriter out, MethodDescriptorProto m) {
     var methodName = disambiguateName(
-        avoidInitialUnderscore(service._methodName(m.name)), usedMethodNames);
+        avoidInitialUnderscore(service._methodName(m.name)),
+        usedMethodNames,
+        defaultSuffixes());
     var inputType = service._getDartClassName(m.inputType);
     var outputType = service._getDartClassName(m.outputType);
     out.addBlock(

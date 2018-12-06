@@ -28,7 +28,9 @@ void main() {
 
     var serviceWriter = new IndentingWriter();
     fg.serviceGenerators[0].generate(serviceWriter);
-    expectMatchesGoldenFile(serviceWriter.toString(), 'test/goldens/serviceGenerator');
-    expectMatchesGoldenFile(fg.generateJsonFile(), 'test/goldens/serviceGenerator.pb.json');
+    expectMatchesGoldenFile(
+        serviceWriter.toString(), 'test/goldens/serviceGenerator');
+    expectMatchesGoldenFile(
+        fg.generateJsonFile(), 'test/goldens/serviceGenerator.pb.json');
   });
 }
