@@ -1,3 +1,0 @@
-#!/bin/bash
-BINDIR=$(dirname "$0")
-dart "$BINDIR/protoc_plugin.dart" -c "$@"
